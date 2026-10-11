@@ -1,0 +1,8 @@
+{
+    "folders": [
+        { "name": "exp0", "path": "EXP0" },
+    ],
+    "settings": {
+        // 这里可以放置工作区级别的 EIDE 插件设置
+    }
+}

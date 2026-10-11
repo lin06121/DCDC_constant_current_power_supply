@@ -1,0 +1,2073 @@
+Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+
+==============================================================================
+
+Section Cross References
+
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to ustdlib.o(i.usnprintf) for usnprintf
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to lwiplib.o(i.lwIPInit) for lwIPInit
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to swupdate.o(i.SoftwareUpdateInit) for SoftwareUpdateInit
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to boot_demo_emac_flash.o(.data) for .data
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to boot_demo_emac_flash.o(.bss) for .bss
+    boot_demo_emac_flash.o(i.SetupForEthernet) refers to boot_demo_emac_flash.o(i.SoftwareUpdateRequestCallback) for SoftwareUpdateRequestCallback
+    boot_demo_emac_flash.o(i.SetupForUART) refers to boot_demo_emac_flash.o(.data) for .data
+    boot_demo_emac_flash.o(i.SoftwareUpdateRequestCallback) refers to boot_demo_emac_flash.o(.data) for .data
+    boot_demo_emac_flash.o(i.SysTickIntHandler) refers to lwiplib.o(i.lwIPTimer) for lwIPTimer
+    boot_demo_emac_flash.o(i.main) refers to sysctl.o(i.SysCtlClockFreqSet) for SysCtlClockFreqSet
+    boot_demo_emac_flash.o(i.main) refers to boot_demo_emac_flash.o(i.SetupForUART) for SetupForUART
+    boot_demo_emac_flash.o(i.main) refers to boot_demo_emac_flash.o(i.SetupForEthernet) for SetupForEthernet
+    boot_demo_emac_flash.o(i.main) refers to swupdate.o(i.SoftwareUpdateBegin) for SoftwareUpdateBegin
+    boot_demo_emac_flash.o(i.main) refers to boot_demo_emac_flash.o(.data) for .data
+    lwiplib.o(i.InitDMADescriptors) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.InitDMADescriptors) refers to emac.o(i.EMACRxDMADescriptorListSet) for EMACRxDMADescriptorListSet
+    lwiplib.o(i.InitDMADescriptors) refers to emac.o(i.EMACTxDMADescriptorListSet) for EMACTxDMADescriptorListSet
+    lwiplib.o(i.InitDMADescriptors) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.InitDMADescriptors) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.arp_timer) refers to lwiplib.o(i.etharp_tmr) for etharp_tmr
+    lwiplib.o(i.arp_timer) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.autoip_arp_announce) refers to lwiplib.o(i.etharp_raw) for etharp_raw
+    lwiplib.o(i.autoip_arp_announce) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.autoip_arp_reply) refers to memcmp.o(.text) for memcmp
+    lwiplib.o(i.autoip_arp_reply) refers to lwiplib.o(i.autoip_restart) for autoip_restart
+    lwiplib.o(i.autoip_arp_reply) refers to lwiplib.o(i.autoip_arp_announce) for autoip_arp_announce
+    lwiplib.o(i.autoip_network_changed) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.autoip_network_changed) refers to lwiplib.o(i.autoip_start_probing) for autoip_start_probing
+    lwiplib.o(i.autoip_restart) refers to lwiplib.o(i.autoip_start) for autoip_start
+    lwiplib.o(i.autoip_start) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.autoip_start) refers to lwiplib.o(i.autoip_start_probing) for autoip_start_probing
+    lwiplib.o(i.autoip_start) refers to lwiplib.o(i.mem_malloc) for mem_malloc
+    lwiplib.o(i.autoip_stop) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.autoip_timer) refers to lwiplib.o(i.autoip_tmr) for autoip_tmr
+    lwiplib.o(i.autoip_timer) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.etharp_raw) for etharp_raw
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.autoip_arp_announce) for autoip_arp_announce
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.netif_set_ipaddr) for netif_set_ipaddr
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.netif_set_netmask) for netif_set_netmask
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.netif_set_gw) for netif_set_gw
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(i.netif_set_up) for netif_set_up
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.autoip_tmr) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_arp_reply) refers to lwiplib.o(i.dhcp_decline) for dhcp_decline
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.autoip_stop) for autoip_stop
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.netif_set_ipaddr) for netif_set_ipaddr
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.netif_set_netmask) for netif_set_netmask
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.netif_set_gw) for netif_set_gw
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.netif_set_up) for netif_set_up
+    lwiplib.o(i.dhcp_bind) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_check) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_check) refers to lwiplib.o(i.etharp_query) for etharp_query
+    lwiplib.o(i.dhcp_cleanup) refers to lwiplib.o(i.mem_free) for mem_free
+    lwiplib.o(i.dhcp_coarse_tmr) refers to lwiplib.o(i.dhcp_rebind) for dhcp_rebind
+    lwiplib.o(i.dhcp_coarse_tmr) refers to lwiplib.o(i.dhcp_renew) for dhcp_renew
+    lwiplib.o(i.dhcp_coarse_tmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.dhcp_create_msg) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.dhcp_create_msg) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_create_msg) refers to lwiplib.o(i.dhcp_option_byte) for dhcp_option_byte
+    lwiplib.o(i.dhcp_create_msg) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_option_long) for dhcp_option_long
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_decline) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_delete_msg) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_option_byte) for dhcp_option_byte
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(i.autoip_start) for autoip_start
+    lwiplib.o(i.dhcp_discover) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_fine_tmr) refers to lwiplib.o(i.dhcp_timeout) for dhcp_timeout
+    lwiplib.o(i.dhcp_fine_tmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.dhcp_handle_ack) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.dhcp_inform) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.udp_new) for udp_new
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.udp_bind) for udp_bind
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(i.udp_remove) for udp_remove
+    lwiplib.o(i.dhcp_inform) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_network_changed) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.dhcp_network_changed) refers to lwiplib.o(i.dhcp_reboot) for dhcp_reboot
+    lwiplib.o(i.dhcp_network_changed) refers to lwiplib.o(i.autoip_stop) for autoip_stop
+    lwiplib.o(i.dhcp_network_changed) refers to lwiplib.o(i.dhcp_discover) for dhcp_discover
+    lwiplib.o(i.dhcp_parse_reply) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.dhcp_parse_reply) refers to lwiplib.o(i.pbuf_copy_partial) for pbuf_copy_partial
+    lwiplib.o(i.dhcp_parse_reply) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_rebind) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_option_long) for dhcp_option_long
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_reboot) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_parse_reply) for dhcp_parse_reply
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_handle_ack) for dhcp_handle_ack
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_check) for dhcp_check
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_bind) for dhcp_bind
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.netif_set_ipaddr) for netif_set_ipaddr
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.netif_set_gw) for netif_set_gw
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.netif_set_netmask) for netif_set_netmask
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_discover) for dhcp_discover
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.dhcp_select) for dhcp_select
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.dhcp_recv) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.netif_set_ipaddr) for netif_set_ipaddr
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.netif_set_gw) for netif_set_gw
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(i.netif_set_netmask) for netif_set_netmask
+    lwiplib.o(i.dhcp_release) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_renew) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_create_msg) for dhcp_create_msg
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_option) for dhcp_option
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_option_short) for dhcp_option_short
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_option_long) for dhcp_option_long
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_option_byte) for dhcp_option_byte
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_option_trailer) for dhcp_option_trailer
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(i.dhcp_delete_msg) for dhcp_delete_msg
+    lwiplib.o(i.dhcp_select) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_set_struct) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.udp_remove) for udp_remove
+    lwiplib.o(i.dhcp_start) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.udp_new) for udp_new
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.udp_bind) for udp_bind
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.udp_connect) for udp_connect
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.dhcp_discover) for dhcp_discover
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.dhcp_stop) for dhcp_stop
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.mem_malloc) for mem_malloc
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.dhcp_start) refers to lwiplib.o(i.dhcp_recv) for dhcp_recv
+    lwiplib.o(i.dhcp_stop) refers to lwiplib.o(i.autoip_stop) for autoip_stop
+    lwiplib.o(i.dhcp_stop) refers to lwiplib.o(i.udp_remove) for udp_remove
+    lwiplib.o(i.dhcp_stop) refers to lwiplib.o(i.dhcp_set_state) for dhcp_set_state
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_reboot) for dhcp_reboot
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_discover) for dhcp_discover
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_select) for dhcp_select
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_release) for dhcp_release
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_check) for dhcp_check
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_bind) for dhcp_bind
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_renew) for dhcp_renew
+    lwiplib.o(i.dhcp_timeout) refers to lwiplib.o(i.dhcp_rebind) for dhcp_rebind
+    lwiplib.o(i.dhcp_timer_coarse) refers to lwiplib.o(i.dhcp_coarse_tmr) for dhcp_coarse_tmr
+    lwiplib.o(i.dhcp_timer_coarse) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.dhcp_timer_fine) refers to lwiplib.o(i.dhcp_fine_tmr) for dhcp_fine_tmr
+    lwiplib.o(i.dhcp_timer_fine) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(i.autoip_arp_reply) for autoip_arp_reply
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(i.etharp_update_arp_entry) for etharp_update_arp_entry
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(i.dhcp_arp_reply) for dhcp_arp_reply
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_arp_input) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.etharp_cleanup_netif) refers to lwiplib.o(i.etharp_free_entry) for etharp_free_entry
+    lwiplib.o(i.etharp_cleanup_netif) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_find_addr) refers to lwiplib.o(i.etharp_find_entry) for etharp_find_entry
+    lwiplib.o(i.etharp_find_addr) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_find_entry) refers to lwiplib.o(i.etharp_free_entry) for etharp_free_entry
+    lwiplib.o(i.etharp_find_entry) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_free_entry) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.etharp_free_entry) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(i.etharp_send_ip) for etharp_send_ip
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(i.etharp_output_to_arp_index) for etharp_output_to_arp_index
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(i.etharp_query) for etharp_query
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.etharp_output) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.etharp_output_to_arp_index) refers to lwiplib.o(i.etharp_request) for etharp_request
+    lwiplib.o(i.etharp_output_to_arp_index) refers to lwiplib.o(i.etharp_send_ip) for etharp_send_ip
+    lwiplib.o(i.etharp_output_to_arp_index) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.etharp_find_entry) for etharp_find_entry
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.etharp_request) for etharp_request
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.etharp_send_ip) for etharp_send_ip
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.pbuf_copy) for pbuf_copy
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(i.pbuf_ref) for pbuf_ref
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_query) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.etharp_raw) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.etharp_raw) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.etharp_raw) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_raw) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.etharp_request) refers to lwiplib.o(i.etharp_raw) for etharp_raw
+    lwiplib.o(i.etharp_request) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.etharp_tmr) refers to lwiplib.o(i.etharp_free_entry) for etharp_free_entry
+    lwiplib.o(i.etharp_tmr) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.etharp_update_arp_entry) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.etharp_update_arp_entry) refers to lwiplib.o(i.etharp_find_entry) for etharp_find_entry
+    lwiplib.o(i.etharp_update_arp_entry) refers to lwiplib.o(i.etharp_send_ip) for etharp_send_ip
+    lwiplib.o(i.etharp_update_arp_entry) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.etharp_update_arp_entry) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ethernet_input) refers to memcmp.o(.text) for memcmp
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(i.ip_input) for ip_input
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(i.etharp_arp_input) for etharp_arp_input
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ethernet_input) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.icmp_dest_unreach) refers to lwiplib.o(i.icmp_send_response) for icmp_send_response
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.inet_chksum_pbuf) for inet_chksum_pbuf
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.pbuf_copy) for pbuf_copy
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.inet_chksum) for inet_chksum
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(i.ip_output_if) for ip_output_if
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.icmp_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.icmp_send_response) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.icmp_send_response) refers to memcpya.o(.text) for __aeabi_memcpy
+    lwiplib.o(i.icmp_send_response) refers to lwiplib.o(i.inet_chksum) for inet_chksum
+    lwiplib.o(i.icmp_send_response) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.icmp_send_response) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.icmp_send_response) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.inet_chksum) refers to lwiplib.o(i.lwip_standard_chksum) for lwip_standard_chksum
+    lwiplib.o(i.inet_chksum_pbuf) refers to lwiplib.o(i.lwip_standard_chksum) for lwip_standard_chksum
+    lwiplib.o(i.inet_chksum_pseudo) refers to lwiplib.o(i.lwip_standard_chksum) for lwip_standard_chksum
+    lwiplib.o(i.inet_chksum_pseudo_partial) refers to lwiplib.o(i.lwip_standard_chksum) for lwip_standard_chksum
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.inet_chksum) for inet_chksum
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.raw_input) for raw_input
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.udp_input) for udp_input
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.tcp_input) for tcp_input
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.icmp_input) for icmp_input
+    lwiplib.o(i.ip_input) refers to lwiplib.o(i.icmp_dest_unreach) for icmp_dest_unreach
+    lwiplib.o(i.ip_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ip_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.ip_output) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.ip_output) refers to lwiplib.o(i.ip_output_if) for ip_output_if
+    lwiplib.o(i.ip_output) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ip_output_if) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.ip_output_if) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ip_output_if) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.ip_route) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.ip_route) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.ipaddr_addr) refers to lwiplib.o(i.ipaddr_aton) for ipaddr_aton
+    lwiplib.o(i.ipaddr_ntoa) refers to lwiplib.o(i.ipaddr_ntoa_r) for ipaddr_ntoa_r
+    lwiplib.o(i.ipaddr_ntoa) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to emac.o(i.EMACIntStatus) for EMACIntStatus
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to emac.o(i.EMACPowerManagementStatusGet) for EMACPowerManagementStatusGet
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to emac.o(i.EMACTimestampIntStatus) for EMACTimestampIntStatus
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to lwiplib.o(i.tivaif_interrupt) for tivaif_interrupt
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to lwiplib.o(i.lwIPServiceTimers) for lwIPServiceTimers
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPEthernetIntHandler) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPInit) refers to emac.o(i.EMACPHYConfigSet) for EMACPHYConfigSet
+    lwiplib.o(i.lwIPInit) refers to lwiplib.o(i.lwIPPrivateInit) for lwIPPrivateInit
+    lwiplib.o(i.lwIPInit) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(i.netif_set_addr) for netif_set_addr
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(i.dhcp_start) for dhcp_start
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(i.autoip_start) for autoip_start
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(i.dhcp_stop) for dhcp_stop
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(i.autoip_stop) for autoip_stop
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPLinkDetect) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPLocalGWAddrGet) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPLocalIPAddrGet) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPLocalIPAddrGet) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPLocalNetMaskGet) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPNetworkConfigChange) refers to lwiplib.o(i.lwIPPrivateNetworkConfigChange) for lwIPPrivateNetworkConfigChange
+    lwiplib.o(i.lwIPNetworkConfigChange) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(i.lwip_init) for lwip_init
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(i.netif_add) for netif_add
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(i.netif_set_up) for netif_set_up
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(i.ip_input) for ip_input
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(i.tivaif_init) for tivaif_init
+    lwiplib.o(i.lwIPPrivateInit) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.netif_set_addr) for netif_set_addr
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.dhcp_start) for dhcp_start
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.autoip_start) for autoip_start
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.dhcp_stop) for dhcp_stop
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.autoip_stop) for autoip_stop
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(i.netif_set_up) for netif_set_up
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPPrivateNetworkConfigChange) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.etharp_tmr) for etharp_tmr
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.tcp_tmr) for tcp_tmr
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.autoip_tmr) for autoip_tmr
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.dhcp_coarse_tmr) for dhcp_coarse_tmr
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.dhcp_fine_tmr) for dhcp_fine_tmr
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(i.lwIPLinkDetect) for lwIPLinkDetect
+    lwiplib.o(i.lwIPServiceTimers) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPTimer) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwIPTimerCallbackRegister) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.lwip_init) refers to lwiplib.o(i.mem_init) for mem_init
+    lwiplib.o(i.lwip_init) refers to lwiplib.o(i.memp_init) for memp_init
+    lwiplib.o(i.lwip_init) refers to lwiplib.o(i.sys_timeouts_init) for sys_timeouts_init
+    lwiplib.o(i.mem_calloc) refers to lwiplib.o(i.mem_malloc) for mem_malloc
+    lwiplib.o(i.mem_calloc) refers to memseta.o(.text) for __aeabi_memclr
+    lwiplib.o(i.mem_free) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.mem_free) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.mem_free) refers to lwiplib.o(i.plug_holes) for plug_holes
+    lwiplib.o(i.mem_free) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.mem_free) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.mem_init) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.mem_init) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.mem_malloc) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.mem_malloc) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.mem_trim) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.mem_trim) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.mem_trim) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.mem_trim) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.memp_free) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.memp_free) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.memp_free) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.memp_init) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.memp_init) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.memp_malloc) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.memp_malloc) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.memp_malloc) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.netif_add) refers to lwiplib.o(i.netif_set_addr) for netif_set_addr
+    lwiplib.o(i.netif_add) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.netif_find) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.netif_remove) refers to lwiplib.o(i.netif_set_down) for netif_set_down
+    lwiplib.o(i.netif_remove) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.netif_set_addr) refers to lwiplib.o(i.netif_set_ipaddr) for netif_set_ipaddr
+    lwiplib.o(i.netif_set_addr) refers to lwiplib.o(i.netif_set_netmask) for netif_set_netmask
+    lwiplib.o(i.netif_set_addr) refers to lwiplib.o(i.netif_set_gw) for netif_set_gw
+    lwiplib.o(i.netif_set_default) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.netif_set_down) refers to lwiplib.o(i.etharp_cleanup_netif) for etharp_cleanup_netif
+    lwiplib.o(i.netif_set_ipaddr) refers to lwiplib.o(i.tcp_abort) for tcp_abort
+    lwiplib.o(i.netif_set_ipaddr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.netif_set_link_up) refers to lwiplib.o(i.dhcp_network_changed) for dhcp_network_changed
+    lwiplib.o(i.netif_set_link_up) refers to lwiplib.o(i.autoip_network_changed) for autoip_network_changed
+    lwiplib.o(i.netif_set_link_up) refers to lwiplib.o(i.etharp_request) for etharp_request
+    lwiplib.o(i.netif_set_up) refers to lwiplib.o(i.etharp_request) for etharp_request
+    lwiplib.o(i.pbuf_alloc) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.pbuf_alloc) refers to lwiplib.o(i.pbuf_pool_is_empty) for pbuf_pool_is_empty
+    lwiplib.o(i.pbuf_alloc) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.pbuf_alloc) refers to lwiplib.o(i.mem_malloc) for mem_malloc
+    lwiplib.o(i.pbuf_chain) refers to lwiplib.o(i.pbuf_cat) for pbuf_cat
+    lwiplib.o(i.pbuf_chain) refers to lwiplib.o(i.pbuf_ref) for pbuf_ref
+    lwiplib.o(i.pbuf_coalesce) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.pbuf_coalesce) refers to lwiplib.o(i.pbuf_copy) for pbuf_copy
+    lwiplib.o(i.pbuf_coalesce) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.pbuf_copy) refers to memcpya.o(.text) for __aeabi_memcpy
+    lwiplib.o(i.pbuf_copy_partial) refers to memcpya.o(.text) for __aeabi_memcpy
+    lwiplib.o(i.pbuf_dechain) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.pbuf_free) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.pbuf_free) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.pbuf_free) refers to lwiplib.o(i.mem_free) for mem_free
+    lwiplib.o(i.pbuf_free) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.pbuf_free_ooseq) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.pbuf_free_ooseq) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.pbuf_free_ooseq) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.pbuf_free_ooseq) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.pbuf_memcmp) refers to lwiplib.o(i.pbuf_get_at) for pbuf_get_at
+    lwiplib.o(i.pbuf_memfind) refers to lwiplib.o(i.pbuf_memcmp) for pbuf_memcmp
+    lwiplib.o(i.pbuf_pool_is_empty) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.pbuf_pool_is_empty) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.pbuf_pool_is_empty) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.pbuf_realloc) refers to lwiplib.o(i.mem_trim) for mem_trim
+    lwiplib.o(i.pbuf_realloc) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.pbuf_ref) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.pbuf_ref) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.pbuf_strstr) refers to strlen.o(.text) for strlen
+    lwiplib.o(i.pbuf_strstr) refers to lwiplib.o(i.pbuf_memfind) for pbuf_memfind
+    lwiplib.o(i.pbuf_take) refers to memcpya.o(.text) for __aeabi_memcpy
+    lwiplib.o(i.plug_holes) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.raw_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.raw_new) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.raw_new) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.raw_new) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.raw_remove) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.raw_remove) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.raw_send) refers to lwiplib.o(i.raw_sendto) for raw_sendto
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.pbuf_chain) for pbuf_chain
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.ip_output_if) for ip_output_if
+    lwiplib.o(i.raw_sendto) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.sys_check_timeouts) refers to lwiplib.o(i.pbuf_free_ooseq) for pbuf_free_ooseq
+    lwiplib.o(i.sys_check_timeouts) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.sys_check_timeouts) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.sys_now) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.sys_restart_timeouts) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.sys_timeout) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.sys_timeout) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(i.arp_timer) for arp_timer
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(i.dhcp_timer_coarse) for dhcp_timer_coarse
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(i.dhcp_timer_fine) for dhcp_timer_fine
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(i.autoip_timer) for autoip_timer
+    lwiplib.o(i.sys_timeouts_init) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.sys_untimeout) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.sys_untimeout) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_abandon) refers to lwiplib.o(i.tcp_pcb_remove) for tcp_pcb_remove
+    lwiplib.o(i.tcp_abandon) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.tcp_abandon) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_abandon) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_abandon) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_abort) refers to lwiplib.o(i.tcp_abandon) for tcp_abandon
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(i.tcp_abort) for tcp_abort
+    lwiplib.o(i.tcp_alloc) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(i.tcp_next_iss) for tcp_next_iss
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_alloc) refers to lwiplib.o(i.tcp_recv_null) for tcp_recv_null
+    lwiplib.o(i.tcp_bind) refers to lwiplib.o(i.tcp_new_port) for tcp_new_port
+    lwiplib.o(i.tcp_bind) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_bind) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.tcp_bind) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_close) refers to lwiplib.o(i.tcp_close_shutdown) for tcp_close_shutdown
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_pcb_purge) for tcp_pcb_purge
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_pcb_remove) for tcp_pcb_remove
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_send_fin) for tcp_send_fin
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_close_shutdown) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_new_port) for tcp_new_port
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_next_iss) for tcp_next_iss
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_eff_send_mss) for tcp_eff_send_mss
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_enqueue_flags) for tcp_enqueue_flags
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_connect) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_create_segment) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.tcp_create_segment) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.tcp_create_segment) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_create_segment) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_create_segment) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_debug_print_pcbs) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_debug_state_str) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.tcp_eff_send_mss) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.tcp_enqueue_flags) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tcp_enqueue_flags) refers to lwiplib.o(i.tcp_create_segment) for tcp_create_segment
+    lwiplib.o(i.tcp_enqueue_flags) refers to lwiplib.o(i.pbuf_clen) for pbuf_clen
+    lwiplib.o(i.tcp_enqueue_flags) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_fasttmr) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_fasttmr) refers to lwiplib.o(i.tcp_process_refused_data) for tcp_process_refused_data
+    lwiplib.o(i.tcp_fasttmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_debug_print) for tcp_debug_print
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_timewait_input) for tcp_timewait_input
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_listen_input) for tcp_listen_input
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_process_refused_data) for tcp_process_refused_data
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_process) for tcp_process
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_pcb_remove) for tcp_pcb_remove
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_abort) for tcp_abort
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_recv_null) for tcp_recv_null
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(i.tcp_pcbs_sane) for tcp_pcbs_sane
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_keepalive) refers to lwiplib.o(i.tcp_output_alloc_header) for tcp_output_alloc_header
+    lwiplib.o(i.tcp_keepalive) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_keepalive) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.tcp_keepalive) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_keepalive) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_alloc) for tcp_alloc
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_parseopt) for tcp_parseopt
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_eff_send_mss) for tcp_eff_send_mss
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_enqueue_flags) for tcp_enqueue_flags
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_abandon) for tcp_abandon
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_listen_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_listen_with_backlog) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.tcp_listen_with_backlog) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_listen_with_backlog) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_listen_with_backlog) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_listen_with_backlog) refers to lwiplib.o(i.tcp_accept_null) for tcp_accept_null
+    lwiplib.o(i.tcp_new) refers to lwiplib.o(i.tcp_alloc) for tcp_alloc
+    lwiplib.o(i.tcp_new_port) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.tcp_new_port) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_next_iss) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_oos_insert_segment) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.tcp_oos_insert_segment) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_oos_insert_segment) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.tcp_oos_insert_segment) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_output) refers to lwiplib.o(i.tcp_send_empty_ack) for tcp_send_empty_ack
+    lwiplib.o(i.tcp_output) refers to lwiplib.o(i.tcp_output_segment) for tcp_output_segment
+    lwiplib.o(i.tcp_output) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_output) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_output_alloc_header) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(i.tcp_eff_send_mss) for tcp_eff_send_mss
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_output_segment) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_parseopt) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_pbuf_prealloc) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tcp_pcb_purge) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_pcb_purge) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.tcp_pcb_remove) refers to lwiplib.o(i.tcp_pcb_purge) for tcp_pcb_purge
+    lwiplib.o(i.tcp_pcb_remove) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_pcb_remove) refers to lwiplib.o(i.tcp_pcbs_sane) for tcp_pcbs_sane
+    lwiplib.o(i.tcp_pcb_remove) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_pcbs_sane) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_parseopt) for tcp_parseopt
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_eff_send_mss) for tcp_eff_send_mss
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_abort) for tcp_abort
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_receive) for tcp_receive
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_rexmit) for tcp_rexmit
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_pcb_purge) for tcp_pcb_purge
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(i.tcp_timer_needed) for tcp_timer_needed
+    lwiplib.o(i.tcp_process) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_process_refused_data) refers to lwiplib.o(i.tcp_recv_null) for tcp_recv_null
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_rexmit_fast) for tcp_rexmit_fast
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.pbuf_clen) for pbuf_clen
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.pbuf_realloc) for pbuf_realloc
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_update_rcv_ann_wnd) for tcp_update_rcv_ann_wnd
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.pbuf_cat) for pbuf_cat
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_send_empty_ack) for tcp_send_empty_ack
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_seg_copy) for tcp_seg_copy
+    lwiplib.o(i.tcp_receive) refers to lwiplib.o(i.tcp_oos_insert_segment) for tcp_oos_insert_segment
+    lwiplib.o(i.tcp_recv_null) refers to lwiplib.o(i.tcp_recved) for tcp_recved
+    lwiplib.o(i.tcp_recv_null) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_recv_null) refers to lwiplib.o(i.tcp_close) for tcp_close
+    lwiplib.o(i.tcp_recved) refers to lwiplib.o(i.tcp_update_rcv_ann_wnd) for tcp_update_rcv_ann_wnd
+    lwiplib.o(i.tcp_recved) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_rexmit_fast) refers to lwiplib.o(i.tcp_rexmit) for tcp_rexmit
+    lwiplib.o(i.tcp_rexmit_rto) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_rst) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tcp_rst) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_rst) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.tcp_rst) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_rst) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_seg_copy) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.tcp_seg_copy) refers to lwiplib.o(i.pbuf_ref) for pbuf_ref
+    lwiplib.o(i.tcp_seg_free) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_seg_free) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_segs_free) refers to lwiplib.o(i.tcp_seg_free) for tcp_seg_free
+    lwiplib.o(i.tcp_send_empty_ack) refers to lwiplib.o(i.tcp_output_alloc_header) for tcp_output_alloc_header
+    lwiplib.o(i.tcp_send_empty_ack) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_send_empty_ack) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.tcp_send_empty_ack) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_send_fin) refers to lwiplib.o(i.tcp_enqueue_flags) for tcp_enqueue_flags
+    lwiplib.o(i.tcp_shutdown) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_shutdown) refers to lwiplib.o(i.tcp_close_shutdown) for tcp_close_shutdown
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_zero_window_probe) for tcp_zero_window_probe
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_rexmit_rto) for tcp_rexmit_rto
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_keepalive) for tcp_keepalive
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_pcb_purge) for tcp_pcb_purge
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_slowtmr) refers to lwiplib.o(.constdata) for .constdata
+    lwiplib.o(i.tcp_timer_needed) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.tcp_timer_needed) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_timer_needed) refers to lwiplib.o(i.tcpip_tcp_timer) for tcpip_tcp_timer
+    lwiplib.o(i.tcp_timewait_input) refers to lwiplib.o(i.tcp_rst) for tcp_rst
+    lwiplib.o(i.tcp_timewait_input) refers to lwiplib.o(i.tcp_output) for tcp_output
+    lwiplib.o(i.tcp_timewait_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_tmr) refers to lwiplib.o(i.tcp_fasttmr) for tcp_fasttmr
+    lwiplib.o(i.tcp_tmr) refers to lwiplib.o(i.tcp_slowtmr) for tcp_slowtmr
+    lwiplib.o(i.tcp_tmr) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.tcp_pbuf_prealloc) for tcp_pbuf_prealloc
+    lwiplib.o(i.tcp_write) refers to memcpya.o(.text) for __aeabi_memcpy
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.pbuf_clen) for pbuf_clen
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.pbuf_cat) for pbuf_cat
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.tcp_create_segment) for tcp_create_segment
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(i.tcp_segs_free) for tcp_segs_free
+    lwiplib.o(i.tcp_write) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(i.tcp_output_alloc_header) for tcp_output_alloc_header
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(i.pbuf_copy_partial) for pbuf_copy_partial
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(i.ip_output) for ip_output
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tcp_zero_window_probe) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tcpip_tcp_timer) refers to lwiplib.o(i.tcp_tmr) for tcp_tmr
+    lwiplib.o(i.tcpip_tcp_timer) refers to lwiplib.o(i.sys_timeout) for sys_timeout
+    lwiplib.o(i.tcpip_tcp_timer) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACAddrGet) for EMACAddrGet
+    lwiplib.o(i.tivaif_hwinit) refers to lwiplib.o(i.InitDMADescriptors) for InitDMADescriptors
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACFrameFilterSet) for EMACFrameFilterSet
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACIntStatus) for EMACIntStatus
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACIntClear) for EMACIntClear
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACTxEnable) for EMACTxEnable
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACRxEnable) for EMACRxEnable
+    lwiplib.o(i.tivaif_hwinit) refers to emac.o(i.EMACIntEnable) for EMACIntEnable
+    lwiplib.o(i.tivaif_hwinit) refers to interrupt.o(i.IntEnable) for IntEnable
+    lwiplib.o(i.tivaif_hwinit) refers to interrupt.o(i.IntMasterEnable) for IntMasterEnable
+    lwiplib.o(i.tivaif_init) refers to lwiplib.o(i.tivaif_hwinit) for tivaif_hwinit
+    lwiplib.o(i.tivaif_init) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tivaif_init) refers to lwiplib.o(i.etharp_output) for etharp_output
+    lwiplib.o(i.tivaif_init) refers to lwiplib.o(i.tivaif_transmit) for tivaif_transmit
+    lwiplib.o(i.tivaif_interrupt) refers to lwiplib.o(i.tivaif_process_phy_interrupt) for tivaif_process_phy_interrupt
+    lwiplib.o(i.tivaif_interrupt) refers to lwiplib.o(i.tivaif_process_transmit) for tivaif_process_transmit
+    lwiplib.o(i.tivaif_interrupt) refers to lwiplib.o(i.tivaif_receive) for tivaif_receive
+    lwiplib.o(i.tivaif_interrupt) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tivaif_process_phy_interrupt) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    lwiplib.o(i.tivaif_process_phy_interrupt) refers to lwiplib.o(i.netif_set_link_up) for netif_set_link_up
+    lwiplib.o(i.tivaif_process_phy_interrupt) refers to lwiplib.o(i.netif_set_link_down) for netif_set_link_down
+    lwiplib.o(i.tivaif_process_phy_interrupt) refers to emac.o(i.EMACConfigGet) for EMACConfigGet
+    lwiplib.o(i.tivaif_process_phy_interrupt) refers to emac.o(i.EMACConfigSet) for EMACConfigSet
+    lwiplib.o(i.tivaif_process_transmit) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(i.pbuf_cat) for pbuf_cat
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(i.ethernet_input) for ethernet_input
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.tivaif_receive) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.sys_arch_protect) for sys_arch_protect
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.pbuf_ref) for pbuf_ref
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.pbuf_copy) for pbuf_copy
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.sys_arch_unprotect) for sys_arch_unprotect
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(i.pbuf_clen) for pbuf_clen
+    lwiplib.o(i.tivaif_transmit) refers to emac.o(i.EMACTxDMAPollDemand) for EMACTxDMAPollDemand
+    lwiplib.o(i.tivaif_transmit) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.udp_bind) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.udp_connect) refers to lwiplib.o(i.udp_bind) for udp_bind
+    lwiplib.o(i.udp_connect) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.udp_input) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.udp_input) refers to lwiplib.o(i.ip4_addr_isbroadcast) for ip4_addr_isbroadcast
+    lwiplib.o(i.udp_input) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.udp_input) refers to lwiplib.o(i.icmp_dest_unreach) for icmp_dest_unreach
+    lwiplib.o(i.udp_input) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.udp_input) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.udp_input) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.udp_new) refers to lwiplib.o(i.memp_malloc) for memp_malloc
+    lwiplib.o(i.udp_new) refers to memseta.o(.text) for __aeabi_memclr4
+    lwiplib.o(i.udp_remove) refers to lwiplib.o(i.memp_free) for memp_free
+    lwiplib.o(i.udp_remove) refers to lwiplib.o(.data) for .data
+    lwiplib.o(i.udp_send) refers to lwiplib.o(i.udp_sendto) for udp_sendto
+    lwiplib.o(i.udp_sendto) refers to lwiplib.o(i.ip_route) for ip_route
+    lwiplib.o(i.udp_sendto) refers to lwiplib.o(i.udp_sendto_if) for udp_sendto_if
+    lwiplib.o(i.udp_sendto) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.udp_bind) for udp_bind
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.pbuf_header) for pbuf_header
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.pbuf_alloc) for pbuf_alloc
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.pbuf_chain) for pbuf_chain
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.inet_chksum_pseudo) for inet_chksum_pseudo
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(i.ip_output_if) for ip_output_if
+    lwiplib.o(i.udp_sendto_if) refers to lwiplib.o(.bss) for .bss
+    lwiplib.o(.constdata) refers to lwiplib.o(.conststring) for .conststring
+    lwiplib.o(.constdata) refers to lwiplib.o(.data) for tcp_listen_pcbs
+    lwiplib.o(.data) refers to lwiplib.o(.bss) for g_pTxDescriptors
+    lwiplib.o(.data) refers to lwiplib.o(.data) for g_RxDescList
+    lwiplib.o(.data) refers to lwiplib.o(.bss) for g_pRxDescriptors
+    startup_rvmdk.o(RESET) refers to startup_rvmdk.o(STACK) for StackMem
+    startup_rvmdk.o(RESET) refers to boot_demo_emac_flash.o(i.SysTickIntHandler) for SysTickIntHandler
+    startup_rvmdk.o(RESET) refers to lwiplib.o(i.lwIPEthernetIntHandler) for lwIPEthernetIntHandler
+    startup_rvmdk.o(RESET) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    swupdate.o(i.SoftwareUpdateBegin) refers to systick.o(i.SysTickIntDisable) for SysTickIntDisable
+    swupdate.o(i.SoftwareUpdateBegin) refers to systick.o(i.SysTickDisable) for SysTickDisable
+    swupdate.o(i.SoftwareUpdateInit) refers to flash.o(i.FlashUserGet) for FlashUserGet
+    swupdate.o(i.SoftwareUpdateInit) refers to lwiplib.o(i.udp_new) for udp_new
+    swupdate.o(i.SoftwareUpdateInit) refers to lwiplib.o(i.udp_recv) for udp_recv
+    swupdate.o(i.SoftwareUpdateInit) refers to lwiplib.o(i.udp_bind) for udp_bind
+    swupdate.o(i.SoftwareUpdateInit) refers to swupdate.o(.data) for .data
+    swupdate.o(i.SoftwareUpdateInit) refers to swupdate.o(i.SoftwareUpdateUDPReceive) for SoftwareUpdateUDPReceive
+    swupdate.o(i.SoftwareUpdateInit) refers to lwiplib.o(.constdata) for ip_addr_any
+    swupdate.o(i.SoftwareUpdateUDPReceive) refers to lwiplib.o(i.pbuf_free) for pbuf_free
+    swupdate.o(i.SoftwareUpdateUDPReceive) refers to swupdate.o(.data) for .data
+    ustdlib.o(i.ulocaltime) refers to ustdlib.o(.constdata) for .constdata
+    ustdlib.o(i.umktime) refers to ustdlib.o(i.ulocaltime) for ulocaltime
+    ustdlib.o(i.umktime) refers to ustdlib.o(i.ucmptime) for ucmptime
+    ustdlib.o(i.urand) refers to ustdlib.o(.data) for .data
+    ustdlib.o(i.usnprintf) refers to ustdlib.o(i.uvsnprintf) for uvsnprintf
+    ustdlib.o(i.usprintf) refers to ustdlib.o(i.uvsnprintf) for uvsnprintf
+    ustdlib.o(i.usrand) refers to ustdlib.o(.data) for .data
+    ustdlib.o(i.ustrcasecmp) refers to ustdlib.o(i.ustrncasecmp) for ustrncasecmp
+    ustdlib.o(i.ustrcmp) refers to ustdlib.o(i.ustrncmp) for ustrncmp
+    ustdlib.o(i.ustrstr) refers to ustdlib.o(i.ustrlen) for ustrlen
+    ustdlib.o(i.ustrstr) refers to ustdlib.o(i.ustrncmp) for ustrncmp
+    ustdlib.o(i.ustrtof) refers to ustdlib.o(.constdata) for .constdata
+    ustdlib.o(i.uvsnprintf) refers to ustdlib.o(i.ustrncpy) for ustrncpy
+    ustdlib.o(i.uvsnprintf) refers to ustdlib.o(.constdata) for .constdata
+    ustdlib.o(.constdata) refers to ustdlib.o(.conststring) for .conststring
+    emac.o(i.EMACHashFilterBitCalculate) refers to sw_crc.o(i.Crc32) for Crc32
+    emac.o(i.EMACInit) refers to emac.o(.constdata) for .constdata
+    emac.o(i.EMACIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
+    emac.o(i.EMACIntRegister) refers to interrupt.o(i.IntEnable) for IntEnable
+    emac.o(i.EMACIntUnregister) refers to interrupt.o(i.IntDisable) for IntDisable
+    emac.o(i.EMACIntUnregister) refers to interrupt.o(i.IntUnregister) for IntUnregister
+    emac.o(i.EMACPHYConfigSet) refers to sysctl.o(i.SysCtlPeripheralReset) for SysCtlPeripheralReset
+    emac.o(i.EMACPHYConfigSet) refers to sysctl.o(i.SysCtlPeripheralReady) for SysCtlPeripheralReady
+    emac.o(i.EMACPHYConfigSet) refers to sysctl.o(.emb_text) for SysCtlDelay
+    emac.o(i.EMACPHYExtendedRead) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACPHYExtendedRead) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    emac.o(i.EMACPHYExtendedWrite) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACPHYMMDRead) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACPHYMMDRead) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    emac.o(i.EMACPHYMMDWrite) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACPHYPowerOff) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    emac.o(i.EMACPHYPowerOff) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACPHYPowerOn) refers to emac.o(i.EMACPHYRead) for EMACPHYRead
+    emac.o(i.EMACPHYPowerOn) refers to emac.o(i.EMACPHYWrite) for EMACPHYWrite
+    emac.o(i.EMACVLANHashFilterBitCalculate) refers to sw_crc.o(i.Crc32) for Crc32
+    flash.o(i.FlashIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
+    flash.o(i.FlashIntRegister) refers to interrupt.o(i.IntEnable) for IntEnable
+    flash.o(i.FlashIntUnregister) refers to interrupt.o(i.IntDisable) for IntDisable
+    flash.o(i.FlashIntUnregister) refers to interrupt.o(i.IntUnregister) for IntUnregister
+    flash.o(i.FlashProtectGet) refers to flash.o(.constdata) for .constdata
+    flash.o(i.FlashProtectSet) refers to flash.o(.constdata) for .constdata
+    interrupt.o(i.IntDisable) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntEnable) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntIsEnabled) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntMasterDisable) refers to cpu.o(.emb_text) for CPUcpsid
+    interrupt.o(i.IntMasterEnable) refers to cpu.o(.emb_text) for CPUcpsie
+    interrupt.o(i.IntPendClear) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPendSet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGroupingGet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGroupingSet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityMaskGet) refers to cpu.o(.emb_text) for CPUbasepriGet
+    interrupt.o(i.IntPriorityMaskSet) refers to cpu.o(.emb_text) for CPUbasepriSet
+    interrupt.o(i.IntPrioritySet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntRegister) refers to interrupt.o(vtable) for vtable
+    interrupt.o(i.IntUnregister) refers to interrupt.o(i._IntDefaultHandler) for _IntDefaultHandler
+    interrupt.o(i.IntUnregister) refers to interrupt.o(vtable) for vtable
+    sysctl.o(i.SysCtlClockFreqSet) refers to sysctl.o(.constdata) for .constdata
+    sysctl.o(i.SysCtlClockGet) refers to sysctl.o(.constdata) for .constdata
+    sysctl.o(i.SysCtlClockSet) refers to sysctl.o(.emb_text) for SysCtlDelay
+    sysctl.o(i.SysCtlDeepSleep) refers to cpu.o(.emb_text) for CPUwfi
+    sysctl.o(i.SysCtlIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
+    sysctl.o(i.SysCtlIntRegister) refers to interrupt.o(i.IntEnable) for IntEnable
+    sysctl.o(i.SysCtlIntUnregister) refers to interrupt.o(i.IntDisable) for IntDisable
+    sysctl.o(i.SysCtlIntUnregister) refers to interrupt.o(i.IntUnregister) for IntUnregister
+    sysctl.o(i.SysCtlSleep) refers to cpu.o(.emb_text) for CPUwfi
+    sysctl.o(i.SysCtlVCOGet) refers to sysctl.o(.constdata) for .constdata
+    systick.o(i.SysTickIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
+    systick.o(i.SysTickIntUnregister) refers to interrupt.o(i.IntUnregister) for IntUnregister
+    sw_crc.o(i.Crc16) refers to sw_crc.o(.constdata) for .constdata
+    sw_crc.o(i.Crc16Array) refers to sw_crc.o(i.Crc16) for Crc16
+    sw_crc.o(i.Crc16Array3) refers to sw_crc.o(.constdata) for .constdata
+    sw_crc.o(i.Crc32) refers to sw_crc.o(.constdata) for .constdata
+    sw_crc.o(i.Crc8CCITT) refers to sw_crc.o(.constdata) for .constdata
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000F) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$00000011) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry12b.o(.ARM.Collect$$$$0000000E) for __rt_lib_shutdown_fini
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_rvmdk.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_rvmdk.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to boot_demo_emac_flash.o(i.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to boot_demo_emac_flash.o(i.main) for main
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing boot_demo_emac_flash.o(i.SetupForUSB), (2 bytes).
+    Removing lwiplib.o(i.autoip_set_struct), (12 bytes).
+    Removing lwiplib.o(i.dhcp_cleanup), (20 bytes).
+    Removing lwiplib.o(i.dhcp_inform), (152 bytes).
+    Removing lwiplib.o(i.dhcp_set_struct), (18 bytes).
+    Removing lwiplib.o(i.etharp_find_addr), (56 bytes).
+    Removing lwiplib.o(i.inet_chksum_pseudo_partial), (156 bytes).
+    Removing lwiplib.o(i.ip4_addr_netmask_valid), (34 bytes).
+    Removing lwiplib.o(i.ipaddr_addr), (20 bytes).
+    Removing lwiplib.o(i.ipaddr_aton), (238 bytes).
+    Removing lwiplib.o(i.ipaddr_ntoa), (12 bytes).
+    Removing lwiplib.o(i.ipaddr_ntoa_r), (118 bytes).
+    Removing lwiplib.o(i.lwIPLocalGWAddrGet), (12 bytes).
+    Removing lwiplib.o(i.lwIPLocalIPAddrGet), (28 bytes).
+    Removing lwiplib.o(i.lwIPLocalMACGet), (24 bytes).
+    Removing lwiplib.o(i.lwIPLocalNetMaskGet), (12 bytes).
+    Removing lwiplib.o(i.lwIPNetworkConfigChange), (24 bytes).
+    Removing lwiplib.o(i.lwIPPrivateNetworkConfigChange), (200 bytes).
+    Removing lwiplib.o(i.lwIPTimerCallbackRegister), (12 bytes).
+    Removing lwiplib.o(i.lwip_htonl), (4 bytes).
+    Removing lwiplib.o(i.lwip_htons), (4 bytes).
+    Removing lwiplib.o(i.lwip_ntohl), (4 bytes).
+    Removing lwiplib.o(i.lwip_ntohs), (4 bytes).
+    Removing lwiplib.o(i.mem_calloc), (26 bytes).
+    Removing lwiplib.o(i.netif_find), (64 bytes).
+    Removing lwiplib.o(i.netif_init), (2 bytes).
+    Removing lwiplib.o(i.netif_remove), (72 bytes).
+    Removing lwiplib.o(i.netif_set_default), (12 bytes).
+    Removing lwiplib.o(i.pbuf_coalesce), (44 bytes).
+    Removing lwiplib.o(i.pbuf_dechain), (38 bytes).
+    Removing lwiplib.o(i.pbuf_free_ooseq), (44 bytes).
+    Removing lwiplib.o(i.pbuf_get_at), (24 bytes).
+    Removing lwiplib.o(i.pbuf_memcmp), (68 bytes).
+    Removing lwiplib.o(i.pbuf_memfind), (60 bytes).
+    Removing lwiplib.o(i.pbuf_strstr), (52 bytes).
+    Removing lwiplib.o(i.pbuf_take), (78 bytes).
+    Removing lwiplib.o(i.perf_init), (2 bytes).
+    Removing lwiplib.o(i.raw_bind), (10 bytes).
+    Removing lwiplib.o(i.raw_connect), (10 bytes).
+    Removing lwiplib.o(i.raw_new), (44 bytes).
+    Removing lwiplib.o(i.raw_recv), (6 bytes).
+    Removing lwiplib.o(i.raw_remove), (44 bytes).
+    Removing lwiplib.o(i.raw_send), (6 bytes).
+    Removing lwiplib.o(i.raw_sendto), (144 bytes).
+    Removing lwiplib.o(i.stats_init), (2 bytes).
+    Removing lwiplib.o(i.sys_check_timeouts), (92 bytes).
+    Removing lwiplib.o(i.sys_now), (12 bytes).
+    Removing lwiplib.o(i.sys_restart_timeouts), (16 bytes).
+    Removing lwiplib.o(i.sys_untimeout), (72 bytes).
+    Removing lwiplib.o(i.tcp_accept), (4 bytes).
+    Removing lwiplib.o(i.tcp_accept_null), (6 bytes).
+    Removing lwiplib.o(i.tcp_arg), (4 bytes).
+    Removing lwiplib.o(i.tcp_bind), (128 bytes).
+    Removing lwiplib.o(i.tcp_connect), (248 bytes).
+    Removing lwiplib.o(i.tcp_debug_print_flags), (2 bytes).
+    Removing lwiplib.o(i.tcp_debug_print_pcbs), (44 bytes).
+    Removing lwiplib.o(i.tcp_debug_print_state), (2 bytes).
+    Removing lwiplib.o(i.tcp_debug_state_str), (12 bytes).
+    Removing lwiplib.o(i.tcp_err), (6 bytes).
+    Removing lwiplib.o(i.tcp_init), (2 bytes).
+    Removing lwiplib.o(i.tcp_listen_with_backlog), (136 bytes).
+    Removing lwiplib.o(i.tcp_new), (6 bytes).
+    Removing lwiplib.o(i.tcp_new_port), (92 bytes).
+    Removing lwiplib.o(i.tcp_pbuf_prealloc), (78 bytes).
+    Removing lwiplib.o(i.tcp_poll), (10 bytes).
+    Removing lwiplib.o(i.tcp_recv), (6 bytes).
+    Removing lwiplib.o(i.tcp_sent), (4 bytes).
+    Removing lwiplib.o(i.tcp_setprio), (4 bytes).
+    Removing lwiplib.o(i.tcp_shutdown), (78 bytes).
+    Removing lwiplib.o(i.tcp_write), (752 bytes).
+    Removing lwiplib.o(i.udp_disconnect), (16 bytes).
+    Removing lwiplib.o(i.udp_init), (2 bytes).
+    Removing lwiplib.o(i.udp_send), (8 bytes).
+    Removing lwiplib.o(i.udp_sendto), (56 bytes).
+    Removing lwiplib.o(.bss), (44 bytes).
+    Removing startup_rvmdk.o(HEAP), (0 bytes).
+    Removing startup_rvmdk.o(.text), (0 bytes).
+    Removing ustdlib.o(i.ucmptime), (82 bytes).
+    Removing ustdlib.o(i.ulocaltime), (164 bytes).
+    Removing ustdlib.o(i.umktime), (58 bytes).
+    Removing ustdlib.o(i.urand), (28 bytes).
+    Removing ustdlib.o(i.usprintf), (22 bytes).
+    Removing ustdlib.o(i.usrand), (12 bytes).
+    Removing ustdlib.o(i.ustrcasecmp), (8 bytes).
+    Removing ustdlib.o(i.ustrcmp), (8 bytes).
+    Removing ustdlib.o(i.ustrlen), (16 bytes).
+    Removing ustdlib.o(i.ustrncasecmp), (70 bytes).
+    Removing ustdlib.o(i.ustrncmp), (46 bytes).
+    Removing ustdlib.o(i.ustrstr), (42 bytes).
+    Removing ustdlib.o(i.ustrtof), (316 bytes).
+    Removing ustdlib.o(i.ustrtoul), (158 bytes).
+    Removing ustdlib.o(.data), (4 bytes).
+    Removing emac.o(i.EMACAddrFilterGet), (12 bytes).
+    Removing emac.o(i.EMACAddrFilterSet), (18 bytes).
+    Removing emac.o(i.EMACAddrSet), (34 bytes).
+    Removing emac.o(i.EMACDMAStateGet), (16 bytes).
+    Removing emac.o(i.EMACFrameFilterGet), (12 bytes).
+    Removing emac.o(i.EMACHashFilterBitCalculate), (36 bytes).
+    Removing emac.o(i.EMACHashFilterGet), (10 bytes).
+    Removing emac.o(i.EMACHashFilterSet), (6 bytes).
+    Removing emac.o(i.EMACInit), (136 bytes).
+    Removing emac.o(i.EMACIntDisable), (60 bytes).
+    Removing emac.o(i.EMACIntRegister), (18 bytes).
+    Removing emac.o(i.EMACIntUnregister), (18 bytes).
+    Removing emac.o(i.EMACLPIConfig), (26 bytes).
+    Removing emac.o(i.EMACLPIEnter), (10 bytes).
+    Removing emac.o(i.EMACLPILinkClear), (10 bytes).
+    Removing emac.o(i.EMACLPILinkSet), (10 bytes).
+    Removing emac.o(i.EMACLPIStatus), (6 bytes).
+    Removing emac.o(i.EMACNumAddrGet), (4 bytes).
+    Removing emac.o(i.EMACPHYExtendedRead), (64 bytes).
+    Removing emac.o(i.EMACPHYExtendedWrite), (68 bytes).
+    Removing emac.o(i.EMACPHYMMDRead), (62 bytes).
+    Removing emac.o(i.EMACPHYMMDWrite), (66 bytes).
+    Removing emac.o(i.EMACPHYPowerOff), (34 bytes).
+    Removing emac.o(i.EMACPHYPowerOn), (34 bytes).
+    Removing emac.o(i.EMACPowerManagementControlGet), (10 bytes).
+    Removing emac.o(i.EMACPowerManagementControlSet), (16 bytes).
+    Removing emac.o(i.EMACRemoteWakeUpFrameFilterGet), (24 bytes).
+    Removing emac.o(i.EMACRemoteWakeUpFrameFilterSet), (24 bytes).
+    Removing emac.o(i.EMACReset), (24 bytes).
+    Removing emac.o(i.EMACRxDMACurrentBufferGet), (6 bytes).
+    Removing emac.o(i.EMACRxDMACurrentDescriptorGet), (6 bytes).
+    Removing emac.o(i.EMACRxDMADescriptorListGet), (6 bytes).
+    Removing emac.o(i.EMACRxDMAPollDemand), (8 bytes).
+    Removing emac.o(i.EMACRxDisable), (22 bytes).
+    Removing emac.o(i.EMACRxWatchdogTimerSet), (6 bytes).
+    Removing emac.o(i.EMACStatusGet), (4 bytes).
+    Removing emac.o(i.EMACTimestampAddendSet), (28 bytes).
+    Removing emac.o(i.EMACTimestampConfigGet), (14 bytes).
+    Removing emac.o(i.EMACTimestampConfigSet), (24 bytes).
+    Removing emac.o(i.EMACTimestampDisable), (14 bytes).
+    Removing emac.o(i.EMACTimestampEnable), (38 bytes).
+    Removing emac.o(i.EMACTimestampPPSCommand), (20 bytes).
+    Removing emac.o(i.EMACTimestampPPSCommandModeSet), (20 bytes).
+    Removing emac.o(i.EMACTimestampPPSPeriodSet), (10 bytes).
+    Removing emac.o(i.EMACTimestampPPSSimpleModeSet), (22 bytes).
+    Removing emac.o(i.EMACTimestampSysTimeGet), (22 bytes).
+    Removing emac.o(i.EMACTimestampSysTimeSet), (32 bytes).
+    Removing emac.o(i.EMACTimestampSysTimeUpdate), (44 bytes).
+    Removing emac.o(i.EMACTimestampTargetIntDisable), (14 bytes).
+    Removing emac.o(i.EMACTimestampTargetIntEnable), (14 bytes).
+    Removing emac.o(i.EMACTimestampTargetSet), (20 bytes).
+    Removing emac.o(i.EMACTxDMACurrentBufferGet), (6 bytes).
+    Removing emac.o(i.EMACTxDMACurrentDescriptorGet), (6 bytes).
+    Removing emac.o(i.EMACTxDMADescriptorListGet), (6 bytes).
+    Removing emac.o(i.EMACTxDisable), (22 bytes).
+    Removing emac.o(i.EMACTxFlush), (34 bytes).
+    Removing emac.o(i.EMACVLANHashFilterBitCalculate), (36 bytes).
+    Removing emac.o(i.EMACVLANHashFilterGet), (6 bytes).
+    Removing emac.o(i.EMACVLANHashFilterSet), (6 bytes).
+    Removing emac.o(i.EMACVLANRxConfigGet), (10 bytes).
+    Removing emac.o(i.EMACVLANRxConfigSet), (6 bytes).
+    Removing emac.o(i.EMACVLANTxConfigGet), (12 bytes).
+    Removing emac.o(i.EMACVLANTxConfigSet), (8 bytes).
+    Removing emac.o(i.EMACWoLEnter), (50 bytes).
+    Removing emac.o(.constdata), (24 bytes).
+    Removing flash.o(i.FlashAllUserRegisterGet), (40 bytes).
+    Removing flash.o(i.FlashAllUserRegisterSave), (40 bytes).
+    Removing flash.o(i.FlashAllUserRegisterSet), (28 bytes).
+    Removing flash.o(i.FlashErase), (44 bytes).
+    Removing flash.o(i.FlashIntClear), (12 bytes).
+    Removing flash.o(i.FlashIntDisable), (16 bytes).
+    Removing flash.o(i.FlashIntEnable), (16 bytes).
+    Removing flash.o(i.FlashIntRegister), (20 bytes).
+    Removing flash.o(i.FlashIntStatus), (16 bytes).
+    Removing flash.o(i.FlashIntUnregister), (18 bytes).
+    Removing flash.o(i.FlashProgram), (104 bytes).
+    Removing flash.o(i.FlashProtectGet), (68 bytes).
+    Removing flash.o(i.FlashProtectSave), (36 bytes).
+    Removing flash.o(i.FlashProtectSet), (124 bytes).
+    Removing flash.o(i.FlashUserSave), (52 bytes).
+    Removing flash.o(i.FlashUserSet), (20 bytes).
+    Removing flash.o(.constdata), (128 bytes).
+    Removing interrupt.o(i.IntDisable), (100 bytes).
+    Removing interrupt.o(i.IntIsEnabled), (96 bytes).
+    Removing interrupt.o(i.IntMasterDisable), (14 bytes).
+    Removing interrupt.o(i.IntPendClear), (68 bytes).
+    Removing interrupt.o(i.IntPendSet), (84 bytes).
+    Removing interrupt.o(i.IntPriorityGet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingGet), (36 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingSet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityMaskGet), (4 bytes).
+    Removing interrupt.o(i.IntPriorityMaskSet), (4 bytes).
+    Removing interrupt.o(i.IntPrioritySet), (40 bytes).
+    Removing interrupt.o(i.IntRegister), (52 bytes).
+    Removing interrupt.o(i.IntTrigger), (12 bytes).
+    Removing interrupt.o(i.IntUnregister), (20 bytes).
+    Removing interrupt.o(i._IntDefaultHandler), (2 bytes).
+    Removing interrupt.o(vtable), (620 bytes).
+    Removing sysctl.o(i.SysCtlAltClkConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlClockGet), (340 bytes).
+    Removing sysctl.o(i.SysCtlClockOutConfig), (20 bytes).
+    Removing sysctl.o(i.SysCtlClockSet), (288 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleep), (32 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockConfigSet), (112 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlFlashSectorSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlFlashSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBDisable), (28 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBEnable), (24 bytes).
+    Removing sysctl.o(i.SysCtlIntClear), (12 bytes).
+    Removing sysctl.o(i.SysCtlIntDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntRegister), (20 bytes).
+    Removing sysctl.o(i.SysCtlIntStatus), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntUnregister), (18 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlMOSCConfigSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlNMIClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlNMIStatus), (12 bytes).
+    Removing sysctl.o(i.SysCtlPIOSCCalibrate), (76 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockGet), (24 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockSet), (20 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralClockGating), (68 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOff), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOn), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPresent), (44 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlReset), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlSRAMSizeGet), (16 bytes).
+    Removing sysctl.o(i.SysCtlSleep), (4 bytes).
+    Removing sysctl.o(i.SysCtlSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlVCOGet), (120 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventStatus), (12 bytes).
+    Removing systick.o(i.SysTickEnable), (14 bytes).
+    Removing systick.o(i.SysTickIntEnable), (14 bytes).
+    Removing systick.o(i.SysTickIntRegister), (24 bytes).
+    Removing systick.o(i.SysTickIntUnregister), (18 bytes).
+    Removing systick.o(i.SysTickPeriodGet), (10 bytes).
+    Removing systick.o(i.SysTickPeriodSet), (10 bytes).
+    Removing systick.o(i.SysTickValueGet), (8 bytes).
+    Removing sw_crc.o(i.Crc16), (212 bytes).
+    Removing sw_crc.o(i.Crc16Array), (8 bytes).
+    Removing sw_crc.o(i.Crc16Array3), (152 bytes).
+    Removing sw_crc.o(i.Crc32), (212 bytes).
+    Removing sw_crc.o(i.Crc8CCITT), (156 bytes).
+    Removing sw_crc.o(.constdata), (1792 bytes).
+
+255 unused section(s) (total 13130 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/string/memcmp.c         0x00000000   Number         0  memcmp.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/string/strlen.c         0x00000000   Number         0  strlen.o ABSOLUTE
+    ..\..\..\..\utils\lwiplib.c              0x00000000   Number         0  lwiplib.o ABSOLUTE
+    ..\..\..\..\utils\swupdate.c             0x00000000   Number         0  swupdate.o ABSOLUTE
+    ..\..\..\..\utils\ustdlib.c              0x00000000   Number         0  ustdlib.o ABSOLUTE
+    boot_demo_emac_flash.c                   0x00000000   Number         0  boot_demo_emac_flash.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    emac.c                                   0x00000000   Number         0  emac.o ABSOLUTE
+    flash.c                                  0x00000000   Number         0  flash.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    interrupt.c                              0x00000000   Number         0  interrupt.o ABSOLUTE
+    startup_rvmdk.S                          0x00000000   Number         0  startup_rvmdk.o ABSOLUTE
+    sw_crc.c                                 0x00000000   Number         0  sw_crc.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    systick.c                                0x00000000   Number         0  systick.o ABSOLUTE
+    RESET                                    0x00004000   Section      540  startup_rvmdk.o(RESET)
+    $v0                                      0x00004200   Number         0  startup_rvmdk.o(RESET)
+    NmiSR                                    0x00004215   Thumb Code     0  startup_rvmdk.o(RESET)
+    FaultISR                                 0x00004217   Thumb Code     0  startup_rvmdk.o(RESET)
+    IntDefaultHandler                        0x00004219   Thumb Code     0  startup_rvmdk.o(RESET)
+    .ARM.Collect$$$$00000000                 0x0000421c   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x0000421c   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x00004220   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x00004224   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x00004224   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x00004224   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000E                 0x0000422c   Section        4  entry12b.o(.ARM.Collect$$$$0000000E)
+    .ARM.Collect$$$$0000000F                 0x00004230   Section        0  entry10a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00000011                 0x00004230   Section        0  entry11a.o(.ARM.Collect$$$$00000011)
+    .ARM.Collect$$$$00002712                 0x00004230   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x00004230   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .emb_text                                0x00004234   Section        6  sysctl.o(.emb_text)
+    $v0                                      0x00004234   Number         0  sysctl.o(.emb_text)
+    .emb_text                                0x0000423c   Section       38  cpu.o(.emb_text)
+    $v0                                      0x0000423c   Number         0  cpu.o(.emb_text)
+    .text                                    0x00004262   Section        0  memcpya.o(.text)
+    .text                                    0x00004286   Section        0  memseta.o(.text)
+    .text                                    0x000042aa   Section        0  memcmp.o(.text)
+    .text                                    0x000042c4   Section       36  init.o(.text)
+    i.EMACAddrGet                            0x000042e8   Section        0  emac.o(i.EMACAddrGet)
+    i.EMACConfigGet                          0x00004308   Section        0  emac.o(i.EMACConfigGet)
+    i.EMACConfigSet                          0x0000434c   Section        0  emac.o(i.EMACConfigSet)
+    i.EMACFrameFilterSet                     0x00004384   Section        0  emac.o(i.EMACFrameFilterSet)
+    i.EMACIntClear                           0x00004394   Section        0  emac.o(i.EMACIntClear)
+    i.EMACIntEnable                          0x000043d0   Section        0  emac.o(i.EMACIntEnable)
+    i.EMACIntStatus                          0x00004412   Section        0  emac.o(i.EMACIntStatus)
+    i.EMACPHYConfigSet                       0x00004440   Section        0  emac.o(i.EMACPHYConfigSet)
+    i.EMACPHYRead                            0x000044b0   Section        0  emac.o(i.EMACPHYRead)
+    i.EMACPHYWrite                           0x000044da   Section        0  emac.o(i.EMACPHYWrite)
+    i.EMACPowerManagementStatusGet           0x00004504   Section        0  emac.o(i.EMACPowerManagementStatusGet)
+    i.EMACRxDMADescriptorListSet             0x0000450c   Section        0  emac.o(i.EMACRxDMADescriptorListSet)
+    i.EMACRxEnable                           0x00004512   Section        0  emac.o(i.EMACRxEnable)
+    i.EMACTimestampIntStatus                 0x00004528   Section        0  emac.o(i.EMACTimestampIntStatus)
+    i.EMACTxDMADescriptorListSet             0x0000452e   Section        0  emac.o(i.EMACTxDMADescriptorListSet)
+    i.EMACTxDMAPollDemand                    0x00004534   Section        0  emac.o(i.EMACTxDMAPollDemand)
+    i.EMACTxEnable                           0x0000453c   Section        0  emac.o(i.EMACTxEnable)
+    i.FlashUserGet                           0x00004554   Section        0  flash.o(i.FlashUserGet)
+    i.InitDMADescriptors                     0x0000456c   Section        0  lwiplib.o(i.InitDMADescriptors)
+    i.IntEnable                              0x00004628   Section        0  interrupt.o(i.IntEnable)
+    i.IntMasterEnable                        0x0000468c   Section        0  interrupt.o(i.IntMasterEnable)
+    i.SetupForEthernet                       0x0000469c   Section        0  boot_demo_emac_flash.o(i.SetupForEthernet)
+    i.SetupForUART                           0x0000477c   Section        0  boot_demo_emac_flash.o(i.SetupForUART)
+    i.SoftwareUpdateBegin                    0x000047e0   Section        0  swupdate.o(i.SoftwareUpdateBegin)
+    i.SoftwareUpdateInit                     0x00004810   Section        0  swupdate.o(i.SoftwareUpdateInit)
+    i.SoftwareUpdateRequestCallback          0x00004860   Section        0  boot_demo_emac_flash.o(i.SoftwareUpdateRequestCallback)
+    i.SoftwareUpdateUDPReceive               0x0000486c   Section        0  swupdate.o(i.SoftwareUpdateUDPReceive)
+    SoftwareUpdateUDPReceive                 0x0000486d   Thumb Code    86  swupdate.o(i.SoftwareUpdateUDPReceive)
+    i.SysCtlClockFreqSet                     0x000048c8   Section        0  sysctl.o(i.SysCtlClockFreqSet)
+    i.SysCtlPeripheralReady                  0x00004bac   Section        0  sysctl.o(i.SysCtlPeripheralReady)
+    i.SysCtlPeripheralReset                  0x00004bd8   Section        0  sysctl.o(i.SysCtlPeripheralReset)
+    i.SysTickDisable                         0x00004c14   Section        0  systick.o(i.SysTickDisable)
+    i.SysTickIntDisable                      0x00004c22   Section        0  systick.o(i.SysTickIntDisable)
+    i.SysTickIntHandler                      0x00004c30   Section        0  boot_demo_emac_flash.o(i.SysTickIntHandler)
+    i.__scatterload_copy                     0x00004c36   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00004c44   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00004c46   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.arp_timer                              0x00004c54   Section        0  lwiplib.o(i.arp_timer)
+    arp_timer                                0x00004c55   Thumb Code    22  lwiplib.o(i.arp_timer)
+    i.autoip_arp_announce                    0x00004c70   Section        0  lwiplib.o(i.autoip_arp_announce)
+    autoip_arp_announce                      0x00004c71   Thumb Code    34  lwiplib.o(i.autoip_arp_announce)
+    i.autoip_arp_reply                       0x00004c98   Section        0  lwiplib.o(i.autoip_arp_reply)
+    i.autoip_network_changed                 0x00004d14   Section        0  lwiplib.o(i.autoip_network_changed)
+    i.autoip_restart                         0x00004d36   Section        0  lwiplib.o(i.autoip_restart)
+    autoip_restart                           0x00004d37   Thumb Code    12  lwiplib.o(i.autoip_restart)
+    i.autoip_start                           0x00004d44   Section        0  lwiplib.o(i.autoip_start)
+    i.autoip_start_probing                   0x00004dd0   Section        0  lwiplib.o(i.autoip_start_probing)
+    autoip_start_probing                     0x00004dd1   Thumb Code    68  lwiplib.o(i.autoip_start_probing)
+    i.autoip_stop                            0x00004e14   Section        0  lwiplib.o(i.autoip_stop)
+    i.autoip_timer                           0x00004e24   Section        0  lwiplib.o(i.autoip_timer)
+    autoip_timer                             0x00004e25   Thumb Code    20  lwiplib.o(i.autoip_timer)
+    i.autoip_tmr                             0x00004e3c   Section        0  lwiplib.o(i.autoip_tmr)
+    i.dhcp_arp_reply                         0x00004f4c   Section        0  lwiplib.o(i.dhcp_arp_reply)
+    i.dhcp_bind                              0x00004f6a   Section        0  lwiplib.o(i.dhcp_bind)
+    dhcp_bind                                0x00004f6b   Thumb Code   210  lwiplib.o(i.dhcp_bind)
+    i.dhcp_check                             0x0000503c   Section        0  lwiplib.o(i.dhcp_check)
+    dhcp_check                               0x0000503d   Thumb Code    48  lwiplib.o(i.dhcp_check)
+    i.dhcp_coarse_tmr                        0x0000506c   Section        0  lwiplib.o(i.dhcp_coarse_tmr)
+    i.dhcp_create_msg                        0x000050cc   Section        0  lwiplib.o(i.dhcp_create_msg)
+    dhcp_create_msg                          0x000050cd   Thumb Code   276  lwiplib.o(i.dhcp_create_msg)
+    i.dhcp_decline                           0x000051e8   Section        0  lwiplib.o(i.dhcp_decline)
+    dhcp_decline                             0x000051e9   Thumb Code   110  lwiplib.o(i.dhcp_decline)
+    i.dhcp_delete_msg                        0x0000525c   Section        0  lwiplib.o(i.dhcp_delete_msg)
+    dhcp_delete_msg                          0x0000525d   Thumb Code    22  lwiplib.o(i.dhcp_delete_msg)
+    i.dhcp_discover                          0x00005274   Section        0  lwiplib.o(i.dhcp_discover)
+    dhcp_discover                            0x00005275   Thumb Code   202  lwiplib.o(i.dhcp_discover)
+    i.dhcp_fine_tmr                          0x00005344   Section        0  lwiplib.o(i.dhcp_fine_tmr)
+    i.dhcp_handle_ack                        0x00005378   Section        0  lwiplib.o(i.dhcp_handle_ack)
+    dhcp_handle_ack                          0x00005379   Thumb Code    84  lwiplib.o(i.dhcp_handle_ack)
+    i.dhcp_network_changed                   0x000053d0   Section        0  lwiplib.o(i.dhcp_network_changed)
+    i.dhcp_option                            0x00005424   Section        0  lwiplib.o(i.dhcp_option)
+    dhcp_option                              0x00005425   Thumb Code    32  lwiplib.o(i.dhcp_option)
+    i.dhcp_option_byte                       0x00005444   Section        0  lwiplib.o(i.dhcp_option_byte)
+    dhcp_option_byte                         0x00005445   Thumb Code    16  lwiplib.o(i.dhcp_option_byte)
+    i.dhcp_option_long                       0x00005454   Section        0  lwiplib.o(i.dhcp_option_long)
+    dhcp_option_long                         0x00005455   Thumb Code    66  lwiplib.o(i.dhcp_option_long)
+    i.dhcp_option_short                      0x00005496   Section        0  lwiplib.o(i.dhcp_option_short)
+    dhcp_option_short                        0x00005497   Thumb Code    34  lwiplib.o(i.dhcp_option_short)
+    i.dhcp_option_trailer                    0x000054b8   Section        0  lwiplib.o(i.dhcp_option_trailer)
+    dhcp_option_trailer                      0x000054b9   Thumb Code    44  lwiplib.o(i.dhcp_option_trailer)
+    i.dhcp_parse_reply                       0x000054e4   Section        0  lwiplib.o(i.dhcp_parse_reply)
+    dhcp_parse_reply                         0x000054e5   Thumb Code   506  lwiplib.o(i.dhcp_parse_reply)
+    i.dhcp_rebind                            0x000056e4   Section        0  lwiplib.o(i.dhcp_rebind)
+    dhcp_rebind                              0x000056e5   Thumb Code   130  lwiplib.o(i.dhcp_rebind)
+    i.dhcp_reboot                            0x0000576c   Section        0  lwiplib.o(i.dhcp_reboot)
+    dhcp_reboot                              0x0000576d   Thumb Code   152  lwiplib.o(i.dhcp_reboot)
+    i.dhcp_recv                              0x00005808   Section        0  lwiplib.o(i.dhcp_recv)
+    dhcp_recv                                0x00005809   Thumb Code   260  lwiplib.o(i.dhcp_recv)
+    i.dhcp_release                           0x00005914   Section        0  lwiplib.o(i.dhcp_release)
+    i.dhcp_renew                             0x000059b8   Section        0  lwiplib.o(i.dhcp_renew)
+    i.dhcp_select                            0x00005a3c   Section        0  lwiplib.o(i.dhcp_select)
+    dhcp_select                              0x00005a3d   Thumb Code   220  lwiplib.o(i.dhcp_select)
+    i.dhcp_set_state                         0x00005b1c   Section        0  lwiplib.o(i.dhcp_set_state)
+    dhcp_set_state                           0x00005b1d   Thumb Code    16  lwiplib.o(i.dhcp_set_state)
+    i.dhcp_start                             0x00005b2c   Section        0  lwiplib.o(i.dhcp_start)
+    i.dhcp_stop                              0x00005bcc   Section        0  lwiplib.o(i.dhcp_stop)
+    i.dhcp_timeout                           0x00005c0a   Section        0  lwiplib.o(i.dhcp_timeout)
+    dhcp_timeout                             0x00005c0b   Thumb Code   136  lwiplib.o(i.dhcp_timeout)
+    i.dhcp_timer_coarse                      0x00005c94   Section        0  lwiplib.o(i.dhcp_timer_coarse)
+    dhcp_timer_coarse                        0x00005c95   Thumb Code    22  lwiplib.o(i.dhcp_timer_coarse)
+    i.dhcp_timer_fine                        0x00005cb0   Section        0  lwiplib.o(i.dhcp_timer_fine)
+    dhcp_timer_fine                          0x00005cb1   Thumb Code    22  lwiplib.o(i.dhcp_timer_fine)
+    i.etharp_arp_input                       0x00005ccc   Section        0  lwiplib.o(i.etharp_arp_input)
+    etharp_arp_input                         0x00005ccd   Thumb Code   284  lwiplib.o(i.etharp_arp_input)
+    i.etharp_cleanup_netif                   0x00005df0   Section        0  lwiplib.o(i.etharp_cleanup_netif)
+    i.etharp_find_entry                      0x00005e20   Section        0  lwiplib.o(i.etharp_find_entry)
+    etharp_find_entry                        0x00005e21   Thumb Code   234  lwiplib.o(i.etharp_find_entry)
+    i.etharp_free_entry                      0x00005f10   Section        0  lwiplib.o(i.etharp_free_entry)
+    etharp_free_entry                        0x00005f11   Thumb Code    32  lwiplib.o(i.etharp_free_entry)
+    i.etharp_output                          0x00005f34   Section        0  lwiplib.o(i.etharp_output)
+    i.etharp_output_to_arp_index             0x00006054   Section        0  lwiplib.o(i.etharp_output_to_arp_index)
+    etharp_output_to_arp_index               0x00006055   Thumb Code    62  lwiplib.o(i.etharp_output_to_arp_index)
+    i.etharp_query                           0x00006098   Section        0  lwiplib.o(i.etharp_query)
+    i.etharp_raw                             0x000061ac   Section        0  lwiplib.o(i.etharp_raw)
+    i.etharp_request                         0x0000626c   Section        0  lwiplib.o(i.etharp_request)
+    i.etharp_send_ip                         0x00006290   Section        0  lwiplib.o(i.etharp_send_ip)
+    etharp_send_ip                           0x00006291   Thumb Code    32  lwiplib.o(i.etharp_send_ip)
+    i.etharp_tmr                             0x000062b0   Section        0  lwiplib.o(i.etharp_tmr)
+    i.etharp_update_arp_entry                0x000062f8   Section        0  lwiplib.o(i.etharp_update_arp_entry)
+    etharp_update_arp_entry                  0x000062f9   Thumb Code   118  lwiplib.o(i.etharp_update_arp_entry)
+    i.ethernet_input                         0x00006374   Section        0  lwiplib.o(i.ethernet_input)
+    i.icmp_dest_unreach                      0x00006418   Section        0  lwiplib.o(i.icmp_dest_unreach)
+    i.icmp_input                             0x00006420   Section        0  lwiplib.o(i.icmp_input)
+    i.icmp_send_response                     0x0000658c   Section        0  lwiplib.o(i.icmp_send_response)
+    icmp_send_response                       0x0000658d   Thumb Code   110  lwiplib.o(i.icmp_send_response)
+    i.inet_chksum                            0x00006600   Section        0  lwiplib.o(i.inet_chksum)
+    i.inet_chksum_pbuf                       0x0000660c   Section        0  lwiplib.o(i.inet_chksum_pbuf)
+    i.inet_chksum_pseudo                     0x00006654   Section        0  lwiplib.o(i.inet_chksum_pseudo)
+    i.ip4_addr_isbroadcast                   0x000066da   Section        0  lwiplib.o(i.ip4_addr_isbroadcast)
+    i.ip_input                               0x00006708   Section        0  lwiplib.o(i.ip_input)
+    i.ip_output                              0x0000691c   Section        0  lwiplib.o(i.ip_output)
+    i.ip_output_if                           0x0000695c   Section        0  lwiplib.o(i.ip_output_if)
+    i.ip_route                               0x00006a20   Section        0  lwiplib.o(i.ip_route)
+    i.lwIPEthernetIntHandler                 0x00006a68   Section        0  lwiplib.o(i.lwIPEthernetIntHandler)
+    i.lwIPInit                               0x00006ae0   Section        0  lwiplib.o(i.lwIPInit)
+    i.lwIPLinkDetect                         0x00006bac   Section        0  lwiplib.o(i.lwIPLinkDetect)
+    lwIPLinkDetect                           0x00006bad   Thumb Code   106  lwiplib.o(i.lwIPLinkDetect)
+    i.lwIPPrivateInit                        0x00006c24   Section        0  lwiplib.o(i.lwIPPrivateInit)
+    lwIPPrivateInit                          0x00006c25   Thumb Code    80  lwiplib.o(i.lwIPPrivateInit)
+    i.lwIPServiceTimers                      0x00006c84   Section        0  lwiplib.o(i.lwIPServiceTimers)
+    lwIPServiceTimers                        0x00006c85   Thumb Code   116  lwiplib.o(i.lwIPServiceTimers)
+    i.lwIPTimer                              0x00006cfc   Section        0  lwiplib.o(i.lwIPTimer)
+    i.lwip_init                              0x00006d18   Section        0  lwiplib.o(i.lwip_init)
+    i.lwip_standard_chksum                   0x00006d2a   Section        0  lwiplib.o(i.lwip_standard_chksum)
+    lwip_standard_chksum                     0x00006d2b   Thumb Code    86  lwiplib.o(i.lwip_standard_chksum)
+    i.main                                   0x00006d80   Section        0  boot_demo_emac_flash.o(i.main)
+    i.mem_free                               0x00006e2c   Section        0  lwiplib.o(i.mem_free)
+    i.mem_init                               0x00006e88   Section        0  lwiplib.o(i.mem_init)
+    i.mem_malloc                             0x00006ec4   Section        0  lwiplib.o(i.mem_malloc)
+    i.mem_trim                               0x00006fb0   Section        0  lwiplib.o(i.mem_trim)
+    i.memp_free                              0x0000709c   Section        0  lwiplib.o(i.memp_free)
+    i.memp_init                              0x000070e0   Section        0  lwiplib.o(i.memp_init)
+    i.memp_malloc                            0x00007158   Section        0  lwiplib.o(i.memp_malloc)
+    i.netif_add                              0x000071b8   Section        0  lwiplib.o(i.netif_add)
+    i.netif_set_addr                         0x00007204   Section        0  lwiplib.o(i.netif_set_addr)
+    i.netif_set_down                         0x00007224   Section        0  lwiplib.o(i.netif_set_down)
+    i.netif_set_gw                           0x0000723e   Section        0  lwiplib.o(i.netif_set_gw)
+    i.netif_set_ipaddr                       0x00007248   Section        0  lwiplib.o(i.netif_set_ipaddr)
+    i.netif_set_link_down                    0x000072bc   Section        0  lwiplib.o(i.netif_set_link_down)
+    i.netif_set_link_up                      0x000072ce   Section        0  lwiplib.o(i.netif_set_link_up)
+    i.netif_set_netmask                      0x00007310   Section        0  lwiplib.o(i.netif_set_netmask)
+    i.netif_set_up                           0x00007318   Section        0  lwiplib.o(i.netif_set_up)
+    i.pbuf_alloc                             0x00007338   Section        0  lwiplib.o(i.pbuf_alloc)
+    i.pbuf_cat                               0x00007456   Section        0  lwiplib.o(i.pbuf_cat)
+    i.pbuf_chain                             0x0000747e   Section        0  lwiplib.o(i.pbuf_chain)
+    i.pbuf_clen                              0x00007490   Section        0  lwiplib.o(i.pbuf_clen)
+    i.pbuf_copy                              0x000074a2   Section        0  lwiplib.o(i.pbuf_copy)
+    i.pbuf_copy_partial                      0x0000753c   Section        0  lwiplib.o(i.pbuf_copy_partial)
+    i.pbuf_free                              0x000075a4   Section        0  lwiplib.o(i.pbuf_free)
+    i.pbuf_header                            0x000075f6   Section        0  lwiplib.o(i.pbuf_header)
+    i.pbuf_pool_is_empty                     0x00007658   Section        0  lwiplib.o(i.pbuf_pool_is_empty)
+    pbuf_pool_is_empty                       0x00007659   Thumb Code    20  lwiplib.o(i.pbuf_pool_is_empty)
+    i.pbuf_realloc                           0x00007670   Section        0  lwiplib.o(i.pbuf_realloc)
+    i.pbuf_ref                               0x000076be   Section        0  lwiplib.o(i.pbuf_ref)
+    i.plug_holes                             0x000076d8   Section        0  lwiplib.o(i.plug_holes)
+    plug_holes                               0x000076d9   Thumb Code    78  lwiplib.o(i.plug_holes)
+    i.raw_input                              0x0000772c   Section        0  lwiplib.o(i.raw_input)
+    i.sys_arch_protect                       0x0000779c   Section        0  lwiplib.o(i.sys_arch_protect)
+    i.sys_arch_unprotect                     0x000077a6   Section        0  lwiplib.o(i.sys_arch_unprotect)
+    i.sys_timeout                            0x000077b8   Section        0  lwiplib.o(i.sys_timeout)
+    i.sys_timeouts_init                      0x00007814   Section        0  lwiplib.o(i.sys_timeouts_init)
+    i.tcp_abandon                            0x00007864   Section        0  lwiplib.o(i.tcp_abandon)
+    i.tcp_abort                              0x000078f8   Section        0  lwiplib.o(i.tcp_abort)
+    i.tcp_alloc                              0x00007900   Section        0  lwiplib.o(i.tcp_alloc)
+    i.tcp_close                              0x00007a18   Section        0  lwiplib.o(i.tcp_close)
+    i.tcp_close_shutdown                     0x00007a2c   Section        0  lwiplib.o(i.tcp_close_shutdown)
+    tcp_close_shutdown                       0x00007a2d   Thumb Code   288  lwiplib.o(i.tcp_close_shutdown)
+    i.tcp_create_segment                     0x00007b50   Section        0  lwiplib.o(i.tcp_create_segment)
+    tcp_create_segment                       0x00007b51   Thumb Code   154  lwiplib.o(i.tcp_create_segment)
+    i.tcp_debug_print                        0x00007bf0   Section        0  lwiplib.o(i.tcp_debug_print)
+    i.tcp_eff_send_mss                       0x00007bf2   Section        0  lwiplib.o(i.tcp_eff_send_mss)
+    i.tcp_enqueue_flags                      0x00007c14   Section        0  lwiplib.o(i.tcp_enqueue_flags)
+    i.tcp_fasttmr                            0x00007ce8   Section        0  lwiplib.o(i.tcp_fasttmr)
+    i.tcp_input                              0x00007d44   Section        0  lwiplib.o(i.tcp_input)
+    i.tcp_keepalive                          0x000080a8   Section        0  lwiplib.o(i.tcp_keepalive)
+    i.tcp_listen_input                       0x00008104   Section        0  lwiplib.o(i.tcp_listen_input)
+    tcp_listen_input                         0x00008105   Thumb Code   220  lwiplib.o(i.tcp_listen_input)
+    i.tcp_next_iss                           0x000081e8   Section        0  lwiplib.o(i.tcp_next_iss)
+    i.tcp_oos_insert_segment                 0x000081f8   Section        0  lwiplib.o(i.tcp_oos_insert_segment)
+    tcp_oos_insert_segment                   0x000081f9   Thumb Code   106  lwiplib.o(i.tcp_oos_insert_segment)
+    i.tcp_output                             0x00008268   Section        0  lwiplib.o(i.tcp_output)
+    i.tcp_output_alloc_header                0x000083bc   Section        0  lwiplib.o(i.tcp_output_alloc_header)
+    tcp_output_alloc_header                  0x000083bd   Thumb Code    88  lwiplib.o(i.tcp_output_alloc_header)
+    i.tcp_output_segment                     0x00008414   Section        0  lwiplib.o(i.tcp_output_segment)
+    tcp_output_segment                       0x00008415   Thumb Code   192  lwiplib.o(i.tcp_output_segment)
+    i.tcp_parseopt                           0x000084dc   Section        0  lwiplib.o(i.tcp_parseopt)
+    tcp_parseopt                             0x000084dd   Thumb Code   110  lwiplib.o(i.tcp_parseopt)
+    i.tcp_pcb_purge                          0x00008550   Section        0  lwiplib.o(i.tcp_pcb_purge)
+    i.tcp_pcb_remove                         0x00008594   Section        0  lwiplib.o(i.tcp_pcb_remove)
+    i.tcp_pcbs_sane                          0x000085f4   Section        0  lwiplib.o(i.tcp_pcbs_sane)
+    i.tcp_process                            0x00008614   Section        0  lwiplib.o(i.tcp_process)
+    tcp_process                              0x00008615   Thumb Code   780  lwiplib.o(i.tcp_process)
+    i.tcp_process_refused_data               0x00008924   Section        0  lwiplib.o(i.tcp_process_refused_data)
+    i.tcp_receive                            0x0000898c   Section        0  lwiplib.o(i.tcp_receive)
+    tcp_receive                              0x0000898d   Thumb Code  1620  lwiplib.o(i.tcp_receive)
+    i.tcp_recv_null                          0x00008fe8   Section        0  lwiplib.o(i.tcp_recv_null)
+    i.tcp_recved                             0x0000900c   Section        0  lwiplib.o(i.tcp_recved)
+    i.tcp_rexmit                             0x00009040   Section        0  lwiplib.o(i.tcp_rexmit)
+    i.tcp_rexmit_fast                        0x00009084   Section        0  lwiplib.o(i.tcp_rexmit_fast)
+    i.tcp_rexmit_rto                         0x000090dc   Section        0  lwiplib.o(i.tcp_rexmit_rto)
+    i.tcp_rst                                0x0000910c   Section        0  lwiplib.o(i.tcp_rst)
+    i.tcp_seg_copy                           0x00009194   Section        0  lwiplib.o(i.tcp_seg_copy)
+    i.tcp_seg_free                           0x000091b8   Section        0  lwiplib.o(i.tcp_seg_free)
+    i.tcp_segs_free                          0x000091d4   Section        0  lwiplib.o(i.tcp_segs_free)
+    i.tcp_send_empty_ack                     0x000091e6   Section        0  lwiplib.o(i.tcp_send_empty_ack)
+    i.tcp_send_fin                           0x0000923c   Section        0  lwiplib.o(i.tcp_send_fin)
+    i.tcp_slowtmr                            0x00009270   Section        0  lwiplib.o(i.tcp_slowtmr)
+    i.tcp_timer_needed                       0x000094f0   Section        0  lwiplib.o(i.tcp_timer_needed)
+    i.tcp_timewait_input                     0x0000951c   Section        0  lwiplib.o(i.tcp_timewait_input)
+    tcp_timewait_input                       0x0000951d   Thumb Code    92  lwiplib.o(i.tcp_timewait_input)
+    i.tcp_tmr                                0x0000957c   Section        0  lwiplib.o(i.tcp_tmr)
+    i.tcp_update_rcv_ann_wnd                 0x0000959c   Section        0  lwiplib.o(i.tcp_update_rcv_ann_wnd)
+    i.tcp_zero_window_probe                  0x000095d0   Section        0  lwiplib.o(i.tcp_zero_window_probe)
+    i.tcpip_tcp_timer                        0x0000967c   Section        0  lwiplib.o(i.tcpip_tcp_timer)
+    tcpip_tcp_timer                          0x0000967d   Thumb Code    40  lwiplib.o(i.tcpip_tcp_timer)
+    i.tivaif_hwinit                          0x000096ac   Section        0  lwiplib.o(i.tivaif_hwinit)
+    tivaif_hwinit                            0x000096ad   Thumb Code   180  lwiplib.o(i.tivaif_hwinit)
+    i.tivaif_init                            0x00009768   Section        0  lwiplib.o(i.tivaif_init)
+    i.tivaif_interrupt                       0x0000979c   Section        0  lwiplib.o(i.tivaif_interrupt)
+    i.tivaif_process_phy_interrupt           0x000097e4   Section        0  lwiplib.o(i.tivaif_process_phy_interrupt)
+    i.tivaif_process_transmit                0x00009860   Section        0  lwiplib.o(i.tivaif_process_transmit)
+    tivaif_process_transmit                  0x00009861   Thumb Code    88  lwiplib.o(i.tivaif_process_transmit)
+    i.tivaif_receive                         0x000098b8   Section        0  lwiplib.o(i.tivaif_receive)
+    tivaif_receive                           0x000098b9   Thumb Code   404  lwiplib.o(i.tivaif_receive)
+    i.tivaif_transmit                        0x00009a54   Section        0  lwiplib.o(i.tivaif_transmit)
+    tivaif_transmit                          0x00009a55   Thumb Code   314  lwiplib.o(i.tivaif_transmit)
+    i.udp_bind                               0x00009b98   Section        0  lwiplib.o(i.udp_bind)
+    i.udp_connect                            0x00009c40   Section        0  lwiplib.o(i.udp_connect)
+    i.udp_input                              0x00009c8c   Section        0  lwiplib.o(i.udp_input)
+    i.udp_new                                0x00009e60   Section        0  lwiplib.o(i.udp_new)
+    i.udp_recv                               0x00009e7a   Section        0  lwiplib.o(i.udp_recv)
+    i.udp_remove                             0x00009e80   Section        0  lwiplib.o(i.udp_remove)
+    i.udp_sendto_if                          0x00009eac   Section        0  lwiplib.o(i.udp_sendto_if)
+    i.usnprintf                              0x00009f88   Section        0  ustdlib.o(i.usnprintf)
+    i.ustrncpy                               0x00009f9a   Section        0  ustdlib.o(i.ustrncpy)
+    i.uvsnprintf                             0x00009fc0   Section        0  ustdlib.o(i.uvsnprintf)
+    .constdata                               0x0000a210   Section      136  lwiplib.o(.constdata)
+    memp_sizes                               0x0000a22c   Data          16  lwiplib.o(.constdata)
+    memp_num                                 0x0000a23c   Data          16  lwiplib.o(.constdata)
+    .constdata                               0x0000a298   Section       76  ustdlib.o(.constdata)
+    g_pcHex                                  0x0000a298   Data           4  ustdlib.o(.constdata)
+    g_psDaysToMonth                          0x0000a29c   Data          48  ustdlib.o(.constdata)
+    g_pfExponents                            0x0000a2cc   Data          24  ustdlib.o(.constdata)
+    .constdata                               0x0000a2e4   Section      268  interrupt.o(.constdata)
+    g_pui32Priority                          0x0000a2e4   Data          32  interrupt.o(.constdata)
+    g_pui32Regs                              0x0000a304   Data         156  interrupt.o(.constdata)
+    g_pui32EnRegs                            0x0000a3a0   Data          20  interrupt.o(.constdata)
+    g_pui32Dii16Regs                         0x0000a3b4   Data          20  interrupt.o(.constdata)
+    g_pui32PendRegs                          0x0000a3c8   Data          20  interrupt.o(.constdata)
+    g_pui32UnpendRegs                        0x0000a3dc   Data          20  interrupt.o(.constdata)
+    .constdata                               0x0000a3f0   Section      596  sysctl.o(.constdata)
+    g_pui32VCOFrequencies                    0x0000a3f0   Data           8  sysctl.o(.constdata)
+    g_pui32Xtals                             0x0000a3f8   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x0000a464   Data         432  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x0000a614   Data          48  sysctl.o(.constdata)
+    .conststring                             0x0000a644   Section      117  lwiplib.o(.conststring)
+    .conststring                             0x0000a6bc   Section       17  ustdlib.o(.conststring)
+    .data                                    0x20000000   Section        8  boot_demo_emac_flash.o(.data)
+    g_bFirmwareUpdate                        0x20000000   Data           1  boot_demo_emac_flash.o(.data)
+    .data                                    0x20000008   Section      220  lwiplib.o(.data)
+    g_bLinkActive                            0x20000008   Data           1  lwiplib.o(.data)
+    netif_num                                0x20000009   Data           1  lwiplib.o(.data)
+    tcp_timer                                0x2000000c   Data           1  lwiplib.o(.data)
+    tcp_timer_ctr                            0x2000000d   Data           1  lwiplib.o(.data)
+    flags                                    0x2000000e   Data           1  lwiplib.o(.data)
+    recv_flags                               0x2000000f   Data           1  lwiplib.o(.data)
+    etharp_cached_entry                      0x20000010   Data           1  lwiplib.o(.data)
+    tcp_port                                 0x20000012   Data           2  lwiplib.o(.data)
+    udp_port                                 0x20000014   Data           2  lwiplib.o(.data)
+    tcplen                                   0x20000016   Data           2  lwiplib.o(.data)
+    ip_id                                    0x20000018   Data           2  lwiplib.o(.data)
+    g_ui32TCPTimer                           0x20000020   Data           4  lwiplib.o(.data)
+    g_ui32ARPTimer                           0x20000024   Data           4  lwiplib.o(.data)
+    g_ui32AutoIPTimer                        0x20000028   Data           4  lwiplib.o(.data)
+    g_ui32DHCPCoarseTimer                    0x2000002c   Data           4  lwiplib.o(.data)
+    g_ui32DHCPFineTimer                      0x20000030   Data           4  lwiplib.o(.data)
+    g_ui32LinkTimer                          0x20000034   Data           4  lwiplib.o(.data)
+    g_ui32IPMode                             0x20000038   Data           4  lwiplib.o(.data)
+    xid                                      0x2000003c   Data           4  lwiplib.o(.data)
+    iss                                      0x20000040   Data           4  lwiplib.o(.data)
+    pBuf                                     0x20000044   Data           4  lwiplib.o(.data)
+    ram                                      0x20000048   Data           4  lwiplib.o(.data)
+    ram_end                                  0x2000004c   Data           4  lwiplib.o(.data)
+    lfree                                    0x20000050   Data           4  lwiplib.o(.data)
+    raw_pcbs                                 0x2000005c   Data           4  lwiplib.o(.data)
+    tcphdr                                   0x20000078   Data           4  lwiplib.o(.data)
+    iphdr                                    0x2000007c   Data           4  lwiplib.o(.data)
+    seqno                                    0x20000080   Data           4  lwiplib.o(.data)
+    ackno                                    0x20000084   Data           4  lwiplib.o(.data)
+    recv_data                                0x20000088   Data           4  lwiplib.o(.data)
+    next_timeout                             0x20000090   Data           4  lwiplib.o(.data)
+    timeouts_last_time                       0x20000094   Data           4  lwiplib.o(.data)
+    tcpip_tcp_timer_active                   0x20000098   Data           4  lwiplib.o(.data)
+    g_ui32IPAddr                             0x200000bc   Data           4  lwiplib.o(.data)
+    g_ui32NetMask                            0x200000c0   Data           4  lwiplib.o(.data)
+    g_ui32GWAddr                             0x200000c4   Data           4  lwiplib.o(.data)
+    g_StellarisIFData                        0x200000d8   Data          12  lwiplib.o(.data)
+    .data                                    0x200000e4   Section       16  lwiplib.o(.data)
+    .data                                    0x200000f4   Section       14  swupdate.o(.data)
+    g_psMagicPacketPCB                       0x200000f8   Data           4  swupdate.o(.data)
+    g_pui8MACAddr                            0x200000fc   Data           6  swupdate.o(.data)
+    .bss                                     0x20000104   Section       64  boot_demo_emac_flash.o(.bss)
+    .bss                                     0x20000144   Section    33416  lwiplib.o(.bss)
+    str                                      0x20000144   Data          16  lwiplib.o(.bss)
+    memp_tab                                 0x2000619c   Data          32  lwiplib.o(.bss)
+    memp_memory                              0x200061bc   Data        7779  lwiplib.o(.bss)
+    inseg                                    0x2000810c   Data          16  lwiplib.o(.bss)
+    arp_table                                0x2000811c   Data         200  lwiplib.o(.bss)
+    g_sNetIF                                 0x20008394   Data          56  lwiplib.o(.bss)
+    STACK                                    0x200083d0   Section     8192  startup_rvmdk.o(STACK)
+    StackMem                                 0x200083d0   Data           0  startup_rvmdk.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  boot_demo_emac_flash.o ABSOLUTE
+    __arm_fini_                               - Undefined Weak Reference
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    __Vectors                                0x00004000   Data           0  startup_rvmdk.o(RESET)
+    Reset_Handler                            0x00004201   Thumb Code     0  startup_rvmdk.o(RESET)
+    __main                                   0x0000421d   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x0000421d   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x00004221   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x00004225   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x00004225   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x00004225   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x00004225   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_lib_shutdown_fini                   0x0000422d   Thumb Code     0  entry12b.o(.ARM.Collect$$$$0000000E)
+    __rt_final_cpp                           0x00004231   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000F)
+    __rt_final_exit                          0x00004231   Thumb Code     0  entry11a.o(.ARM.Collect$$$$00000011)
+    SysCtlDelay                              0x00004235   Thumb Code     6  sysctl.o(.emb_text)
+    CPUcpsid                                 0x0000423d   Thumb Code     8  cpu.o(.emb_text)
+    CPUprimask                               0x00004245   Thumb Code     6  cpu.o(.emb_text)
+    CPUcpsie                                 0x0000424b   Thumb Code     8  cpu.o(.emb_text)
+    CPUwfi                                   0x00004253   Thumb Code     4  cpu.o(.emb_text)
+    CPUbasepriSet                            0x00004257   Thumb Code     6  cpu.o(.emb_text)
+    CPUbasepriGet                            0x0000425d   Thumb Code     6  cpu.o(.emb_text)
+    __aeabi_memcpy                           0x00004263   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x00004263   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x00004263   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00004287   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00004287   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00004287   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00004295   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00004295   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00004295   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x00004299   Thumb Code    18  memseta.o(.text)
+    memcmp                                   0x000042ab   Thumb Code    26  memcmp.o(.text)
+    __scatterload                            0x000042c5   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x000042c5   Thumb Code     0  init.o(.text)
+    EMACAddrGet                              0x000042e9   Thumb Code    30  emac.o(i.EMACAddrGet)
+    EMACConfigGet                            0x00004309   Thumb Code    62  emac.o(i.EMACConfigGet)
+    EMACConfigSet                            0x0000434d   Thumb Code    50  emac.o(i.EMACConfigSet)
+    EMACFrameFilterSet                       0x00004385   Thumb Code    12  emac.o(i.EMACFrameFilterSet)
+    EMACIntClear                             0x00004395   Thumb Code    60  emac.o(i.EMACIntClear)
+    EMACIntEnable                            0x000043d1   Thumb Code    66  emac.o(i.EMACIntEnable)
+    EMACIntStatus                            0x00004413   Thumb Code    46  emac.o(i.EMACIntStatus)
+    EMACPHYConfigSet                         0x00004441   Thumb Code   100  emac.o(i.EMACPHYConfigSet)
+    EMACPHYRead                              0x000044b1   Thumb Code    42  emac.o(i.EMACPHYRead)
+    EMACPHYWrite                             0x000044db   Thumb Code    42  emac.o(i.EMACPHYWrite)
+    EMACPowerManagementStatusGet             0x00004505   Thumb Code     8  emac.o(i.EMACPowerManagementStatusGet)
+    EMACRxDMADescriptorListSet               0x0000450d   Thumb Code     6  emac.o(i.EMACRxDMADescriptorListSet)
+    EMACRxEnable                             0x00004513   Thumb Code    22  emac.o(i.EMACRxEnable)
+    EMACTimestampIntStatus                   0x00004529   Thumb Code     6  emac.o(i.EMACTimestampIntStatus)
+    EMACTxDMADescriptorListSet               0x0000452f   Thumb Code     6  emac.o(i.EMACTxDMADescriptorListSet)
+    EMACTxDMAPollDemand                      0x00004535   Thumb Code     8  emac.o(i.EMACTxDMAPollDemand)
+    EMACTxEnable                             0x0000453d   Thumb Code    22  emac.o(i.EMACTxEnable)
+    FlashUserGet                             0x00004555   Thumb Code    18  flash.o(i.FlashUserGet)
+    InitDMADescriptors                       0x0000456d   Thumb Code   168  lwiplib.o(i.InitDMADescriptors)
+    IntEnable                                0x00004629   Thumb Code    92  interrupt.o(i.IntEnable)
+    IntMasterEnable                          0x0000468d   Thumb Code    14  interrupt.o(i.IntMasterEnable)
+    SetupForEthernet                         0x0000469d   Thumb Code   156  boot_demo_emac_flash.o(i.SetupForEthernet)
+    SetupForUART                             0x0000477d   Thumb Code    84  boot_demo_emac_flash.o(i.SetupForUART)
+    SoftwareUpdateBegin                      0x000047e1   Thumb Code    48  swupdate.o(i.SoftwareUpdateBegin)
+    SoftwareUpdateInit                       0x00004811   Thumb Code    68  swupdate.o(i.SoftwareUpdateInit)
+    SoftwareUpdateRequestCallback            0x00004861   Thumb Code     8  boot_demo_emac_flash.o(i.SoftwareUpdateRequestCallback)
+    SysCtlClockFreqSet                       0x000048c9   Thumb Code   700  sysctl.o(i.SysCtlClockFreqSet)
+    SysCtlPeripheralReady                    0x00004bad   Thumb Code    40  sysctl.o(i.SysCtlPeripheralReady)
+    SysCtlPeripheralReset                    0x00004bd9   Thumb Code    56  sysctl.o(i.SysCtlPeripheralReset)
+    SysTickDisable                           0x00004c15   Thumb Code    14  systick.o(i.SysTickDisable)
+    SysTickIntDisable                        0x00004c23   Thumb Code    14  systick.o(i.SysTickIntDisable)
+    SysTickIntHandler                        0x00004c31   Thumb Code     6  boot_demo_emac_flash.o(i.SysTickIntHandler)
+    __scatterload_copy                       0x00004c37   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00004c45   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00004c47   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    autoip_arp_reply                         0x00004c99   Thumb Code   124  lwiplib.o(i.autoip_arp_reply)
+    autoip_network_changed                   0x00004d15   Thumb Code    34  lwiplib.o(i.autoip_network_changed)
+    autoip_start                             0x00004d45   Thumb Code   128  lwiplib.o(i.autoip_start)
+    autoip_stop                              0x00004e15   Thumb Code    16  lwiplib.o(i.autoip_stop)
+    autoip_tmr                               0x00004e3d   Thumb Code   264  lwiplib.o(i.autoip_tmr)
+    dhcp_arp_reply                           0x00004f4d   Thumb Code    30  lwiplib.o(i.dhcp_arp_reply)
+    dhcp_coarse_tmr                          0x0000506d   Thumb Code    90  lwiplib.o(i.dhcp_coarse_tmr)
+    dhcp_fine_tmr                            0x00005345   Thumb Code    46  lwiplib.o(i.dhcp_fine_tmr)
+    dhcp_network_changed                     0x000053d1   Thumb Code    84  lwiplib.o(i.dhcp_network_changed)
+    dhcp_release                             0x00005915   Thumb Code   160  lwiplib.o(i.dhcp_release)
+    dhcp_renew                               0x000059b9   Thumb Code   132  lwiplib.o(i.dhcp_renew)
+    dhcp_start                               0x00005b2d   Thumb Code   152  lwiplib.o(i.dhcp_start)
+    dhcp_stop                                0x00005bcd   Thumb Code    62  lwiplib.o(i.dhcp_stop)
+    etharp_cleanup_netif                     0x00005df1   Thumb Code    42  lwiplib.o(i.etharp_cleanup_netif)
+    etharp_output                            0x00005f35   Thumb Code   276  lwiplib.o(i.etharp_output)
+    etharp_query                             0x00006099   Thumb Code   266  lwiplib.o(i.etharp_query)
+    etharp_raw                               0x000061ad   Thumb Code   184  lwiplib.o(i.etharp_raw)
+    etharp_request                           0x0000626d   Thumb Code    32  lwiplib.o(i.etharp_request)
+    etharp_tmr                               0x000062b1   Thumb Code    66  lwiplib.o(i.etharp_tmr)
+    ethernet_input                           0x00006375   Thumb Code   156  lwiplib.o(i.ethernet_input)
+    icmp_dest_unreach                        0x00006419   Thumb Code     8  lwiplib.o(i.icmp_dest_unreach)
+    icmp_input                               0x00006421   Thumb Code   354  lwiplib.o(i.icmp_input)
+    inet_chksum                              0x00006601   Thumb Code    12  lwiplib.o(i.inet_chksum)
+    inet_chksum_pbuf                         0x0000660d   Thumb Code    72  lwiplib.o(i.inet_chksum_pbuf)
+    inet_chksum_pseudo                       0x00006655   Thumb Code   134  lwiplib.o(i.inet_chksum_pseudo)
+    ip4_addr_isbroadcast                     0x000066db   Thumb Code    46  lwiplib.o(i.ip4_addr_isbroadcast)
+    ip_input                                 0x00006709   Thumb Code   522  lwiplib.o(i.ip_input)
+    ip_output                                0x0000691d   Thumb Code    60  lwiplib.o(i.ip_output)
+    ip_output_if                             0x0000695d   Thumb Code   186  lwiplib.o(i.ip_output_if)
+    ip_route                                 0x00006a21   Thumb Code    62  lwiplib.o(i.ip_route)
+    lwIPEthernetIntHandler                   0x00006a69   Thumb Code   108  lwiplib.o(i.lwIPEthernetIntHandler)
+    lwIPInit                                 0x00006ae1   Thumb Code   182  lwiplib.o(i.lwIPInit)
+    lwIPTimer                                0x00006cfd   Thumb Code    20  lwiplib.o(i.lwIPTimer)
+    lwip_init                                0x00006d19   Thumb Code    18  lwiplib.o(i.lwip_init)
+    main                                     0x00006d81   Thumb Code   150  boot_demo_emac_flash.o(i.main)
+    mem_free                                 0x00006e2d   Thumb Code    82  lwiplib.o(i.mem_free)
+    mem_init                                 0x00006e89   Thumb Code    48  lwiplib.o(i.mem_init)
+    mem_malloc                               0x00006ec5   Thumb Code   228  lwiplib.o(i.mem_malloc)
+    mem_trim                                 0x00006fb1   Thumb Code   228  lwiplib.o(i.mem_trim)
+    memp_free                                0x0000709d   Thumb Code    58  lwiplib.o(i.memp_free)
+    memp_init                                0x000070e1   Thumb Code   108  lwiplib.o(i.memp_init)
+    memp_malloc                              0x00007159   Thumb Code    86  lwiplib.o(i.memp_malloc)
+    netif_add                                0x000071b9   Thumb Code    72  lwiplib.o(i.netif_add)
+    netif_set_addr                           0x00007205   Thumb Code    32  lwiplib.o(i.netif_set_addr)
+    netif_set_down                           0x00007225   Thumb Code    26  lwiplib.o(i.netif_set_down)
+    netif_set_gw                             0x0000723f   Thumb Code     8  lwiplib.o(i.netif_set_gw)
+    netif_set_ipaddr                         0x00007249   Thumb Code   112  lwiplib.o(i.netif_set_ipaddr)
+    netif_set_link_down                      0x000072bd   Thumb Code    18  lwiplib.o(i.netif_set_link_down)
+    netif_set_link_up                        0x000072cf   Thumb Code    66  lwiplib.o(i.netif_set_link_up)
+    netif_set_netmask                        0x00007311   Thumb Code     8  lwiplib.o(i.netif_set_netmask)
+    netif_set_up                             0x00007319   Thumb Code    32  lwiplib.o(i.netif_set_up)
+    pbuf_alloc                               0x00007339   Thumb Code   286  lwiplib.o(i.pbuf_alloc)
+    pbuf_cat                                 0x00007457   Thumb Code    40  lwiplib.o(i.pbuf_cat)
+    pbuf_chain                               0x0000747f   Thumb Code    18  lwiplib.o(i.pbuf_chain)
+    pbuf_clen                                0x00007491   Thumb Code    18  lwiplib.o(i.pbuf_clen)
+    pbuf_copy                                0x000074a3   Thumb Code   154  lwiplib.o(i.pbuf_copy)
+    pbuf_copy_partial                        0x0000753d   Thumb Code   104  lwiplib.o(i.pbuf_copy_partial)
+    pbuf_free                                0x000075a5   Thumb Code    82  lwiplib.o(i.pbuf_free)
+    pbuf_header                              0x000075f7   Thumb Code    96  lwiplib.o(i.pbuf_header)
+    pbuf_realloc                             0x00007671   Thumb Code    78  lwiplib.o(i.pbuf_realloc)
+    pbuf_ref                                 0x000076bf   Thumb Code    26  lwiplib.o(i.pbuf_ref)
+    raw_input                                0x0000772d   Thumb Code   108  lwiplib.o(i.raw_input)
+    sys_arch_protect                         0x0000779d   Thumb Code    10  lwiplib.o(i.sys_arch_protect)
+    sys_arch_unprotect                       0x000077a7   Thumb Code    16  lwiplib.o(i.sys_arch_unprotect)
+    sys_timeout                              0x000077b9   Thumb Code    88  lwiplib.o(i.sys_timeout)
+    sys_timeouts_init                        0x00007815   Thumb Code    60  lwiplib.o(i.sys_timeouts_init)
+    tcp_abandon                              0x00007865   Thumb Code   144  lwiplib.o(i.tcp_abandon)
+    tcp_abort                                0x000078f9   Thumb Code     6  lwiplib.o(i.tcp_abort)
+    tcp_alloc                                0x00007901   Thumb Code   262  lwiplib.o(i.tcp_alloc)
+    tcp_close                                0x00007a19   Thumb Code    20  lwiplib.o(i.tcp_close)
+    tcp_debug_print                          0x00007bf1   Thumb Code     2  lwiplib.o(i.tcp_debug_print)
+    tcp_eff_send_mss                         0x00007bf3   Thumb Code    32  lwiplib.o(i.tcp_eff_send_mss)
+    tcp_enqueue_flags                        0x00007c15   Thumb Code   208  lwiplib.o(i.tcp_enqueue_flags)
+    tcp_fasttmr                              0x00007ce9   Thumb Code    88  lwiplib.o(i.tcp_fasttmr)
+    tcp_input                                0x00007d45   Thumb Code   860  lwiplib.o(i.tcp_input)
+    tcp_keepalive                            0x000080a9   Thumb Code    86  lwiplib.o(i.tcp_keepalive)
+    tcp_next_iss                             0x000081e9   Thumb Code    12  lwiplib.o(i.tcp_next_iss)
+    tcp_output                               0x00008269   Thumb Code   336  lwiplib.o(i.tcp_output)
+    tcp_pcb_purge                            0x00008551   Thumb Code    66  lwiplib.o(i.tcp_pcb_purge)
+    tcp_pcb_remove                           0x00008595   Thumb Code    90  lwiplib.o(i.tcp_pcb_remove)
+    tcp_pcbs_sane                            0x000085f5   Thumb Code    26  lwiplib.o(i.tcp_pcbs_sane)
+    tcp_process_refused_data                 0x00008925   Thumb Code   102  lwiplib.o(i.tcp_process_refused_data)
+    tcp_recv_null                            0x00008fe9   Thumb Code    36  lwiplib.o(i.tcp_recv_null)
+    tcp_recved                               0x0000900d   Thumb Code    52  lwiplib.o(i.tcp_recved)
+    tcp_rexmit                               0x00009041   Thumb Code    68  lwiplib.o(i.tcp_rexmit)
+    tcp_rexmit_fast                          0x00009085   Thumb Code    88  lwiplib.o(i.tcp_rexmit_fast)
+    tcp_rexmit_rto                           0x000090dd   Thumb Code    46  lwiplib.o(i.tcp_rexmit_rto)
+    tcp_rst                                  0x0000910d   Thumb Code   130  lwiplib.o(i.tcp_rst)
+    tcp_seg_copy                             0x00009195   Thumb Code    36  lwiplib.o(i.tcp_seg_copy)
+    tcp_seg_free                             0x000091b9   Thumb Code    28  lwiplib.o(i.tcp_seg_free)
+    tcp_segs_free                            0x000091d5   Thumb Code    18  lwiplib.o(i.tcp_segs_free)
+    tcp_send_empty_ack                       0x000091e7   Thumb Code    86  lwiplib.o(i.tcp_send_empty_ack)
+    tcp_send_fin                             0x0000923d   Thumb Code    50  lwiplib.o(i.tcp_send_fin)
+    tcp_slowtmr                              0x00009271   Thumb Code   626  lwiplib.o(i.tcp_slowtmr)
+    tcp_timer_needed                         0x000094f1   Thumb Code    36  lwiplib.o(i.tcp_timer_needed)
+    tcp_tmr                                  0x0000957d   Thumb Code    28  lwiplib.o(i.tcp_tmr)
+    tcp_update_rcv_ann_wnd                   0x0000959d   Thumb Code    52  lwiplib.o(i.tcp_update_rcv_ann_wnd)
+    tcp_zero_window_probe                    0x000095d1   Thumb Code   168  lwiplib.o(i.tcp_zero_window_probe)
+    tivaif_init                              0x00009769   Thumb Code    40  lwiplib.o(i.tivaif_init)
+    tivaif_interrupt                         0x0000979d   Thumb Code    68  lwiplib.o(i.tivaif_interrupt)
+    tivaif_process_phy_interrupt             0x000097e5   Thumb Code   118  lwiplib.o(i.tivaif_process_phy_interrupt)
+    udp_bind                                 0x00009b99   Thumb Code   162  lwiplib.o(i.udp_bind)
+    udp_connect                              0x00009c41   Thumb Code    70  lwiplib.o(i.udp_connect)
+    udp_input                                0x00009c8d   Thumb Code   460  lwiplib.o(i.udp_input)
+    udp_new                                  0x00009e61   Thumb Code    26  lwiplib.o(i.udp_new)
+    udp_recv                                 0x00009e7b   Thumb Code     6  lwiplib.o(i.udp_recv)
+    udp_remove                               0x00009e81   Thumb Code    40  lwiplib.o(i.udp_remove)
+    udp_sendto_if                            0x00009ead   Thumb Code   216  lwiplib.o(i.udp_sendto_if)
+    usnprintf                                0x00009f89   Thumb Code    18  ustdlib.o(i.usnprintf)
+    ustrncpy                                 0x00009f9b   Thumb Code    36  ustdlib.o(i.ustrncpy)
+    uvsnprintf                               0x00009fc1   Thumb Code   580  ustdlib.o(i.uvsnprintf)
+    ip_addr_any                              0x0000a210   Data           4  lwiplib.o(.constdata)
+    ip_addr_broadcast                        0x0000a214   Data           4  lwiplib.o(.constdata)
+    ethbroadcast                             0x0000a218   Data           6  lwiplib.o(.constdata)
+    ethzero                                  0x0000a21e   Data           6  lwiplib.o(.constdata)
+    tcp_persist_backoff                      0x0000a224   Data           7  lwiplib.o(.constdata)
+    tcp_state_str                            0x0000a24c   Data          44  lwiplib.o(.constdata)
+    tcp_backoff                              0x0000a278   Data          13  lwiplib.o(.constdata)
+    tcp_pcb_lists                            0x0000a288   Data          16  lwiplib.o(.constdata)
+    Region$$Table$$Base                      0x0000a6d0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000a6f0   Number         0  anon$$obj.o(Region$$Table)
+    g_ui32SysClock                           0x20000004   Data           4  boot_demo_emac_flash.o(.data)
+    pbuf_free_ooseq_pending                  0x2000000a   Data           1  lwiplib.o(.data)
+    tcp_active_pcbs_changed                  0x2000000b   Data           1  lwiplib.o(.data)
+    g_ui32LocalTimer                         0x2000001c   Data           4  lwiplib.o(.data)
+    netif_list                               0x20000054   Data           4  lwiplib.o(.data)
+    netif_default                            0x20000058   Data           4  lwiplib.o(.data)
+    tcp_ticks                                0x20000060   Data           4  lwiplib.o(.data)
+    tcp_bound_pcbs                           0x20000064   Data           4  lwiplib.o(.data)
+    tcp_listen_pcbs                          0x20000068   Data           4  lwiplib.o(.data)
+    tcp_active_pcbs                          0x2000006c   Data           4  lwiplib.o(.data)
+    tcp_tw_pcbs                              0x20000070   Data           4  lwiplib.o(.data)
+    tcp_tmp_pcb                              0x20000074   Data           4  lwiplib.o(.data)
+    tcp_input_pcb                            0x2000008c   Data           4  lwiplib.o(.data)
+    udp_pcbs                                 0x2000009c   Data           4  lwiplib.o(.data)
+    current_netif                            0x200000a0   Data           4  lwiplib.o(.data)
+    current_header                           0x200000a4   Data           4  lwiplib.o(.data)
+    current_iphdr_src                        0x200000a8   Data           4  lwiplib.o(.data)
+    current_iphdr_dest                       0x200000ac   Data           4  lwiplib.o(.data)
+    g_ui32NormalInts                         0x200000b0   Data           4  lwiplib.o(.data)
+    g_ui32AbnormalInts                       0x200000b4   Data           4  lwiplib.o(.data)
+    g_pfnTimerHandler                        0x200000b8   Data           4  lwiplib.o(.data)
+    g_TxDescList                             0x200000c8   Data          16  lwiplib.o(.data)
+    g_RxDescList                             0x200000e4   Data          16  lwiplib.o(.data)
+    g_pfnUpdateCallback                      0x200000f4   Data           4  swupdate.o(.data)
+    g_pcMACAddr                              0x20000104   Data          32  boot_demo_emac_flash.o(.bss)
+    g_pcIPAddr                               0x20000124   Data          32  boot_demo_emac_flash.o(.bss)
+    dhcp_rx_options_val                      0x20000154   Data          40  lwiplib.o(.bss)
+    dhcp_rx_options_given                    0x2000017c   Data          10  lwiplib.o(.bss)
+    ram_heap                                 0x20000186   Data       24596  lwiplib.o(.bss)
+    lwip_stats                               0x20008020   Data         234  lwiplib.o(.bss)
+    g_pTxDescriptors                         0x200081e4   Data         288  lwiplib.o(.bss)
+    g_pRxDescriptors                         0x20008304   Data         144  lwiplib.o(.bss)
+    __initial_sp                             0x2000a3d0   Data           0  startup_rvmdk.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x00004201
+
+  Load Region LR_IROM (Base: 0x00004000, Size: 0x000067f4, Max: 0x000fc000, ABSOLUTE)
+
+    Execution Region ER_IROM (Exec base: 0x00004000, Load base: 0x00004000, Size: 0x000066f0, Max: 0x000fc000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00004000   0x00004000   0x0000021c   Code   RO         1796  * RESET               startup_rvmdk.o
+    0x0000421c   0x0000421c   0x00000000   Code   RO         3153  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x0000421c   0x0000421c   0x00000004   Code   RO         3166    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00004220   0x00004220   0x00000004   Code   RO         3169    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00004224   0x00004224   0x00000000   Code   RO         3171    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00004224   0x00004224   0x00000000   Code   RO         3173    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00004224   0x00004224   0x00000008   Code   RO         3174    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x0000422c   0x0000422c   0x00000004   Code   RO         3181    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
+    0x00004230   0x00004230   0x00000000   Code   RO         3176    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
+    0x00004230   0x00004230   0x00000000   Code   RO         3178    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
+    0x00004230   0x00004230   0x00000004   Code   RO         3167    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00004234   0x00004234   0x00000006   Code   RO         2700    .emb_text           driverlib.lib(sysctl.o)
+    0x0000423a   0x0000423a   0x00000002   PAD
+    0x0000423c   0x0000423c   0x00000026   Code   RO         3105    .emb_text           driverlib.lib(cpu.o)
+    0x00004262   0x00004262   0x00000024   Code   RO         3156    .text               mc_w.l(memcpya.o)
+    0x00004286   0x00004286   0x00000024   Code   RO         3158    .text               mc_w.l(memseta.o)
+    0x000042aa   0x000042aa   0x0000001a   Code   RO         3162    .text               mc_w.l(memcmp.o)
+    0x000042c4   0x000042c4   0x00000024   Code   RO         3182    .text               mc_w.l(init.o)
+    0x000042e8   0x000042e8   0x0000001e   Code   RO         1942    i.EMACAddrGet       driverlib.lib(emac.o)
+    0x00004306   0x00004306   0x00000002   PAD
+    0x00004308   0x00004308   0x00000044   Code   RO         1944    i.EMACConfigGet     driverlib.lib(emac.o)
+    0x0000434c   0x0000434c   0x00000038   Code   RO         1945    i.EMACConfigSet     driverlib.lib(emac.o)
+    0x00004384   0x00004384   0x00000010   Code   RO         1948    i.EMACFrameFilterSet  driverlib.lib(emac.o)
+    0x00004394   0x00004394   0x0000003c   Code   RO         1953    i.EMACIntClear      driverlib.lib(emac.o)
+    0x000043d0   0x000043d0   0x00000042   Code   RO         1955    i.EMACIntEnable     driverlib.lib(emac.o)
+    0x00004412   0x00004412   0x0000002e   Code   RO         1957    i.EMACIntStatus     driverlib.lib(emac.o)
+    0x00004440   0x00004440   0x00000070   Code   RO         1965    i.EMACPHYConfigSet  driverlib.lib(emac.o)
+    0x000044b0   0x000044b0   0x0000002a   Code   RO         1972    i.EMACPHYRead       driverlib.lib(emac.o)
+    0x000044da   0x000044da   0x0000002a   Code   RO         1973    i.EMACPHYWrite      driverlib.lib(emac.o)
+    0x00004504   0x00004504   0x00000008   Code   RO         1976    i.EMACPowerManagementStatusGet  driverlib.lib(emac.o)
+    0x0000450c   0x0000450c   0x00000006   Code   RO         1983    i.EMACRxDMADescriptorListSet  driverlib.lib(emac.o)
+    0x00004512   0x00004512   0x00000016   Code   RO         1986    i.EMACRxEnable      driverlib.lib(emac.o)
+    0x00004528   0x00004528   0x00000006   Code   RO         1994    i.EMACTimestampIntStatus  driverlib.lib(emac.o)
+    0x0000452e   0x0000452e   0x00000006   Code   RO         2008    i.EMACTxDMADescriptorListSet  driverlib.lib(emac.o)
+    0x00004534   0x00004534   0x00000008   Code   RO         2009    i.EMACTxDMAPollDemand  driverlib.lib(emac.o)
+    0x0000453c   0x0000453c   0x00000016   Code   RO         2011    i.EMACTxEnable      driverlib.lib(emac.o)
+    0x00004552   0x00004552   0x00000002   PAD
+    0x00004554   0x00004554   0x00000018   Code   RO         2479    i.FlashUserGet      driverlib.lib(flash.o)
+    0x0000456c   0x0000456c   0x000000bc   Code   RO          191    i.InitDMADescriptors  lwiplib.o
+    0x00004628   0x00004628   0x00000064   Code   RO         2585    i.IntEnable         driverlib.lib(interrupt.o)
+    0x0000468c   0x0000468c   0x0000000e   Code   RO         2588    i.IntMasterEnable   driverlib.lib(interrupt.o)
+    0x0000469a   0x0000469a   0x00000002   PAD
+    0x0000469c   0x0000469c   0x000000e0   Code   RO            1    i.SetupForEthernet  boot_demo_emac_flash.o
+    0x0000477c   0x0000477c   0x00000064   Code   RO            2    i.SetupForUART      boot_demo_emac_flash.o
+    0x000047e0   0x000047e0   0x00000030   Code   RO         1801    i.SoftwareUpdateBegin  swupdate.o
+    0x00004810   0x00004810   0x00000050   Code   RO         1802    i.SoftwareUpdateInit  swupdate.o
+    0x00004860   0x00004860   0x0000000c   Code   RO            4    i.SoftwareUpdateRequestCallback  boot_demo_emac_flash.o
+    0x0000486c   0x0000486c   0x0000005c   Code   RO         1803    i.SoftwareUpdateUDPReceive  swupdate.o
+    0x000048c8   0x000048c8   0x000002e4   Code   RO         2702    i.SysCtlClockFreqSet  driverlib.lib(sysctl.o)
+    0x00004bac   0x00004bac   0x0000002c   Code   RO         2738    i.SysCtlPeripheralReady  driverlib.lib(sysctl.o)
+    0x00004bd8   0x00004bd8   0x0000003c   Code   RO         2739    i.SysCtlPeripheralReset  driverlib.lib(sysctl.o)
+    0x00004c14   0x00004c14   0x0000000e   Code   RO         3042    i.SysTickDisable    driverlib.lib(systick.o)
+    0x00004c22   0x00004c22   0x0000000e   Code   RO         3044    i.SysTickIntDisable  driverlib.lib(systick.o)
+    0x00004c30   0x00004c30   0x00000006   Code   RO            5    i.SysTickIntHandler  boot_demo_emac_flash.o
+    0x00004c36   0x00004c36   0x0000000e   Code   RO         3186    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00004c44   0x00004c44   0x00000002   Code   RO         3187    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00004c46   0x00004c46   0x0000000e   Code   RO         3188    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00004c54   0x00004c54   0x0000001c   Code   RO          192    i.arp_timer         lwiplib.o
+    0x00004c70   0x00004c70   0x00000028   Code   RO          193    i.autoip_arp_announce  lwiplib.o
+    0x00004c98   0x00004c98   0x0000007c   Code   RO          194    i.autoip_arp_reply  lwiplib.o
+    0x00004d14   0x00004d14   0x00000022   Code   RO          195    i.autoip_network_changed  lwiplib.o
+    0x00004d36   0x00004d36   0x0000000c   Code   RO          196    i.autoip_restart    lwiplib.o
+    0x00004d42   0x00004d42   0x00000002   PAD
+    0x00004d44   0x00004d44   0x0000008c   Code   RO          198    i.autoip_start      lwiplib.o
+    0x00004dd0   0x00004dd0   0x00000044   Code   RO          199    i.autoip_start_probing  lwiplib.o
+    0x00004e14   0x00004e14   0x00000010   Code   RO          200    i.autoip_stop       lwiplib.o
+    0x00004e24   0x00004e24   0x00000018   Code   RO          201    i.autoip_timer      lwiplib.o
+    0x00004e3c   0x00004e3c   0x00000110   Code   RO          202    i.autoip_tmr        lwiplib.o
+    0x00004f4c   0x00004f4c   0x0000001e   Code   RO          203    i.dhcp_arp_reply    lwiplib.o
+    0x00004f6a   0x00004f6a   0x000000d2   Code   RO          204    i.dhcp_bind         lwiplib.o
+    0x0000503c   0x0000503c   0x00000030   Code   RO          205    i.dhcp_check        lwiplib.o
+    0x0000506c   0x0000506c   0x00000060   Code   RO          207    i.dhcp_coarse_tmr   lwiplib.o
+    0x000050cc   0x000050cc   0x0000011c   Code   RO          208    i.dhcp_create_msg   lwiplib.o
+    0x000051e8   0x000051e8   0x00000074   Code   RO          209    i.dhcp_decline      lwiplib.o
+    0x0000525c   0x0000525c   0x00000016   Code   RO          210    i.dhcp_delete_msg   lwiplib.o
+    0x00005272   0x00005272   0x00000002   PAD
+    0x00005274   0x00005274   0x000000d0   Code   RO          211    i.dhcp_discover     lwiplib.o
+    0x00005344   0x00005344   0x00000034   Code   RO          212    i.dhcp_fine_tmr     lwiplib.o
+    0x00005378   0x00005378   0x00000058   Code   RO          213    i.dhcp_handle_ack   lwiplib.o
+    0x000053d0   0x000053d0   0x00000054   Code   RO          215    i.dhcp_network_changed  lwiplib.o
+    0x00005424   0x00005424   0x00000020   Code   RO          216    i.dhcp_option       lwiplib.o
+    0x00005444   0x00005444   0x00000010   Code   RO          217    i.dhcp_option_byte  lwiplib.o
+    0x00005454   0x00005454   0x00000042   Code   RO          218    i.dhcp_option_long  lwiplib.o
+    0x00005496   0x00005496   0x00000022   Code   RO          219    i.dhcp_option_short  lwiplib.o
+    0x000054b8   0x000054b8   0x0000002c   Code   RO          220    i.dhcp_option_trailer  lwiplib.o
+    0x000054e4   0x000054e4   0x00000200   Code   RO          221    i.dhcp_parse_reply  lwiplib.o
+    0x000056e4   0x000056e4   0x00000088   Code   RO          222    i.dhcp_rebind       lwiplib.o
+    0x0000576c   0x0000576c   0x0000009c   Code   RO          223    i.dhcp_reboot       lwiplib.o
+    0x00005808   0x00005808   0x0000010c   Code   RO          224    i.dhcp_recv         lwiplib.o
+    0x00005914   0x00005914   0x000000a4   Code   RO          225    i.dhcp_release      lwiplib.o
+    0x000059b8   0x000059b8   0x00000084   Code   RO          226    i.dhcp_renew        lwiplib.o
+    0x00005a3c   0x00005a3c   0x000000e0   Code   RO          227    i.dhcp_select       lwiplib.o
+    0x00005b1c   0x00005b1c   0x00000010   Code   RO          228    i.dhcp_set_state    lwiplib.o
+    0x00005b2c   0x00005b2c   0x000000a0   Code   RO          230    i.dhcp_start        lwiplib.o
+    0x00005bcc   0x00005bcc   0x0000003e   Code   RO          231    i.dhcp_stop         lwiplib.o
+    0x00005c0a   0x00005c0a   0x00000088   Code   RO          232    i.dhcp_timeout      lwiplib.o
+    0x00005c92   0x00005c92   0x00000002   PAD
+    0x00005c94   0x00005c94   0x0000001c   Code   RO          233    i.dhcp_timer_coarse  lwiplib.o
+    0x00005cb0   0x00005cb0   0x0000001c   Code   RO          234    i.dhcp_timer_fine   lwiplib.o
+    0x00005ccc   0x00005ccc   0x00000124   Code   RO          235    i.etharp_arp_input  lwiplib.o
+    0x00005df0   0x00005df0   0x00000030   Code   RO          236    i.etharp_cleanup_netif  lwiplib.o
+    0x00005e20   0x00005e20   0x000000f0   Code   RO          238    i.etharp_find_entry  lwiplib.o
+    0x00005f10   0x00005f10   0x00000024   Code   RO          239    i.etharp_free_entry  lwiplib.o
+    0x00005f34   0x00005f34   0x00000120   Code   RO          240    i.etharp_output     lwiplib.o
+    0x00006054   0x00006054   0x00000044   Code   RO          241    i.etharp_output_to_arp_index  lwiplib.o
+    0x00006098   0x00006098   0x00000114   Code   RO          242    i.etharp_query      lwiplib.o
+    0x000061ac   0x000061ac   0x000000c0   Code   RO          243    i.etharp_raw        lwiplib.o
+    0x0000626c   0x0000626c   0x00000024   Code   RO          244    i.etharp_request    lwiplib.o
+    0x00006290   0x00006290   0x00000020   Code   RO          245    i.etharp_send_ip    lwiplib.o
+    0x000062b0   0x000062b0   0x00000048   Code   RO          246    i.etharp_tmr        lwiplib.o
+    0x000062f8   0x000062f8   0x0000007c   Code   RO          247    i.etharp_update_arp_entry  lwiplib.o
+    0x00006374   0x00006374   0x000000a4   Code   RO          248    i.ethernet_input    lwiplib.o
+    0x00006418   0x00006418   0x00000008   Code   RO          249    i.icmp_dest_unreach  lwiplib.o
+    0x00006420   0x00006420   0x0000016c   Code   RO          250    i.icmp_input        lwiplib.o
+    0x0000658c   0x0000658c   0x00000074   Code   RO          251    i.icmp_send_response  lwiplib.o
+    0x00006600   0x00006600   0x0000000c   Code   RO          252    i.inet_chksum       lwiplib.o
+    0x0000660c   0x0000660c   0x00000048   Code   RO          253    i.inet_chksum_pbuf  lwiplib.o
+    0x00006654   0x00006654   0x00000086   Code   RO          254    i.inet_chksum_pseudo  lwiplib.o
+    0x000066da   0x000066da   0x0000002e   Code   RO          256    i.ip4_addr_isbroadcast  lwiplib.o
+    0x00006708   0x00006708   0x00000214   Code   RO          258    i.ip_input          lwiplib.o
+    0x0000691c   0x0000691c   0x00000040   Code   RO          259    i.ip_output         lwiplib.o
+    0x0000695c   0x0000695c   0x000000c4   Code   RO          260    i.ip_output_if      lwiplib.o
+    0x00006a20   0x00006a20   0x00000048   Code   RO          261    i.ip_route          lwiplib.o
+    0x00006a68   0x00006a68   0x00000078   Code   RO          266    i.lwIPEthernetIntHandler  lwiplib.o
+    0x00006ae0   0x00006ae0   0x000000cc   Code   RO          267    i.lwIPInit          lwiplib.o
+    0x00006bac   0x00006bac   0x00000078   Code   RO          268    i.lwIPLinkDetect    lwiplib.o
+    0x00006c24   0x00006c24   0x00000060   Code   RO          274    i.lwIPPrivateInit   lwiplib.o
+    0x00006c84   0x00006c84   0x00000078   Code   RO          276    i.lwIPServiceTimers  lwiplib.o
+    0x00006cfc   0x00006cfc   0x0000001c   Code   RO          277    i.lwIPTimer         lwiplib.o
+    0x00006d18   0x00006d18   0x00000012   Code   RO          281    i.lwip_init         lwiplib.o
+    0x00006d2a   0x00006d2a   0x00000056   Code   RO          284    i.lwip_standard_chksum  lwiplib.o
+    0x00006d80   0x00006d80   0x000000ac   Code   RO            6    i.main              boot_demo_emac_flash.o
+    0x00006e2c   0x00006e2c   0x0000005c   Code   RO          286    i.mem_free          lwiplib.o
+    0x00006e88   0x00006e88   0x0000003c   Code   RO          287    i.mem_init          lwiplib.o
+    0x00006ec4   0x00006ec4   0x000000ec   Code   RO          288    i.mem_malloc        lwiplib.o
+    0x00006fb0   0x00006fb0   0x000000ec   Code   RO          289    i.mem_trim          lwiplib.o
+    0x0000709c   0x0000709c   0x00000044   Code   RO          290    i.memp_free         lwiplib.o
+    0x000070e0   0x000070e0   0x00000078   Code   RO          291    i.memp_init         lwiplib.o
+    0x00007158   0x00007158   0x00000060   Code   RO          292    i.memp_malloc       lwiplib.o
+    0x000071b8   0x000071b8   0x0000004c   Code   RO          293    i.netif_add         lwiplib.o
+    0x00007204   0x00007204   0x00000020   Code   RO          297    i.netif_set_addr    lwiplib.o
+    0x00007224   0x00007224   0x0000001a   Code   RO          299    i.netif_set_down    lwiplib.o
+    0x0000723e   0x0000723e   0x00000008   Code   RO          300    i.netif_set_gw      lwiplib.o
+    0x00007246   0x00007246   0x00000002   PAD
+    0x00007248   0x00007248   0x00000074   Code   RO          301    i.netif_set_ipaddr  lwiplib.o
+    0x000072bc   0x000072bc   0x00000012   Code   RO          302    i.netif_set_link_down  lwiplib.o
+    0x000072ce   0x000072ce   0x00000042   Code   RO          303    i.netif_set_link_up  lwiplib.o
+    0x00007310   0x00007310   0x00000008   Code   RO          304    i.netif_set_netmask  lwiplib.o
+    0x00007318   0x00007318   0x00000020   Code   RO          305    i.netif_set_up      lwiplib.o
+    0x00007338   0x00007338   0x0000011e   Code   RO          306    i.pbuf_alloc        lwiplib.o
+    0x00007456   0x00007456   0x00000028   Code   RO          307    i.pbuf_cat          lwiplib.o
+    0x0000747e   0x0000747e   0x00000012   Code   RO          308    i.pbuf_chain        lwiplib.o
+    0x00007490   0x00007490   0x00000012   Code   RO          309    i.pbuf_clen         lwiplib.o
+    0x000074a2   0x000074a2   0x0000009a   Code   RO          311    i.pbuf_copy         lwiplib.o
+    0x0000753c   0x0000753c   0x00000068   Code   RO          312    i.pbuf_copy_partial  lwiplib.o
+    0x000075a4   0x000075a4   0x00000052   Code   RO          314    i.pbuf_free         lwiplib.o
+    0x000075f6   0x000075f6   0x00000060   Code   RO          317    i.pbuf_header       lwiplib.o
+    0x00007656   0x00007656   0x00000002   PAD
+    0x00007658   0x00007658   0x00000018   Code   RO          320    i.pbuf_pool_is_empty  lwiplib.o
+    0x00007670   0x00007670   0x0000004e   Code   RO          321    i.pbuf_realloc      lwiplib.o
+    0x000076be   0x000076be   0x0000001a   Code   RO          322    i.pbuf_ref          lwiplib.o
+    0x000076d8   0x000076d8   0x00000054   Code   RO          326    i.plug_holes        lwiplib.o
+    0x0000772c   0x0000772c   0x00000070   Code   RO          329    i.raw_input         lwiplib.o
+    0x0000779c   0x0000779c   0x0000000a   Code   RO          336    i.sys_arch_protect  lwiplib.o
+    0x000077a6   0x000077a6   0x00000010   Code   RO          337    i.sys_arch_unprotect  lwiplib.o
+    0x000077b6   0x000077b6   0x00000002   PAD
+    0x000077b8   0x000077b8   0x0000005c   Code   RO          341    i.sys_timeout       lwiplib.o
+    0x00007814   0x00007814   0x00000050   Code   RO          342    i.sys_timeouts_init  lwiplib.o
+    0x00007864   0x00007864   0x00000094   Code   RO          344    i.tcp_abandon       lwiplib.o
+    0x000078f8   0x000078f8   0x00000006   Code   RO          345    i.tcp_abort         lwiplib.o
+    0x000078fe   0x000078fe   0x00000002   PAD
+    0x00007900   0x00007900   0x00000118   Code   RO          348    i.tcp_alloc         lwiplib.o
+    0x00007a18   0x00007a18   0x00000014   Code   RO          351    i.tcp_close         lwiplib.o
+    0x00007a2c   0x00007a2c   0x00000124   Code   RO          352    i.tcp_close_shutdown  lwiplib.o
+    0x00007b50   0x00007b50   0x000000a0   Code   RO          354    i.tcp_create_segment  lwiplib.o
+    0x00007bf0   0x00007bf0   0x00000002   Code   RO          355    i.tcp_debug_print   lwiplib.o
+    0x00007bf2   0x00007bf2   0x00000020   Code   RO          360    i.tcp_eff_send_mss  lwiplib.o
+    0x00007c12   0x00007c12   0x00000002   PAD
+    0x00007c14   0x00007c14   0x000000d4   Code   RO          361    i.tcp_enqueue_flags  lwiplib.o
+    0x00007ce8   0x00007ce8   0x0000005c   Code   RO          363    i.tcp_fasttmr       lwiplib.o
+    0x00007d44   0x00007d44   0x00000364   Code   RO          365    i.tcp_input         lwiplib.o
+    0x000080a8   0x000080a8   0x0000005c   Code   RO          366    i.tcp_keepalive     lwiplib.o
+    0x00008104   0x00008104   0x000000e4   Code   RO          367    i.tcp_listen_input  lwiplib.o
+    0x000081e8   0x000081e8   0x00000010   Code   RO          371    i.tcp_next_iss      lwiplib.o
+    0x000081f8   0x000081f8   0x00000070   Code   RO          372    i.tcp_oos_insert_segment  lwiplib.o
+    0x00008268   0x00008268   0x00000154   Code   RO          373    i.tcp_output        lwiplib.o
+    0x000083bc   0x000083bc   0x00000058   Code   RO          374    i.tcp_output_alloc_header  lwiplib.o
+    0x00008414   0x00008414   0x000000c8   Code   RO          375    i.tcp_output_segment  lwiplib.o
+    0x000084dc   0x000084dc   0x00000074   Code   RO          376    i.tcp_parseopt      lwiplib.o
+    0x00008550   0x00008550   0x00000042   Code   RO          378    i.tcp_pcb_purge     lwiplib.o
+    0x00008592   0x00008592   0x00000002   PAD
+    0x00008594   0x00008594   0x00000060   Code   RO          379    i.tcp_pcb_remove    lwiplib.o
+    0x000085f4   0x000085f4   0x00000020   Code   RO          380    i.tcp_pcbs_sane     lwiplib.o
+    0x00008614   0x00008614   0x00000310   Code   RO          382    i.tcp_process       lwiplib.o
+    0x00008924   0x00008924   0x00000066   Code   RO          383    i.tcp_process_refused_data  lwiplib.o
+    0x0000898a   0x0000898a   0x00000002   PAD
+    0x0000898c   0x0000898c   0x0000065c   Code   RO          384    i.tcp_receive       lwiplib.o
+    0x00008fe8   0x00008fe8   0x00000024   Code   RO          386    i.tcp_recv_null     lwiplib.o
+    0x0000900c   0x0000900c   0x00000034   Code   RO          387    i.tcp_recved        lwiplib.o
+    0x00009040   0x00009040   0x00000044   Code   RO          388    i.tcp_rexmit        lwiplib.o
+    0x00009084   0x00009084   0x00000058   Code   RO          389    i.tcp_rexmit_fast   lwiplib.o
+    0x000090dc   0x000090dc   0x0000002e   Code   RO          390    i.tcp_rexmit_rto    lwiplib.o
+    0x0000910a   0x0000910a   0x00000002   PAD
+    0x0000910c   0x0000910c   0x00000088   Code   RO          391    i.tcp_rst           lwiplib.o
+    0x00009194   0x00009194   0x00000024   Code   RO          392    i.tcp_seg_copy      lwiplib.o
+    0x000091b8   0x000091b8   0x0000001c   Code   RO          393    i.tcp_seg_free      lwiplib.o
+    0x000091d4   0x000091d4   0x00000012   Code   RO          394    i.tcp_segs_free     lwiplib.o
+    0x000091e6   0x000091e6   0x00000056   Code   RO          395    i.tcp_send_empty_ack  lwiplib.o
+    0x0000923c   0x0000923c   0x00000032   Code   RO          396    i.tcp_send_fin      lwiplib.o
+    0x0000926e   0x0000926e   0x00000002   PAD
+    0x00009270   0x00009270   0x00000280   Code   RO          400    i.tcp_slowtmr       lwiplib.o
+    0x000094f0   0x000094f0   0x0000002c   Code   RO          401    i.tcp_timer_needed  lwiplib.o
+    0x0000951c   0x0000951c   0x00000060   Code   RO          402    i.tcp_timewait_input  lwiplib.o
+    0x0000957c   0x0000957c   0x00000020   Code   RO          403    i.tcp_tmr           lwiplib.o
+    0x0000959c   0x0000959c   0x00000034   Code   RO          404    i.tcp_update_rcv_ann_wnd  lwiplib.o
+    0x000095d0   0x000095d0   0x000000ac   Code   RO          406    i.tcp_zero_window_probe  lwiplib.o
+    0x0000967c   0x0000967c   0x00000030   Code   RO          407    i.tcpip_tcp_timer   lwiplib.o
+    0x000096ac   0x000096ac   0x000000bc   Code   RO          408    i.tivaif_hwinit     lwiplib.o
+    0x00009768   0x00009768   0x00000034   Code   RO          409    i.tivaif_init       lwiplib.o
+    0x0000979c   0x0000979c   0x00000048   Code   RO          410    i.tivaif_interrupt  lwiplib.o
+    0x000097e4   0x000097e4   0x0000007c   Code   RO          411    i.tivaif_process_phy_interrupt  lwiplib.o
+    0x00009860   0x00009860   0x00000058   Code   RO          412    i.tivaif_process_transmit  lwiplib.o
+    0x000098b8   0x000098b8   0x0000019c   Code   RO          413    i.tivaif_receive    lwiplib.o
+    0x00009a54   0x00009a54   0x00000144   Code   RO          414    i.tivaif_transmit   lwiplib.o
+    0x00009b98   0x00009b98   0x000000a8   Code   RO          415    i.udp_bind          lwiplib.o
+    0x00009c40   0x00009c40   0x0000004c   Code   RO          416    i.udp_connect       lwiplib.o
+    0x00009c8c   0x00009c8c   0x000001d4   Code   RO          419    i.udp_input         lwiplib.o
+    0x00009e60   0x00009e60   0x0000001a   Code   RO          420    i.udp_new           lwiplib.o
+    0x00009e7a   0x00009e7a   0x00000006   Code   RO          421    i.udp_recv          lwiplib.o
+    0x00009e80   0x00009e80   0x0000002c   Code   RO          422    i.udp_remove        lwiplib.o
+    0x00009eac   0x00009eac   0x000000dc   Code   RO          425    i.udp_sendto_if     lwiplib.o
+    0x00009f88   0x00009f88   0x00000012   Code   RO         1834    i.usnprintf         ustdlib.o
+    0x00009f9a   0x00009f9a   0x00000024   Code   RO         1842    i.ustrncpy          ustdlib.o
+    0x00009fbe   0x00009fbe   0x00000002   PAD
+    0x00009fc0   0x00009fc0   0x00000250   Code   RO         1846    i.uvsnprintf        ustdlib.o
+    0x0000a210   0x0000a210   0x00000088   Data   RO          428    .constdata          lwiplib.o
+    0x0000a298   0x0000a298   0x0000004c   Data   RO         1847    .constdata          ustdlib.o
+    0x0000a2e4   0x0000a2e4   0x0000010c   Data   RO         2601    .constdata          driverlib.lib(interrupt.o)
+    0x0000a3f0   0x0000a3f0   0x00000254   Data   RO         2756    .constdata          driverlib.lib(sysctl.o)
+    0x0000a644   0x0000a644   0x00000075   Data   RO          429    .conststring        lwiplib.o
+    0x0000a6b9   0x0000a6b9   0x00000003   PAD
+    0x0000a6bc   0x0000a6bc   0x00000011   Data   RO         1848    .conststring        ustdlib.o
+    0x0000a6cd   0x0000a6cd   0x00000003   PAD
+    0x0000a6d0   0x0000a6d0   0x00000020   Data   RO         3184    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM (Exec base: 0x20000000, Load base: 0x0000a6f0, Size: 0x0000a3d0, Max: 0x00040000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x0000a6f0   0x00000008   Data   RW            8    .data               boot_demo_emac_flash.o
+    0x20000008   0x0000a6f8   0x000000dc   Data   RW          430    .data               lwiplib.o
+    0x200000e4   0x0000a7d4   0x00000010   Data   RW          431    .data               lwiplib.o
+    0x200000f4   0x0000a7e4   0x0000000e   Data   RW         1804    .data               swupdate.o
+    0x20000102   0x0000a7f2   0x00000002   PAD
+    0x20000104        -       0x00000040   Zero   RW            7    .bss                boot_demo_emac_flash.o
+    0x20000144        -       0x00008288   Zero   RW          426    .bss                lwiplib.o
+    0x200083cc   0x0000a7f2   0x00000004   PAD
+    0x200083d0        -       0x00002000   Zero   RW         1794    STACK               startup_rvmdk.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       514        110          0          8         64      21968   boot_demo_emac_flash.o
+     21292        732        253        236      33416     213469   lwiplib.o
+       540        514          0          0       8192        300   startup_rvmdk.o
+       220         18          0         14          0       3369   swupdate.o
+       646         12         93          0          0       4116   ustdlib.o
+
+    ----------------------------------------------------------------------
+     23238       1386        384        260      41676     243222   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+        26          0          6          2          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+        38          0          0          0          0        572   cpu.o
+       616         28          0          0          0      30932   emac.o
+        24          6          0          0          0       1031   flash.o
+       114          8        268          0          0       2042   interrupt.o
+       850         48        596          0          0       4953   sysctl.o
+        28          0          0          0          0        937   systick.o
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         4          0          0          0          0          0   entry12b.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+        26          0          0          0          0         80   memcmp.o
+        36          0          0          0          0         68   memcpya.o
+        36          0          0          0          0        108   memseta.o
+
+    ----------------------------------------------------------------------
+      1866        106        864          0          0      40791   Library Totals
+         8          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+      1670         90        864          0          0      40467   driverlib.lib
+       188         16          0          0          0        324   mc_w.l
+
+    ----------------------------------------------------------------------
+      1866        106        864          0          0      40791   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     25104       1492       1248        260      41676     264813   Grand Totals
+     25104       1492       1248        260      41676     264813   ELF Image Totals
+     25104       1492       1248        260          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                26352 (  25.73kB)
+    Total RW  Size (RW Data + ZI Data)             41936 (  40.95kB)
+    Total ROM Size (Code + RO Data + RW Data)      26612 (  25.99kB)
+
+==============================================================================
+

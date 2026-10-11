@@ -1,0 +1,13 @@
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\third_party\fatfs\port\mmc-ek-tm4c1294xl.c
+.\rvmdk\mmc-ek-tm4c1294xl.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\inc/hw_memmap.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\inc/hw_types.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/gpio.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/pin_map.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/rom.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/rom_map.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/ssi.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\driverlib/sysctl.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\third_party\fatfs/src/diskio.h
+.\rvmdk\mmc-ek-tm4c1294xl.o: ..\..\..\..\third_party\fatfs/src/integer.h

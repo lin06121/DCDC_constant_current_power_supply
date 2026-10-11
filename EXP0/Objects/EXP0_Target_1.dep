@@ -1,0 +1,45 @@
+Dependencies for Project 'EXP0', Target 'Target_1': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7
+F (.\exp0.c)(0x6ACA17A7)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\exp0.o --omf_browse .\objects\exp0.crf --depend .\objects\exp0.d)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdbool.h)(0x5E8E3CC2)
+I (inc/hw_memmap.h)(0x6A0C31FE)
+I (inc/hw_types.h)(0x6A0C31FE)
+I (driverlib/debug.h)(0x6A0C31FC)
+I (driverlib/gpio.h)(0x6A0C31FC)
+I (driverlib/pin_map.h)(0x6A0C31FC)
+I (driverlib/sysctl.h)(0x6A0C31FC)
+I (driverlib/systick.h)(0x6A0C31FC)
+I (driverlib/interrupt.h)(0x6A0C31FC)
+I (driverlib/adc.h)(0x6A0C31FC)
+I (tm1638.h)(0x5E94513F)
+F (.\driverlib\rvmdk\driverlib.lib)(0x6A0C31FC)()
+F (.\tm1638.c)(0x5E94512A)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\tm1638.o --omf_browse .\objects\tm1638.crf --depend .\objects\tm1638.d)
+I (tm1638.h)(0x5E94513F)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdbool.h)(0x5E8E3CC2)
+I (inc/hw_memmap.h)(0x6A0C31FE)
+I (inc/hw_types.h)(0x6A0C31FE)
+I (driverlib/debug.h)(0x6A0C31FC)
+I (driverlib/gpio.h)(0x6A0C31FC)
+I (driverlib/pin_map.h)(0x6A0C31FC)
+I (driverlib/sysctl.h)(0x6A0C31FC)
+F (.\tm1638.h)(0x5E94513F)()
+F (E:/Developtool/keil/pack/ARM/CMSIS-Compiler/2.1.0/source/armcc/retarget_io.c)(0x6A06CD4B)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\retarget_io.o --omf_browse .\objects\retarget_io.crf --depend .\objects\retarget_io.d)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\string.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\assert.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\rt_sys.h)(0x5E8E3CC2)
+I (.\RTE\_Target_1\RTE_Components.h)(0x6AC7A056)
+F (RTE/Device/TM4C129CNCPDT/startup_TM4C129.s)(0x6A06CEE9)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129--pd "__UVISION_VERSION SETA 543" --pd "TM4C129CNCPDT SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_tm4c129.lst --xref -o .\objects\startup_tm4c129.o --depend .\objects\startup_tm4c129.d)
+F (RTE/Device/TM4C129CNCPDT/system_TM4C129.c)(0x6A06CEE9)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\system_tm4c129.o --omf_browse .\objects\system_tm4c129.crf --depend .\objects\system_tm4c129.d)
+I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
+I (E:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C129.h)(0x6A06CEE9)
+I (E:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C129CNCPDT.h)(0x6A06CEE9)
+I (E:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x6AC7A343)
+I (E:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x6AC7A343)
+I (E:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x6AC7A343)
+I (E:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x6AC7A343)
+I (E:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\system_TM4C129.h)(0x6A06CEE9)

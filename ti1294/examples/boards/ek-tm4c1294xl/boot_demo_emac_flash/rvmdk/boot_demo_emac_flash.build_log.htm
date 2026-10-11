@@ -1,0 +1,73 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.43.1.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: li yulin, shanghaijiaotong university, LIC=D0D7S-LC9VH-CX6U6-DYBZM-U9XME-5UGH3
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.43.0.0
+Toolchain Path:  E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.43.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+E:\code\keil\ti1294\examples\boards\ek-tm4c1294xl\boot_demo_emac_flash\boot_demo_emac_flash.uvprojx
+Project File Date:  06/09/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin'
+Rebuild target 'boot_demo_emac_flash'
+assembling startup_rvmdk.S...
+compiling ustdlib.c...
+compiling swupdate.c...
+..\..\..\..\third_party\lwip-1.4.1\src\include\lwip/pbuf.h(140): warning:  #1295-D: Deprecated declaration pbuf_free_ooseq - give arg types
+  void pbuf_free_ooseq();
+..\..\..\..\utils\swupdate.c: 1 warning, 0 errors
+compiling boot_demo_emac_flash.c...
+..\..\..\..\third_party\lwip-1.4.1\src\include\lwip/pbuf.h(140): warning:  #1295-D: Deprecated declaration pbuf_free_ooseq - give arg types
+  void pbuf_free_ooseq();
+boot_demo_emac_flash.c: 1 warning, 0 errors
+compiling lwiplib.c...
+..\..\..\..\third_party\lwip-1.4.1\src\include\lwip/pbuf.h(140): warning:  #1295-D: Deprecated declaration pbuf_free_ooseq - give arg types
+  void pbuf_free_ooseq();
+..\..\..\..\utils\lwiplib.c: 1 warning, 0 errors
+linking...
+Program Size: Code=25104 RO-data=1248 RW-data=260 ZI-data=41676  
+After Build - User command #1: fromelf --bin --output .\rvmdk\boot_demo_emac_flash.bin .\rvmdk\boot_demo_emac_flash.axf
+".\rvmdk\boot_demo_emac_flash.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM::CMSIS@5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_boot_demo_emac_flash
+  E:/Developtool/keil/pack/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  E:/Developtool/keil/pack/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@5.6.0
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

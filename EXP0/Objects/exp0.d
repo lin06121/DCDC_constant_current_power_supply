@@ -1,0 +1,13 @@
+.\objects\exp0.o: exp0.c
+.\objects\exp0.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+.\objects\exp0.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+.\objects\exp0.o: inc/hw_memmap.h
+.\objects\exp0.o: inc/hw_types.h
+.\objects\exp0.o: driverlib/debug.h
+.\objects\exp0.o: driverlib/gpio.h
+.\objects\exp0.o: driverlib/pin_map.h
+.\objects\exp0.o: driverlib/sysctl.h
+.\objects\exp0.o: driverlib/systick.h
+.\objects\exp0.o: driverlib/interrupt.h
+.\objects\exp0.o: driverlib/adc.h
+.\objects\exp0.o: tm1638.h
