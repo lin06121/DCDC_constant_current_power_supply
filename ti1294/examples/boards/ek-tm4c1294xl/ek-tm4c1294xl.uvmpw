@@ -8,17 +8,19 @@
   <WorkspaceName>ek-tm4c1294xl</WorkspaceName>
 
   <project>
-    <PathAndName>..\..\..\driverlib\driverlib.uvproj</PathAndName>
+    <PathAndName>..\..\..\driverlib\driverlib.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
   <project>
-    <PathAndName>..\..\..\usblib\usblib.uvproj</PathAndName>
+    <PathAndName>..\..\..\usblib\usblib.uvprojx</PathAndName>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
   <project>
     <PathAndName>.\adc_udma_pingpong\adc_udma_pingpong.uvproj</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
@@ -33,7 +35,7 @@
   </project>
 
   <project>
-    <PathAndName>.\boot_demo_emac_flash\boot_demo_emac_flash.uvproj</PathAndName>
+    <PathAndName>.\boot_demo_emac_flash\boot_demo_emac_flash.uvprojx</PathAndName>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
@@ -68,7 +70,7 @@
   </project>
 
   <project>
-    <PathAndName>.\boot_emac_flash\boot_emac_flash.uvproj</PathAndName>
+    <PathAndName>.\boot_emac_flash\boot_emac_flash.uvprojx</PathAndName>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
@@ -78,7 +80,7 @@
   </project>
 
   <project>
-    <PathAndName>.\enet_lwip\enet_lwip.uvproj</PathAndName>
+    <PathAndName>.\enet_lwip\enet_lwip.uvprojx</PathAndName>
     <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
   </project>
 
