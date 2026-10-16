@@ -1,8 +1,9 @@
 Dependencies for Project 'EXP0', Target 'Target_1': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7
-F (.\exp0.c)(0x6ACA17A7)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\exp0.o --omf_browse .\objects\exp0.crf --depend .\objects\exp0.d)
+F (.\exp0.c)(0x6AD24017)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\exp0.o --omf_browse .\objects\exp0.crf --depend .\objects\exp0.d)
 I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
 I (E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\include\stdbool.h)(0x5E8E3CC2)
+I (inc/hw_ints.h)(0x6A0C31FE)
 I (inc/hw_memmap.h)(0x6A0C31FE)
 I (inc/hw_types.h)(0x6A0C31FE)
 I (driverlib/debug.h)(0x6A0C31FC)
@@ -12,6 +13,7 @@ I (driverlib/sysctl.h)(0x6A0C31FC)
 I (driverlib/systick.h)(0x6A0C31FC)
 I (driverlib/interrupt.h)(0x6A0C31FC)
 I (driverlib/adc.h)(0x6A0C31FC)
+I (driverlib/timer.h)(0x6A0C31FC)
 I (tm1638.h)(0x5E94513F)
 F (.\driverlib\rvmdk\driverlib.lib)(0x6A0C31FC)()
 F (.\tm1638.c)(0x5E94512A)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\inc -I .\driverlib-I.\RTE\_Target_1-IE:\Developtool\keil\pack\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Developtool\keil\pack\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129-D__UVISION_VERSION="543" -DTM4C129CNCPDT -D_RTE_ -DPART_TM4C1294NCPDT-o .\objects\tm1638.o --omf_browse .\objects\tm1638.crf --depend .\objects\tm1638.d)

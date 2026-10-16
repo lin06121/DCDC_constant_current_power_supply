@@ -14,6 +14,8 @@ virtualFolder:
         - path: driverlib/rvmdk/driverlib.lib
         - path: tm1638.c
         - path: tm1638.h
+        - path: uart_debug.c
+        - path: uart_debug.h
       folders: []
     - name: Driverlab
       files: []

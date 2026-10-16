@@ -1,0 +1,9 @@
+.\objects\uart_debug.o: uart_debug.c
+.\objects\uart_debug.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+.\objects\uart_debug.o: E:\Developtool\keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+.\objects\uart_debug.o: inc/hw_memmap.h
+.\objects\uart_debug.o: driverlib/gpio.h
+.\objects\uart_debug.o: driverlib/pin_map.h
+.\objects\uart_debug.o: driverlib/sysctl.h
+.\objects\uart_debug.o: driverlib/uart.h
+.\objects\uart_debug.o: uart_debug.h
