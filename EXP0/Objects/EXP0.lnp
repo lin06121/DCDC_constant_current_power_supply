@@ -2,6 +2,7 @@
 ".\objects\exp0.o"
 ".\driverlib\rvmdk\driverlib.lib"
 ".\objects\tm1638.o"
+".\objects\uart_debug.o"
 ".\objects\retarget_io.o"
 ".\objects\startup_tm4c129.o"
 ".\objects\system_tm4c129.o"

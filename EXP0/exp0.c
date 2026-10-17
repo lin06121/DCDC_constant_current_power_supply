@@ -35,6 +35,7 @@
 #include "driverlib/adc.h"        // 与ADC有关的定义
 #include "driverlib/timer.h"      // Timer Driver 原型（定时器触发ADC）
 #include "tm1638.h"               // 与控制TM1638芯片有关的函数
+#include "uart_debug.h"           // UART调试输出模块
 
 //*************************************************************************************
 //
@@ -115,13 +116,14 @@ volatile uint32_t g_ui32ADCAvg[ADC_NUM_CH];                  // 各通道最新�
 	{
         if (clock100ms_flag == 1)       // 检查100ms定时是否到（10Hz刷新）
         {
-            uint32_t mv0, mv1;
+            uint32_t mv0, mv1, mv2;
 
             clock100ms_flag = 0;
 
 			// 读取滑动平均后的原始值，换算为毫伏值
             mv0 = RawToMilliVolts(g_ui32ADCAvg[0]);   // CH0/PE3
             mv1 = RawToMilliVolts(g_ui32ADCAvg[1]);   // CH1/PE2
+            mv2 = RawToMilliVolts(g_ui32ADCAvg[2]);   // CH2/PE1（暂不显示，用于调试/阶段三）
 
             // 左侧4位显示CH0/PE3电压，格式X.YYY（整数位+三位小数）
             digit[4] = mv0 / 1000; 	  // 整数位（0-3）
@@ -137,6 +139,10 @@ volatile uint32_t g_ui32ADCAvg[ADC_NUM_CH];                  // 各通道最新�
 
             // 两组各点亮第一位小数点，显示为 "X.YYY"
             pnt = (1 << 4) | (1 << 0);
+
+            // 串口调试输出三路电压与原始值（10Hz）
+            UART_DebugADCDump(g_ui32ADCAvg[0], g_ui32ADCAvg[1], g_ui32ADCAvg[2],
+                              mv0, mv1, mv2);
         }
 	}
 }
@@ -336,6 +342,7 @@ void DevicesInit(void)
   GPIOInit();             // GPIO初始化
   ADCInit();              // ADC初始化
   TimerADCInit();         // Timer0A定时触发ADC初始化
+  UART_DebugInit(ui32SysClock);   // UART调试输出初始化
   SysTickInit();          // 设置SysTick中断
   IntMasterEnable();	  // 总中断允许
 }

@@ -13,3 +13,4 @@
 .\objects\exp0.o: driverlib/adc.h
 .\objects\exp0.o: driverlib/timer.h
 .\objects\exp0.o: tm1638.h
+.\objects\exp0.o: uart_debug.h
