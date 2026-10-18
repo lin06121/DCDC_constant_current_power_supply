@@ -1,0 +1,35 @@
+# clangd 配置 —— 针对 EIDE + Keil AC5 (armcc) + TivaWare 项目
+#
+# 背景：EIDE 会生成 build\Target_1\compile_commands.json，但那是 armcc 风格
+# 的命令行（含 --cpu/--c99/--diag_suppress 等），且 clangd 只在“源文件所在目录
+# 及其父目录”找 compile_commands.json，不会递归进 build\，所以 clangd 之前拿不到
+# 正确的 -D/-I，才出现 INT_ADC0SS1 / GPIO_PA0_U0RX / stdio.h 等误报。
+#
+# 本文件放在工程根目录，clangd 启动时自动读取，对每个源文件统一注入下面的
+# 定义与头文件路径，从而脱离对 armcc 版 compile_commands.json 的依赖。
+CompileFlags:
+  # 让 clangd 用 clang 驱动预处理（而不是 armcc），保证上面这些 GNU 风格参数被识别
+  Compiler: clang
+  Add:
+    # ---- Cortex-M4 目标（对齐 TM4C1294，激活 CMSIS 的 ARM 头文件分支）----
+    - "--target=arm-none-eabi"
+    - "-mcpu=cortex-m4"
+    - "-mthumb"
+    - "-mfpu=fpv4-sp-d16"
+    - "-mfloat-abi=hard"
+    # ---- 器件定义（与 Keil/EIDE 的 <Define> 一致，hw_ints.h / pin_map.h 依赖）----
+    - "-DPART_TM4C1294NCPDT"
+    - "-DTM4C1294NCPDT"
+    # ---- TivaWare / 工程头文件路径（相对本文件所在目录 = 工程根）----
+    - "-Iinc"
+    - "-Idriverlib"
+    - "-I.cmsis/include"
+    - "-IRTE/_Target_1"
+    - "-IE:/Developtool/keil/pack/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129"
+    # ---- ARMCC 的 C 库头（stdint/stdbool/stdio 等，uart_debug.c 用到 sprintf）----
+    - "-isystem"
+    - "E:/Developtool/keil/ARM/ARM_Compiler_5.06u7/include"
+Diagnostics:
+  Suppress:
+    # TivaWare 的多个头文件互相包含，clangd 未必能判为“被使用”，屏蔽这类纯提示
+    - unused-includes
