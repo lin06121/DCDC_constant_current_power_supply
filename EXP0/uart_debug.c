@@ -1,9 +1,9 @@
 //*****************************************************************************
 //
-// uart_debug.c - UART 调试输出模块实现
+// uart_debug.c - UART debug output module implementation
 //
-// 参�? E:\code\keil\EXP3\exp3-8.c �? UART 范式：UART0 挂在 PA0(RX)/PA1(TX)�?
-// �? UARTConfigSetExpClk 配置 115200 8-N-1，发送用 UARTCharPut 阻塞发送�?
+// Reference: E:\code\keil\EXP3\exp3-8.c UART pattern: UART0 on PA0(RX)/PA1(TX),
+// UARTConfigSetExpClk configures 115200 8-N-1, blocking send via UARTCharPut.
 //
 //*****************************************************************************
 
@@ -20,25 +20,25 @@
 
 //*****************************************************************************
 //
-// 函数原型：void UART_DebugInit(uint32_t ui32SysClock)
-// 函数功能：使�? UART0/GPIOA，配�? PA0(RX)/PA1(TX)，波特率 115200 8-N-1
-// 函数参数：ui32SysClock  系统时钟频率
-// 函数返回值：�?
+// Function:    void UART_DebugInit(uint32_t ui32SysClock)
+// Function:    enable UART0/GPIOA, configure PA0(RX)/PA1(TX), baud 115200 8-N-1
+// Parameters:  ui32SysClock   system clock frequency
+// Returns:     none
 //
 //*****************************************************************************
 void UART_DebugInit(uint32_t ui32SysClock)
 {
-    // 使能 UART0 �? GPIOA
+    // enable UART0 and GPIOA
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA)){};
 
-    // 配置 PA0(U0RX) / PA1(U0TX) �? UART 引脚
+    // configure PA0(U0RX) / PA1(U0TX) as UART pins
     GPIOPinConfigure(GPIO_PA0_U0RX);
     GPIOPinConfigure(GPIO_PA1_U0TX);
     GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
 
-    // 配置波特�? 115200, 8-N-1
+    // configure baud 115200, 8-N-1
     UARTConfigSetExpClk(UART0_BASE, ui32SysClock, 115200,
                         (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                          UART_CONFIG_PAR_NONE));
@@ -46,10 +46,10 @@ void UART_DebugInit(uint32_t ui32SysClock)
 
 //*****************************************************************************
 //
-// 函数原型：void UART_DebugString(const char *s)
-// 函数功能：阻塞发送以 '\0' 结尾的字符串
-// 函数参数：s  待发送字符串
-// 函数返回值：�?
+// Function:    void UART_DebugString(const char *s)
+// Function:    blocking send of a '\0'-terminated string
+// Parameters:  s   string to send
+// Returns:     none
 //
 //*****************************************************************************
 void UART_DebugString(const char *s)
@@ -62,10 +62,10 @@ void UART_DebugString(const char *s)
 
 //*****************************************************************************
 //
-// 函数原型：void UART_DebugLine(const char *s)
-// 函数功能：发送字符串并在末尾追加 "\r\n"
-// 函数参数：s  待发送字符串
-// 函数返回值：�?
+// Function:    void UART_DebugLine(const char *s)
+// Function:    send a string and append "\r\n"
+// Parameters:  s   string to send
+// Returns:     none
 //
 //*****************************************************************************
 void UART_DebugLine(const char *s)
@@ -76,22 +76,26 @@ void UART_DebugLine(const char *s)
 
 //*****************************************************************************
 //
-// 函数原型：void UART_DebugADCDump(...)
-// 函数功能：以一行输出三�? ADC 的电压（X.YYY V）与原始值（0-4095�?
-// 函数参数：raw0/raw1/raw2  三路平均原始�?
-//           mv0/mv1/mv2     三路毫伏�?
-// 函数返回值：�?
+// Function:    void UART_DebugADCDump(...)
+// Function:    output one line holding three ADC voltages (X.YYY V), their raw
+//              values (0-4095) and the calibrated current (X.YYY A).
+// Parameters:  raw0/raw1/raw2   three averaged raw values
+//              mv0/mv1/mv2      three millivolt values
+//              ima              actual current in mA
+// Returns:     none
 //
 //*****************************************************************************
 void UART_DebugADCDump(uint32_t raw0, uint32_t raw1, uint32_t raw2,
-                       uint32_t mv0, uint32_t mv1, uint32_t mv2)
+                       uint32_t mv0, uint32_t mv1, uint32_t mv2,
+                       uint32_t ima)
 {
-    char buf[64];
+    char buf[80];
 
-    sprintf(buf, "CH0=%u.%03uV(%u)  CH1=%u.%03uV(%u)  CH2=%u.%03uV(%u)\r\n",
+    sprintf(buf, "CH0=%u.%03uV(%u)  CH1=%u.%03uV(%u)  CH2=%u.%03uV(%u)  I=%u.%03uA\r\n",
             mv0 / 1000, mv0 % 1000, raw0,
             mv1 / 1000, mv1 % 1000, raw1,
-            mv2 / 1000, mv2 % 1000, raw2);
+            mv2 / 1000, mv2 % 1000, raw2,
+            ima / 1000, ima % 1000);
 
     UART_DebugString(buf);
 }

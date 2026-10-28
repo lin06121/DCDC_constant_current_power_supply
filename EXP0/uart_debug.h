@@ -1,9 +1,9 @@
 //*****************************************************************************
 //
-// uart_debug.h - UART 调试输出模块接口
+// uart_debug.h - UART debug output module interface
 //
-// 通过 UART0(PA0-RX / PA1-TX) @115200 8-N-1 输出调试信息�?
-// 用于�? PC 终端实时观察三路 ADC 电压 / 原始值�?
+// Outputs debug info over UART0 (PA0-RX / PA1-TX) @115200 8-N-1, for watching
+// the three ADC voltages / raw values on a PC terminal in real time.
 //
 //*****************************************************************************
 
@@ -24,18 +24,19 @@ extern "C"
 #include <stdint.h>
 #include <stdbool.h>
 
-// 初始�? UART0�?115200, 8-N-1），使能 GPIOA，配�? PA0/PA1 �? UART 引脚
+// Initialize UART0 (115200, 8-N-1), enable GPIOA, configure PA0/PA1 as UART pins
 extern void UART_DebugInit(uint32_t ui32SysClock);
 
-// 阻塞发送字符串（以 '\0' 结尾�?
+// Blocking send of a '\0'-terminated string
 extern void UART_DebugString(const char *s);
 
-// 发送字符串并在末尾追加 "\r\n"
+// Send a string and append "\r\n"
 extern void UART_DebugLine(const char *s);
 
-// 输出一行三�? ADC 数据：电�? + 原始�?
+// Output one line of three ADC channels: voltage + raw value + current
 extern void UART_DebugADCDump(uint32_t raw0, uint32_t raw1, uint32_t raw2,
-                              uint32_t mv0, uint32_t mv1, uint32_t mv2);
+                              uint32_t mv0, uint32_t mv1, uint32_t mv2,
+                              uint32_t ima);
 
 //*****************************************************************************
 //

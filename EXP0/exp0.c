@@ -1,308 +1,338 @@
 //*************************************************************************************
 //
-// Copyright: 2020-2021, 上海交通大学电子工程系实验教学中心
+// Copyright: 2020-2021, Shanghai Jiao Tong University, Dept. of Electronic Engineering
 // File name: adc_demo.c
 // Description:
-//    1.该示例展示利用CH0/PE3、CH1/PE2、CH2/PE1实现三路ADC采样；
-//    2.左侧四个数码管显示CH0/PE3的ADC电压值[0.000-3.300V]；
-//    3.右侧四个数码管显示CH1/PE2的ADC电压值[0.000-3.300V]；
-//    4.采用Timer0A(1kHz)触发采样 + 硬件过采样16x + 滑动窗口平均滤波；
-//    5.注意：输入电压值范围必须为[0-3.3V]，否则会烧坏端口。
-// Author:	上海交通大学电子工程系实验教学中心
+//    1. Three-channel ADC sampling on CH0/PE3, CH1/PE2 and CH2/PE1.
+//    2. Left 4 digits show the CH0/PE3 voltage [0.000-3.300 V].
+//    3. Right 4 digits show the output current in A [0.000-9.999 A].
+//    4. Timer0A (1 kHz) triggered sampling + 16x hardware oversampling + sliding-window average.
+//    5. Input voltage must stay within [0-3.3 V], otherwise the pin may be damaged.
+// Author:	Shanghai Jiao Tong University, Dept. of Electronic Engineering
 // Version: 1.0.0.20201125
-// Date：2020-11-25
-// History：
-//		2026-10-16：扩展为三路采样，改为定时器触发+硬件过采样+滑动平均，显示电压值
+// Date:	2020-11-25
+// History:
+//		2026-10-16: extended to three channels; timer-triggered sampling + hardware
+//		            oversampling + sliding average; shows voltage (mV).
 //
 //*************************************************************************************
 
 //*************************************************************************************
 //
-// 头文件
+// Header files
 //
 //*************************************************************************************
 #include <stdint.h>
 #include <stdbool.h>
-#include "inc/hw_ints.h"         // 中断向量编号宏定义（INT_ADC0SS1等）
-#include "inc/hw_memmap.h"        // 基址宏定义
-#include "inc/hw_types.h"         // 数据类型宏定义，寄存器访问函数
-#include "driverlib/debug.h"      // 调试用
-#include "driverlib/gpio.h"       // 通用IO口宏定义
-#include "driverlib/pin_map.h"    // TM4C系列MCU外围设备管脚宏定义
-#include "driverlib/sysctl.h"	  // 系统控制定义
-#include "driverlib/systick.h"    // SysTick Driver 原型
-#include "driverlib/interrupt.h"  // NVIC Interrupt Controller Driver 原型
-#include "driverlib/adc.h"        // 与ADC有关的定义
-#include "driverlib/timer.h"      // Timer Driver 原型（定时器触发ADC）
-#include "tm1638.h"               // 与控制TM1638芯片有关的函数
-#include "uart_debug.h"           // UART调试输出模块
+#include "inc/hw_ints.h"         // interrupt vector numbers (INT_ADC0SS1, ...)
+#include "inc/hw_memmap.h"        // base address macros
+#include "inc/hw_types.h"         // data types and register access helpers
+#include "driverlib/debug.h"      // debug helpers
+#include "driverlib/gpio.h"       // GPIO API
+#include "driverlib/pin_map.h"    // TM4C peripheral pin-mux macro definitions
+#include "driverlib/sysctl.h"	  // system control / clocking
+#include "driverlib/systick.h"    // SysTick driver
+#include "driverlib/interrupt.h"  // NVIC interrupt controller driver
+#include "driverlib/adc.h"        // ADC API
+#include "driverlib/timer.h"      // Timer driver (timer-triggered ADC)
+#include "tm1638.h"               // TM1638 display driver
+#include "uart_debug.h"           // UART debug output module
 
 //*************************************************************************************
 //
-// 宏定义
+// Macro definitions
 //
 //*************************************************************************************
-#define SYSTICK_FREQUENCY		50		// SysTick频率为50Hz，即循环定时周期20ms
+#define SYSTICK_FREQUENCY	50		// SysTick rate = 50 Hz -> 20 ms loop period
 
-#define V_T100ms 5                      // 0.1s软件定时器溢出值，5个20ms（UI 10Hz刷新）
+#define V_T100ms 5                      // 0.1 s software timer overflow: 5 * 20 ms (UI refresh @10 Hz)
 
-// ADC采样与滤波参数
-#define ADC_NUM_CH        3             // ADC通道数：CH0/PE3、CH1/PE2、CH2/PE1
-#define ADC_TRIGGER_HZ    1000          // Timer0A触发ADC频率：1kHz
-#define ADC_OVS_FACTOR    16            // 硬件过采样16x（等效原始采样率16kHz）
-#define ADC_WINDOW_SIZE   16            // 软件滑动窗口点数（16ms）
-#define ADC_CONST_MV      3300          // 满量程3.300V，单位mV
+// ADC sampling and filtering parameters
+#define ADC_NUM_CH        3             // number of ADC channels: CH0/PE3, CH1/PE2, CH2/PE1
+#define ADC_TRIGGER_HZ    1000          // Timer0A ADC trigger rate: 1 kHz
+#define ADC_OVS_FACTOR    16            // hardware oversampling 16x (16 kHz raw rate)
+#define ADC_WINDOW_SIZE   16            // software sliding-window size: 16 samples (~16 ms)
+#define ADC_CONST_MV      3300          // full scale 3.300 V, in mV
 
-//*************************************************************************************
-//
-// 函数原型声明
-//
-//*************************************************************************************
-void GPIOInit(void);        // GPIO初始化
-void ADCInit(void);         // ADC初始化
-void TimerADCInit(void);    // Timer0A定时触发ADC初始化
-void SysTickInit(void);     // 设置SysTick中断
-void DevicesInit(void);     // MCU器件初始化，注：会调用上述函数
-uint32_t RawToMilliVolts(uint32_t raw);  // ADC原始值换算为毫伏值
+// ---- Current-channel calibration (0.1 ohm sense resistor, PE2/CH1) ----
+// Least-squares fit against multimeter measurements:
+//     I(mA) = 0.665761 * V_adc(mV) + 28.453,  where V_adc(mV) = RawToMilliVolts(raw)
+// The slope is scaled by 65536 for fixed-point math (avoiding floating point); the
+// resulting offset error is below the 1 mA display resolution.
+#define CAL_I_MA_PER_MVQ   43632u       // 0.665761 * 65536 ~= 43632 (mA per ADC-mV)
+#define CAL_I_MA_OFFSET    28u          // intercept b = 28.453 mA, rounded
 
 //*************************************************************************************
 //
-// 变量定义
+// Function prototypes
+//
+//*************************************************************************************
+void GPIOInit(void);        // GPIO initialization
+void ADCInit(void);         // ADC initialization
+void TimerADCInit(void);    // Timer0A timer-triggered ADC initialization
+void SysTickInit(void);     // SysTick interrupt setup
+void DevicesInit(void);     // MCU peripheral init; calls the functions above
+uint32_t RawToMilliVolts(uint32_t raw);     // convert ADC raw value to millivolts
+uint32_t CurrentToMilliAmps(uint32_t raw);  // convert CH1/PE2 raw value to actual current (mA)
+
+//*************************************************************************************
+//
+// Variables
 //
 //*************************************************************************************
 
-// 软件定时器计数（SysTick中断中更新，主循环读取，故用volatile）
+// Software timer counter (updated in SysTick ISR, read in the main loop -> volatile)
 volatile uint8_t clock100ms = 0;
 
-// 软件定时器溢出标志（SysTick中断中更新，主循环读取，故用volatile）
+// Software timer overflow flag (updated in SysTick ISR, read in the main loop -> volatile)
 volatile uint8_t clock100ms_flag = 0;
 
-// 8位数码管显示的数字或字母符号
-// 注：板上数码位从左到右序号排列为4、5、6、7、0、1、2、3
+// 8-digit display characters
+// NOTE: physical digit order on the board is 4,5,6,7,0,1,2,3 left to right
 uint8_t digit[8]={' ',' ',' ',' ',' ',' ',' ',' '};
 
-// 8位小数点 1亮  0灭
-// 注：板上数码位小数点从左到右序号排列为4、5、6、7、0、1、2、3
+// 8 decimal points; 1 = on, 0 = off
+// NOTE: decimal-point order on the board is 4,5,6,7,0,1,2,3 left to right
 uint8_t pnt = 0x0;
 
-// 8个LED指示灯状态，0灭，1亮
-// 注：板上指示灯从左到右序号排列为7、6、5、4、3、2、1、0
-//     对应元件LED8、LED7、LED6、LED5、LED4、LED3、LED2、LED1
+// 8 LED indicator states; 0 = off, 1 = on
+// NOTE: on-board LED order is 7,6,5,4,3,2,1,0 left to right (LED8..LED1)
 uint8_t led[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
-// 系统时钟频率
+// System clock frequency
 uint32_t ui32SysClock;
 
-// ADC滑动窗口滤波状态（ADC中断中更新，主循环中读取，故用volatile）
-volatile uint32_t g_ui32ADCWin[ADC_NUM_CH][ADC_WINDOW_SIZE]; // 各通道环形缓冲
-volatile uint32_t g_ui32ADCWinSum[ADC_NUM_CH];               // 运行和（O(1)增量更新）
-volatile uint8_t  g_ui8ADCWinIdx = 0;                        // 环形缓冲写指针
-volatile uint8_t  g_ui8ADCWinCnt = 0;                        // 已填充点数
-volatile uint32_t g_ui32ADCAvg[ADC_NUM_CH];                  // 各通道最新平均原始值[0-4095]
+// ADC sliding-window filter state (updated in the ADC ISR, read in the main loop -> volatile)
+volatile uint32_t g_ui32ADCWin[ADC_NUM_CH][ADC_WINDOW_SIZE]; // per-channel ring buffer
+volatile uint32_t g_ui32ADCWinSum[ADC_NUM_CH];               // running sum (O(1) update)
+volatile uint8_t  g_ui8ADCWinIdx = 0;                        // ring buffer write index
+volatile uint8_t  g_ui8ADCWinCnt = 0;                        // number of filled samples
+volatile uint32_t g_ui32ADCAvg[ADC_NUM_CH];                  // latest per-channel average (0-4095)
 
 //*************************************************************************************
 //
-// 主程序
+// Main program
 //
 //*************************************************************************************
- int main(void)
+int main(void)
 {
-	DevicesInit();            //  MCU器件初始化
+	DevicesInit();            // MCU peripheral initialization
 
-	while (clock100ms < 3);   // 延时>60ms,等待TM1638上电完成
-	TM1638_Init();	          // 初始化TM1638
+	while (clock100ms < 3);   // wait >60 ms for TM1638 power-up to complete
+	TM1638_Init();	          // initialize TM1638
 
 	while (1)
 	{
-        if (clock100ms_flag == 1)       // 检查100ms定时是否到（10Hz刷新）
+        if (clock100ms_flag == 1)       // 100 ms tick reached (UI refresh @10 Hz)
         {
-            uint32_t mv0, mv1, mv2;
+            uint32_t mv0, mv1, mv2, ima;
 
             clock100ms_flag = 0;
 
-			// 读取滑动平均后的原始值，换算为毫伏值
-            mv0 = RawToMilliVolts(g_ui32ADCAvg[0]);   // CH0/PE3
-            mv1 = RawToMilliVolts(g_ui32ADCAvg[1]);   // CH1/PE2
-            mv2 = RawToMilliVolts(g_ui32ADCAvg[2]);   // CH2/PE1（暂不显示，用于调试/阶段三）
+            // read the averaged raw values and convert them to millivolts
+            mv0 = RawToMilliVolts(g_ui32ADCAvg[0]);   // CH0/PE3 (output voltage)
+            mv1 = RawToMilliVolts(g_ui32ADCAvg[1]);   // CH1/PE2 (current-sense voltage)
+            mv2 = RawToMilliVolts(g_ui32ADCAvg[2]);   // CH2/PE1 (reserved; debug / phase 3)
+            ima = CurrentToMilliAmps(g_ui32ADCAvg[1]); // CH1/PE2 actual current (mA)
 
-            // 左侧4位显示CH0/PE3电压，格式X.YYY（整数位+三位小数）
-            digit[4] = mv0 / 1000; 	  // 整数位（0-3）
-            digit[5] = mv0 / 100 % 10;  // 十分位
-            digit[6] = mv0 / 10 % 10;   // 百分位
-            digit[7] = mv0 % 10;        // 千分位
+            // left 4 digits show CH0/PE3 voltage in X.YYY format (integer + 3 decimals)
+            digit[4] = mv0 / 1000; 	  // integer digit (0-3)
+            digit[5] = mv0 / 100 % 10;  // tenths
+            digit[6] = mv0 / 10 % 10;   // hundredths
+            digit[7] = mv0 % 10;        // thousandths
 
-            // 右侧4位显示CH1/PE2电压，格式X.YYY
-            digit[0] = mv1 / 1000; 	  // 整数位（0-3）
-            digit[1] = mv1 / 100 % 10;  // 十分位
-            digit[2] = mv1 / 10 % 10;   // 百分位
-            digit[3] = mv1 % 10;        // 千分位
+            // right 4 digits show the output current in X.YYY A format (ima is in mA)
+            digit[0] = ima / 1000; 	  // integer digit (A)
+            digit[1] = ima / 100 % 10;  // 0.1 A
+            digit[2] = ima / 10 % 10;   // 0.01 A
+            digit[3] = ima % 10;        // 0.001 A
 
-            // 两组各点亮第一位小数点，显示为 "X.YYY"
+            // light the first decimal point of each group -> display "X.YYY"
             pnt = (1 << 4) | (1 << 0);
 
-            // 串口调试输出三路电压与原始值（10Hz）
+            // UART debug output: three voltages + raw values, @10 Hz
             UART_DebugADCDump(g_ui32ADCAvg[0], g_ui32ADCAvg[1], g_ui32ADCAvg[2],
-                              mv0, mv1, mv2);
+                              mv0, mv1, mv2, ima);
         }
 	}
 }
 
 //*************************************************************************************
 //
-// 函数原型：void GPIOInit(void)
-// 函数功能：GPIO初始化。使能PortK，设置PK4,PK5为输出；使能PortM，设置PM0为输出。
-//          （PK4连接TM1638的STB，PK5连接TM1638的DIO，PM0连接TM1638的CLK）
-// 函数参数：无
-// 函数返回值：无
+// Function:	void GPIOInit(void)
+// Function:	GPIO initialization. Enable Port K and set PK4/PK5 as outputs; enable
+//              Port M and set PM0 as output.
+//              (PK4 = TM1638 STB, PK5 = TM1638 DIO, PM0 = TM1638 CLK)
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void GPIOInit(void)
 {
-	//配置TM1638芯片管脚
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);				// 使能端口 K
-	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOK)){};		// 等待端口 K准备完毕
+	// configure the TM1638 chip pins
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);				// enable Port K
+	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOK)){};		// wait for Port K ready
 
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);				// 使能端口 M
-	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOM)){};		// 等待端口 M准备完毕
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);				// enable Port M
+	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOM)){};		// wait for Port M ready
 
-   // 设置端口 K的第4,5位（PK4,PK5）为输出引脚		PK4-STB  PK5-DIO
+   // set Port K pins 4,5 (PK4,PK5) as outputs		PK4-STB  PK5-DIO
 	GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_4|GPIO_PIN_5);
-	// 设置端口 M的第0位（PM0）为输出引脚   PM0-CLK
+	// set Port M pin 0 (PM0) as output   PM0-CLK
 	GPIOPinTypeGPIOOutput(GPIO_PORTM_BASE, GPIO_PIN_0);
 }
 
 //*************************************************************************************
 //
-// 函数原型：void ADCInit(void)
-// 函数功能：ADC0初始化。选择CH0/PE3、CH1/PE2和CH2/PE1作为ADC0采样输入，
-//          选用采样序列产生器1，由Timer0A定时器触发，并使能中断。
-// 函数参数：无
-// 函数返回值：无
+// Function:	void ADCInit(void)
+// Function:	ADC0 initialization. Select CH0/PE3, CH1/PE2 and CH2/PE1 as ADC0 inputs;
+//              use sample sequencer 1, trigger it from Timer0A and enable its interrupt.
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void ADCInit(void)
 {
-    // 使能ADC0模块
+    // enable the ADC0 module
     SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
 
-    // 使能端口E
+    // enable Port E
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
 
-    // 使用CH0/PE3、CH1/PE2和CH2/PE1引脚作为ADC输入
+    // use CH0/PE3, CH1/PE2 and CH2/PE1 pins as the ADC inputs
     GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1);
 
-    // 选用采样序列产生器1，采样起始信号由定时器触发，优先级为0
+    // use sample sequencer 1, timer-triggered, priority 0
     ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_TIMER, 0);
 
-    // 开启硬件过采样（16次采样自动平均），与底层高速触发配合构成低通滤波
+    // enable hardware oversampling (16 samples automatically averaged); combined with
+    // the hardware trigger this forms a low-pass filter for the fast switching ripple
     ADCHardwareOversampleConfigure(ADC0_BASE, ADC_OVS_FACTOR);
 
-    // 设置采样序列产生器1第0步骤:选择CH0为采样通道
+    // sample sequencer 1, step 0: sample CH0
     ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CTL_CH0);
 
-    // 设置采样序列产生器1第1步骤:选择CH1为采样通道
+    // sample sequencer 1, step 1: sample CH1
     ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CTL_CH1);
 
-    // 设置采样序列产生器1第2步骤:
-    // ADC_CTL_CH2--选择CH2为采样通道， ADC_CTL_END--采样序列的最后一步
-    // ADC_CTL_IE--采样结束后产生中断
+    // sample sequencer 1, step 2:
+    // ADC_CTL_CH2 -- sample CH2; ADC_CTL_END -- last step of the sequence;
+    // ADC_CTL_IE -- generate an interrupt when the sequence completes
     ADCSequenceStepConfigure( ADC0_BASE, 1, 2,
                               ADC_CTL_CH2 | ADC_CTL_END | ADC_CTL_IE);
 
-    // 使能采样序列产生器1
+    // enable sample sequencer 1
     ADCSequenceEnable(ADC0_BASE, 1);
 
-    // 使能ADC0采样序列1中断，并在NVIC中使能相应中断源
+    // enable the ADC0 sequencer-1 interrupt and its NVIC source
     ADCIntEnable(ADC0_BASE, 1);
     IntEnable(INT_ADC0SS1);
 
-    // 在采样前，必须清除中断状态标志
+    // clear the interrupt status flag before sampling
     ADCIntClear(ADC0_BASE, 1);
 }
 
 //*************************************************************************************
 //
-// 函数原型：void TimerADCInit(void)
-// 函数功能：配置Timer0A为1kHz周期定时，输出触发ADC0采样序列1。
-//          即底层硬件以高频自动触发采样，无需CPU轮询触发。
-// 函数参数：无
-// 函数返回值：无
+// Function:	void TimerADCInit(void)
+// Function:	Configure Timer0A as a 1 kHz periodic timer whose output triggers ADC0
+//              sample sequencer 1 asynchronously (no CPU involvement).
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void TimerADCInit(void)
 {
-    // 使能定时器0模块
+    // enable Timer0
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0)){};
 
-    // 配置Timer0A为分离定时器、周期模式（向下计数）
+    // configure Timer0A as a split, periodic, down-counting timer
     TimerConfigure(TIMER0_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_PERIODIC);
 
-    // 设定重装载值，产生ADC_TRIGGER_HZ（1kHz）的触发频率
+    // set the reload value to produce ADC_TRIGGER_HZ (1 kHz)
     TimerLoadSet(TIMER0_BASE, TIMER_A, (ui32SysClock / ADC_TRIGGER_HZ) - 1);
 
-    // 使能Timer0A的ADC触发输出
+    // enable the Timer0A ADC trigger output
     TimerControlTrigger(TIMER0_BASE, TIMER_A, true);
 
-    // 启动Timer0A，开始连续触发ADC采样
+    // start Timer0A; it now continuously triggers ADC sampling
     TimerEnable(TIMER0_BASE, TIMER_A);
 }
 
 //*************************************************************************************
 //
-// 函数原型：uint32_t RawToMilliVolts(uint32_t raw)
-// 函数功能：将ADC原始值[0-4095]换算为毫伏值[0-3300]。
-//          阶段二/三进行定标时，可在此加入 k*x+b 系数。
-// 函数参数：raw  ADC原始采样值
-// 函数返回值：毫伏值
+// Function:	uint32_t RawToMilliVolts(uint32_t raw)
+// Function:	Convert an ADC raw value [0-4095] to millivolts [0-3300].
+//              Phase 2/3 calibration can insert a k*x+b linear correction here.
+// Parameters:	raw   ADC raw sample value
+// Returns:		millivolt value
 //
 //*************************************************************************************
 uint32_t RawToMilliVolts(uint32_t raw)
 {
-    // mv = raw * 3300 / 4096，加2048做四舍五入，>>12代替除以4096（整数运算）
+    // mv = raw * 3300 / 4096; add 2048 for rounding; >>12 replaces division by 4096
     return (raw * ADC_CONST_MV + 2048) >> 12;
 }
 
 //*************************************************************************************
 //
-// 函数原型：void ADC0SS1_Handler(void)
-// 函数功能：ADC0采样序列1中断服务程序（1kHz），读取三路采样并做滑动窗口平均。
-// 函数参数：无
-// 函数返回值：无
+// Function:	uint32_t CurrentToMilliAmps(uint32_t raw)
+// Function:	Convert the CH1/PE2 ADC raw value to the actual output current (mA).
+//              The voltage dropped across the 0.1 ohm sense resistor is read on PE2
+//              after front-end amplification; the measured fit is
+//              I(mA) = 0.665761 * V_adc(mV) + 28.453, implemented in fixed point.
+// Parameters:	raw   CH1 raw sample value
+// Returns:		actual current in mA
+//
+//*************************************************************************************
+uint32_t CurrentToMilliAmps(uint32_t raw)
+{
+    uint32_t mv = RawToMilliVolts(raw);   // PE2 pin voltage (mV)
+    return ((CAL_I_MA_PER_MVQ * mv + 32768) >> 16) + CAL_I_MA_OFFSET;
+}
+
+//*************************************************************************************
+//
+// Function:	void ADC0SS1_Handler(void)
+// Function:	ADC0 sample-sequencer-1 ISR (1 kHz); reads the three samples and
+//              performs the sliding-window average.
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void ADC0SS1_Handler(void)
 {
-    uint32_t data[8];                 // FIFO深度为8，足够容纳全部待读样本
+    uint32_t data[8];                 // FIFO depth 8, enough for all pending samples
     int32_t  n, i, base;
 
-    // 清除ADC0序列1中断标志
+    // clear the ADC0 sequencer-1 interrupt flag
     ADCIntClear(ADC0_BASE, 1);
 
-    // 读取FIFO中当前全部样本（一次触发产生ADC_NUM_CH个，多余样本一并取走）
+    // read all pending FIFO samples (one trigger produces ADC_NUM_CH samples; drain extras)
     n = ADCSequenceDataGet(ADC0_BASE, 1, data);
-    if (n < ADC_NUM_CH)               // 不足一个完整序列（如序列尚未结束），跳过
+    if (n < ADC_NUM_CH)               // not a complete sequence yet -> skip
         return;
 
-    // 取最近一个完整的三路序列（data[base .. base+2] 即 CH0/CH1/CH2）
+    // take the most recent complete three-channel sequence (data[base .. base+2] = CH0/CH1/CH2)
     base = n - ADC_NUM_CH;
 
-    // 各通道更新环形缓冲区与运行和
+    // update each channel's ring buffer and running sum
     for (i = 0; i < ADC_NUM_CH; i++)
     {
-        // 先减去即将被覆盖的旧值，再加新值，实现O(1)滑动平均
+        // subtract the value about to be overwritten, then add the new one (O(1) sliding average)
         g_ui32ADCWinSum[i] -= g_ui32ADCWin[i][g_ui8ADCWinIdx];
         g_ui32ADCWin[i][g_ui8ADCWinIdx] = data[base + i];
         g_ui32ADCWinSum[i] += data[base + i];
 
-        // 窗口未满前按已填充点数平均，满后除以窗口大小
+        // average over the samples actually filled until the window is full
         if (g_ui8ADCWinCnt < ADC_WINDOW_SIZE)
             g_ui32ADCAvg[i] = g_ui32ADCWinSum[i] / (g_ui8ADCWinCnt + 1);
         else
             g_ui32ADCAvg[i] = g_ui32ADCWinSum[i] / ADC_WINDOW_SIZE;
     }
 
-    // 前进写指针，并累计已填充点数
+    // advance the write pointer and accumulate the filled-sample count
     g_ui8ADCWinIdx = (g_ui8ADCWinIdx + 1) % ADC_WINDOW_SIZE;
     if (g_ui8ADCWinCnt < ADC_WINDOW_SIZE)
         g_ui8ADCWinCnt++;
@@ -310,61 +340,61 @@ void ADC0SS1_Handler(void)
 
 //*************************************************************************************
 //
-// 函数原型：SysTickInit(void)
-// 函数功能：设置SysTick中断
-// 函数参数：无
-// 函数返回值：无
+// Function:	void SysTickInit(void)
+// Function:	Configure the SysTick interrupt.
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void SysTickInit(void)
 {
-    SysTickPeriodSet(ui32SysClock/SYSTICK_FREQUENCY); // 设置心跳节拍,定时周期20ms
-    SysTickEnable();  			// SysTick使能
-    SysTickIntEnable();			// SysTick中断允许
+    SysTickPeriodSet(ui32SysClock/SYSTICK_FREQUENCY); // set the tick period (20 ms)
+    SysTickEnable();  			// enable SysTick
+    SysTickIntEnable();			// enable the SysTick interrupt
 }
 
 //*************************************************************************************
 //
-// 函数原型：DevicesInit(void)
-// 函数功能：MCU器件初始化，包括系统时钟设置、GPIO初始化、ADC初始化、
-//          定时器触发ADC初始化和SysTick中断设置
-// 函数参数：无
-// 函数返回值：无
+// Function:	void DevicesInit(void)
+// Function:	MCU peripheral initialization: system clock, GPIO, ADC, timer-triggered
+//              ADC and SysTick interrupt setup.
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
 void DevicesInit(void)
 {
-	// 使用外部25MHz主时钟源，经过PLL，然后分频为20MHz
+	// use the external 25 MHz crystal through the PLL, divided to 20 MHz
 	ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |SYSCTL_OSC_MAIN |
 	                                   SYSCTL_USE_PLL |SYSCTL_CFG_VCO_480),
 	                                   20000000);
 
-  GPIOInit();             // GPIO初始化
-  ADCInit();              // ADC初始化
-  TimerADCInit();         // Timer0A定时触发ADC初始化
-  UART_DebugInit(ui32SysClock);   // UART调试输出初始化
-  SysTickInit();          // 设置SysTick中断
-  IntMasterEnable();	  // 总中断允许
+  GPIOInit();             // GPIO initialization
+  ADCInit();              // ADC initialization
+  TimerADCInit();         // Timer0A timer-triggered ADC initialization
+  UART_DebugInit(ui32SysClock);   // UART debug output initialization
+  SysTickInit();          // SysTick interrupt setup
+  IntMasterEnable();	  // enable global interrupts
 }
 
 //*************************************************************************************
 //
-// 函数原型：void SysTick_Handler(void)
-// 函数功能：SysTick中断服务程序
-// 函数参数：无
-// 函数返回值：无
+// Function:	void SysTick_Handler(void)
+// Function:	SysTick interrupt service routine.
+// Parameters:	none
+// Returns:		none
 //
 //*************************************************************************************
-void SysTick_Handler(void)       // 定时周期为20ms
+void SysTick_Handler(void)       // tick period = 20 ms
 {
-	// 0.1秒钟软定时器计数（10Hz，用于UI刷新/后续阶段三均流控制）
+	// 0.1 s software timer (10 Hz), used for UI refresh / later phase-3 current sharing
 	if (++clock100ms >= V_T100ms)
 	{
-		clock100ms_flag = 1; // 当0.1秒到时，溢出标志置1
+		clock100ms_flag = 1; // when 0.1 s elapses, set the overflow flag
 		clock100ms = 0;
 	}
 
-	// 刷新全部数码管和LED
+	// refresh all digits and LEDs
 	TM1638_RefreshDIGIandLED(digit, pnt, led);
 
 }

@@ -17,6 +17,8 @@ CompileFlags:
     - "-mthumb"
     - "-mfpu=fpv4-sp-d16"
     - "-mfloat-abi=hard"
+    # ---- ARMCC 的 C 库头用了 __declspec，需显式开启（否则 stdio.h 报错）----
+    - "-fdeclspec"
     # ---- 器件定义（与 Keil/EIDE 的 <Define> 一致，hw_ints.h / pin_map.h 依赖）----
     - "-DPART_TM4C1294NCPDT"
     - "-DTM4C1294NCPDT"
