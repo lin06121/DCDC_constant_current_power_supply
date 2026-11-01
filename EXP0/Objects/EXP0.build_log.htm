@@ -30,21 +30,21 @@ Rebuild target 'Target_1'
 assembling startup_TM4C129.s...
 compiling tm1638.c...
 compiling retarget_io.c...
+compiling exp0.c...
+uart_debug.h(50): warning:  #1-D: last line of file ends without a newline
+  #endif // __UART_DEBUG_H__
+exp0.c(423): warning:  #1-D: last line of file ends without a newline
+  }
+exp0.c: 2 warnings, 0 errors
 compiling uart_debug.c...
 uart_debug.h(50): warning:  #1-D: last line of file ends without a newline
   #endif // __UART_DEBUG_H__
 uart_debug.c(101): warning:  #1-D: last line of file ends without a newline
   }
 uart_debug.c: 2 warnings, 0 errors
-compiling exp0.c...
-uart_debug.h(50): warning:  #1-D: last line of file ends without a newline
-  #endif // __UART_DEBUG_H__
-exp0.c(400): warning:  #1-D: last line of file ends without a newline
-  }
-exp0.c: 2 warnings, 0 errors
 compiling system_TM4C129.c...
 linking...
-Program Size: Code=5492 RO-data=2048 RW-data=32 ZI-data=824  
+Program Size: Code=5564 RO-data=2048 RW-data=40 ZI-data=872  
 FromELF: creating hex file...
 ".\Objects\EXP0.axf" - 0 Error(s), 4 Warning(s).
 
@@ -81,9 +81,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE@5.3.0
 
    * Component: Keil::Device:Startup@1.0.0
-      Source file:   Device/Source/ARM/startup_TM4C129.s
-      Include file:  Device/Include/TM4C129/TM4C129.h
       Source file:   Device/Source/system_TM4C129.c
+      Include file:  Device/Include/TM4C129/TM4C129.h
+      Source file:   Device/Source/ARM/startup_TM4C129.s
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
