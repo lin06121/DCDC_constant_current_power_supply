@@ -4,7 +4,7 @@
 // 文件名：adc_demo.c
 // 描述：
 //    1. 在 CH0/PE3、CH1/PE2 和 CH2/PE1 上进行三通道 ADC 采样。
-//    2. 左侧 4 位数码管显示 CH0/PE3 电压 [0.000-3.300 V]。
+//    2. 左侧 4 位数码管显示 CH0/PE3 电压 [0.000-9.999 V]。
 //    3. 右侧 4 位数码管显示输出电流CH1/PE2，单位 A [0.000-9.999 A]。
 //    4. Timer0A（1 kHz）触发采样 + 16 倍硬件过采样 + 滑动窗口平均。
 //    5. 输入电压必须保持在 [0-3.3 V] 范围内，否则可能损坏引脚。
@@ -61,6 +61,14 @@
 #define CAL_I_MA_PER_MVQ   43632u       // 0.665761 * 65536 ~= 43632（mA 每 ADC-mV）
 #define CAL_I_MA_OFFSET    28u          // 截距 b = 28.453 mA，四舍五入
 
+// ---- 电压通道校准（分压比 ~0.3316 + 电压跟随器，PE3/CH0） ----
+//     V_actual(mV) = k * V_adc(mV) + b，其中 V_adc(mV) = RawToMilliVolts(raw)
+// 实测（10Ω/5.1Ω，输出电压 ~5.03 V）拟合斜率为 k = 5.032/1.682 ≈ 2.9917；
+// 说明真实分压比 ≈ 1/2.9917 ≈ 0.3343（电阻容差）。因该两点电压几乎相同，
+// 截距 b 暂取 0；需再用一个明显不同的电压点复核 b 与精修 k。
+#define CAL_V_MV_PER_MVQ   196063u      // 2.9917 * 65536 ≈ 196063（真实 mV 每 ADC-mV）
+#define CAL_V_MV_OFFSET    0u           // 截距 b（mV），实测标定后修正
+
 // ---- 显示滞回（变化达到该阈值才刷新数码管，避免末位抖动） ----
 // 电压单位为 mV、电流单位为 mA，均以 X.YYY 显示（1 LSB = 0.001 V / 0.001 A）。
 // 仅当新值与数码管当前显示值之差达到该 LSB 数时才更新数码管；串口打印不受影响。
@@ -79,6 +87,7 @@ void SysTickInit(void);     // SysTick 中断设置
 void DevicesInit(void);     // MCU 外设初始化；调用上述函数
 uint32_t RawToMilliVolts(uint32_t raw);     // 将 ADC 原始值转换为毫伏
 uint32_t CurrentToMilliAmps(uint32_t raw);  // 将 CH1/PE2 原始值转换为实际电流（mA）
+uint32_t VoltageToMilliVolts(uint32_t raw); // 将 CH0/PE3 原始值转换为真实输出电压（mV）
 
 //*************************************************************************************
 //
@@ -146,7 +155,7 @@ int main(void)
             clock100ms_flag = 0;
 
             // 读取平均后的原始值并转换为毫伏
-            mv0 = RawToMilliVolts(g_ui32ADCAvg[0]);   // CH0/PE3（输出电压）
+            mv0 = VoltageToMilliVolts(g_ui32ADCAvg[0]); // CH0/PE3 真实输出电压（mV）
             mv1 = RawToMilliVolts(g_ui32ADCAvg[1]);   // CH1/PE2（电流采样电压）
             mv2 = RawToMilliVolts(g_ui32ADCAvg[2]);   // CH2/PE1（预留；调试 / 阶段 3）
             ima = CurrentToMilliAmps(g_ui32ADCAvg[1]); // CH1/PE2 实际电流（mA）
@@ -156,7 +165,7 @@ int main(void)
             if (DiffU32(mv0, g_ui32DispVoltage) >= DISP_V_DEADBAND)
             {
                 g_ui32DispVoltage = mv0;
-                digit[4] = mv0 / 1000; 	  // 整数位（0-3）
+                digit[4] = mv0 / 1000; 	  // 整数位（0-9）
                 digit[5] = mv0 / 100 % 10;  // 十分位
                 digit[6] = mv0 / 10 % 10;   // 百分位
                 digit[7] = mv0 % 10;        // 千分位
@@ -313,6 +322,23 @@ uint32_t CurrentToMilliAmps(uint32_t raw)
 {
     uint32_t mv = RawToMilliVolts(raw);   // PE2 引脚电压（mV）
     return ((CAL_I_MA_PER_MVQ * mv + 32768) >> 16) + CAL_I_MA_OFFSET;
+}
+
+//*************************************************************************************
+//
+// 函数：	uint32_t VoltageToMilliVolts(uint32_t raw)
+// 功能：	将 CH0/PE3 的 ADC 原始值转换为真实输出电压（mV）。
+//              电压链路为「真实输出电压 → 电阻分压 ~0.3316 → 电压跟随器 → ADC」；
+//              故 V_actual(mV) = k * V_adc(mV) + b，其中 V_adc(mV)=RawToMilliVolts(raw)，
+//              实测 k ≈ 2.9917、b ≈ 0，使用定点实现。
+// 参数：	raw   CH0 原始采样值
+// 返回值：	真实输出电压，单位 mV
+//
+//*************************************************************************************
+uint32_t VoltageToMilliVolts(uint32_t raw)
+{
+    uint32_t mv = RawToMilliVolts(raw);   // ADC 引脚（分压后）电压（mV）
+    return ((CAL_V_MV_PER_MVQ * mv + 32768) >> 16) + CAL_V_MV_OFFSET;
 }
 
 //*************************************************************************************
