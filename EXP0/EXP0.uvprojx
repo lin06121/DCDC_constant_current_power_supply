@@ -415,6 +415,16 @@
               <FileType>5</FileType>
               <FilePath>.\uart_debug.h</FilePath>
             </File>
+            <File>
+              <FileName>DAC6571.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DAC6571.c</FilePath>
+            </File>
+            <File>
+              <FileName>DAC6571.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DAC6571.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
